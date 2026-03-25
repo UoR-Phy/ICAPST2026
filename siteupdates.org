@@ -8,3 +8,5 @@
 1. add a yellow box in last write "More to be Announced"
 **About us
 1. Department link is not working, please resolve
+** Others
+1. "Air, Rail and Road Connectivity" Dark blue bold. 
