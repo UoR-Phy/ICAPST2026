@@ -1,12 +1,14 @@
-* 25 MArch
+* 25 March 2026 (completed)
 ** Home page
-1. "Be part of Advancing Knowledge, Inspiring Innovation: Join ICAPST 2026" Add this tag line after Welcome at home page and before download flyer
-2. link flyer, file name ICAPST_flyer
+1. ✅ "Be part of Advancing Knowledge, Inspiring Innovation: Join ICAPST 2026" Add this tag line after Welcome at home page and before download flyer 
+2. ✅ link flyer, file name ICAPST_flyer
 ** Call for abstract
-1. Abstact templete- link a file that open with text "Abstract sumbmission will open shortly" 
+1. ✅ Abstact templete- link a file that open with text "Abstract sumbmission will open shortly" 
 ** Speakers
-1. add a yellow box in last write "More to be Announced"
+1. ✅ add a yellow box in last write "More to be Announced"
 ** About us
-1. Department link is not working, please resolve
+1. ❌ Department link is not working, please resolve *(It is working, tested with my BSNL data and University line)*
 ** Others
-1. "Air, Rail and Road Connectivity" Dark blue bold. 
+1. ✅ "Air, Rail and Road Connectivity" Dark blue bold. 
+
+* 26 March 2026 (please write the next comments below, you can remove this line)
