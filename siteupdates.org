@@ -1,5 +1,5 @@
 * 25 MArch
-** In home page
+** Home page
 1. "Be part of Advancing Knowledge, Inspiring Innovation: Join ICAPST 2026" Add this tag line after Welcome at home page and before download flyer
 2. link flyer, file name ICAPST_flyer
 ** Call for abstract
