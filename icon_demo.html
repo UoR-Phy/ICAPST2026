@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICAPST 2026 – Icon Nav Demo</title>
+  <style>
+    body{ margin:0; font-family: Arial, Helvetica, sans-serif; background:#f5f5f5; }
+
+    header{ background:#2b1361; padding:12px 0; }
+
+    .nav{
+      width:95%; margin:auto;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+
+    .logo{
+      display:flex; align-items:center;
+      color:white; font-size:22px; font-weight:bold;
+    }
+
+    .hamburger{
+      display:none; flex-direction:column;
+      justify-content:space-between;
+      width:30px; height:22px;
+      background:none; border:none; cursor:pointer; padding:0;
+    }
+    .hamburger span{
+      display:block; height:3px; width:100%;
+      background:white; border-radius:3px;
+    }
+
+    .nav ul{
+      display:flex; list-style:none; margin:0; padding:0;
+    }
+
+    .nav ul li{ margin-left:20px; }
+
+    .nav ul li a{
+      color:white; cursor:pointer;
+      text-decoration:none; font-size:15px;
+      transition:0.3s;
+      display:flex; align-items:center; gap:6px;
+    }
+
+    .nav ul li a:hover{ color:yellow; }
+
+    /* Icon styling */
+    .nav-icon{
+      font-size:17px;
+      line-height:1;
+    }
+
+    /* Demo content */
+    .demo-box{
+      max-width:700px; margin:60px auto; padding:30px;
+      background:white; border-radius:16px;
+      box-shadow:0 4px 20px rgba(0,0,0,0.1);
+      text-align:center;
+    }
+
+    .demo-box h2{ color:#2b1361; margin-bottom:10px; }
+    .demo-box p{ color:#555; font-size:16px; line-height:1.7; }
+
+    /* Option rows showing alternatives */
+    .option-row{
+      display:flex; flex-wrap:wrap; gap:12px;
+      justify-content:center; margin-top:25px;
+    }
+
+    .option-chip{
+      background:#fffde7; border:2px solid #f5c800;
+      border-radius:50px; padding:8px 18px;
+      font-size:15px; color:#333;
+      display:flex; align-items:center; gap:7px;
+    }
+
+    @media(max-width:768px){
+      .hamburger{ display:flex; }
+      .nav ul{
+        display:none; flex-direction:column;
+        width:100%; background:#2b1361;
+        margin-top:10px;
+        border-top:1px solid rgba(255,255,255,0.2);
+      }
+      .nav ul.open{ display:flex; }
+      .nav ul li{ margin:0; border-bottom:1px solid rgba(255,255,255,0.1); }
+      .nav ul li a{ padding:12px 15px; }
+    }
+  </style>
+<script>
+function toggleMenu(){
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+</script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     OPTION A — Emoji icons (no library)
+══════════════════════════════════════ -->
+<header>
+  <div class="nav">
+    <div class="logo">🔬 ICAPST 2026</div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="#"><span class="nav-icon">🏠</span> Home</a></li>
+      <li><a href="#"><span class="nav-icon">ℹ️</span> About Us</a></li>
+      <li><a href="#"><span class="nav-icon">🎤</span> Speakers</a></li>
+      <li><a href="#"><span class="nav-icon">👥</span> Advisory Committee</a></li>
+      <li><a href="#"><span class="nav-icon">📝</span> Call for Abstract</a></li>
+      <li><a href="#"><span class="nav-icon">📋</span> Registration</a></li>
+      <li><a href="#"><span class="nav-icon">🏛️</span> Organizing Committee</a></li>
+      <li><a href="#"><span class="nav-icon">🔗</span> Others</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="demo-box">
+  <h2>🎨 Nav Icon Demo</h2>
+  <p>This demo shows <strong>Option A</strong> — simple <strong>emoji icons</strong> before each nav label.<br>
+  No extra files or libraries needed. Works on all devices and browsers.</p>
+
+  <p style="margin-top:20px;">Below are some alternative icon options you can choose from for each menu item:</p>
+
+  <div class="option-row">
+    <div class="option-chip">🏠 Home</div>
+    <div class="option-chip">🏡 Home</div>
+    <div class="option-chip">⌂ Home</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">ℹ️ About Us</div>
+    <div class="option-chip">🏫 About Us</div>
+    <div class="option-chip">📌 About Us</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">🎤 Speakers</div>
+    <div class="option-chip">🧑‍🏫 Speakers</div>
+    <div class="option-chip">🌟 Speakers</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">👥 Advisory Committee</div>
+    <div class="option-chip">🤝 Advisory Committee</div>
+    <div class="option-chip">🎓 Advisory Committee</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">📝 Call for Abstract</div>
+    <div class="option-chip">📄 Call for Abstract</div>
+    <div class="option-chip">✍️ Call for Abstract</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">📋 Registration</div>
+    <div class="option-chip">🖊️ Registration</div>
+    <div class="option-chip">🎟️ Registration</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">🏛️ Organizing Committee</div>
+    <div class="option-chip">⚙️ Organizing Committee</div>
+    <div class="option-chip">🗂️ Organizing Committee</div>
+  </div>
+  <div class="option-row">
+    <div class="option-chip">🔗 Others</div>
+    <div class="option-chip">🗺️ Others</div>
+    <div class="option-chip">➕ Others</div>
+  </div>
+
+  <p style="margin-top:30px; font-size:14px; color:#888;">
+    Tell me which icons you prefer for each menu item and I'll apply them to all your HTML files!
+  </p>
+</div>
+
+</body>
+</html>
