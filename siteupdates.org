@@ -17,3 +17,8 @@
 - Add two more blue box 
   1. ✅ In one write "Submission by Speakers", add a pop-up "Please email your abstract at icapst2026@gmail.com"
   2. ✅ In other write "Submission by Presenters" add a pop-up "Submission link will open shortly"
+* 28 March
+** Registration
+1. Guidelines: "The registration fee covers a conference kit, access to domain-specific sessions, a presentation/participation certificate, and food coupons during the conference."
+Change this "The registration fee covers a conference kit, access to domain-specific sessions and a presentation/participation certificate.
+It also includes food coupons, with lunch provided for all three days of the conference."
