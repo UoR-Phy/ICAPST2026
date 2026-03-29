@@ -38,3 +38,6 @@ ok
 1. "Amesh" Correct is "Ambesh"
 ** ✅ Others
 1. "Travel" in Blue box change "Visa & Travel"
+** Advisory Committee
+1. add "Prof. Manikandan Palanichamy, Associate Professor, Department of Engineering at Østfold University College." After Prof. Maarteen
+2. Photo file "Prof_Manikandan"
