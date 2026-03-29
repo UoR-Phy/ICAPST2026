@@ -30,3 +30,11 @@ ok
 1. change "Transportation" to "Travel Information"
 2. Visa Information "If you need urgent help, feel free to reach out to the Transportation Team." change "If you need urgent help, feel free to reach out to the Visa and Travel Assistance Team"
 - I have done one more thing, if you do not like, I can revert. Now if anyone clicks on logo and "ICAPST 2026" on left up corner, it takes you back to home page.
+** response 
+1. all changes are good
+
+* 29 March
+** Advisory Committee 
+1. "Amesh" Correct is "Ambesh"
+** Others
+1. "Travel" in Blue box change "Visa & Travel"
