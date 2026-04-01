@@ -1,46 +1,48 @@
-* 25 March 2026 (completed)
-** Home page
+* April 2026
+* March 2026 updates (completed)
+** 25 March 2026 (completed)
+*** Home page
 1. ✅ "Be part of Advancing Knowledge, Inspiring Innovation: Join ICAPST 2026" Add this tag line after Welcome at home page and before download flyer 
 2. ✅ link flyer, file name ICAPST_flyer
-** Call for abstract
+*** Call for abstract
 1. ✅ Abstact templete- link a file that open with text "Abstract sumbmission will open shortly" 
-** Speakers
+*** Speakers
 1. ✅ add a yellow box in last write "More to be Announced"
-** About us
+*** About us
 1. ❌ Department link is not working, please resolve *(It is working, tested with my BSNL data and University line)*
-** Others
+*** Others
 1. ✅ "Air, Rail and Road Connectivity" Dark blue bold. 
 
-* 27 March 2026 (completed)
-** Call for Abstract 
-*** Submission guideline
+** 27 March 2026 (completed)
+*** Call for Abstract 
+**** Submission guideline
 - Add two more blue box 
   1. ✅ In one write "Submission by Speakers", add a pop-up "Please email your abstract at icapst2026@gmail.com"
   2. ✅ In other write "Submission by Presenters" add a pop-up "Submission link will open shortly"
-* 28 March 2026 (completed)
-** Registration
+** 28 March 2026 (completed)
+*** Registration
 1. Guidelines: "The registration fee covers a conference kit, access to domain-specific sessions, a presentation/participation certificate, and food coupons during the conference."
 Change this "The registration fee covers a conference kit, access to domain-specific sessions and a presentation/participation certificate.
 It also includes food coupons, with lunch provided for all three days of the conference."
-** ✅ Following change made, as I understood:
+*** ✅ Following change made, as I understood:
 - The registration fee covers a conference kit, access to domain-specific sessions and a presentation/participation certificate.
 - It also includes food coupons, with lunch provided for all three days of the conference.
 ok
-** ✅ Others
+*** ✅ Others
 1. change "Transportation" to "Travel Information"
 2. Visa Information "If you need urgent help, feel free to reach out to the Transportation Team." change "If you need urgent help, feel free to reach out to the Visa and Travel Assistance Team"
 - I have done one more thing, if you do not like, I can revert. Now if anyone clicks on logo and "ICAPST 2026" on left up corner, it takes you back to home page.
-** response 
+*** response 
 1. all changes are good
 
-* 29 March
-** ✅ Advisory Committee 
+** 29 March 2026 (completed)
+*** ✅ Advisory Committee 
 1. "Amesh" Correct is "Ambesh"
-** ✅ Others
+*** ✅ Others
 1. "Travel" in Blue box change "Visa & Travel"
-** Advisory Committee
+*** Advisory Committee
 1. add "Prof. Manikandan Palanichamy, Associate Professor, Department of Engineering at Østfold University College." After Prof. Maarteen
 2. Photo file "Prof_Manikandan"
-* 30 March
-** Advisory Committee
+** 30 March 2026 (completed)
+*** Advisory Committee
 1. Add in National "Dr. H. L. Swami, Scientific Officer-F, IPR, Gandhinagar, Gujarat" 
