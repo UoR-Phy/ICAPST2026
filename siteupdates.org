@@ -16,6 +16,9 @@ Sr. Manager, NTPC Ltd."
 4. "Dr. Komal Bapna, Sr. Scientist, CSIR - National Physical Laboratory, New Delhi, India"
 5. "Prof. Patrick Oyirwoth Abedigamba, Head, Department of Physics, Kyambogo University, Uganda"
 -Photo of 4th is uploaded, rest are in advisory committee. 
+** 17 April 
+*** Speaker
+1. replace Photo to Komal Bapna, New file name Dr_Komal, Please remove the old one. 
 
 * March 2026 updates (completed)
 ** 25 March 2026 (completed)
