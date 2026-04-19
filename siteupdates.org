@@ -40,6 +40,8 @@ Sr. Manager, NTPC Ltd."
        "Abstract Submission Deadline: Submit by 15 August 2026" change "Abstract Submission Deadline: Submit by 1 July 2026"
       "Acceptance Notification: will be communicated by 25 August 2026" change "Acceptance Notification: will be communicated by 15 July 2026"
        add "Full-length Paper Submission Deadline: Submit by 15 August 2026"
+*** Home
+1. Make a orange box after venue and write "Importance Dates" either link this or repeate the same information given in call for papers. 
  
 
 * March 2026 updates (completed)
