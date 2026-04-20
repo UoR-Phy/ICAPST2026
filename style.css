@@ -745,6 +745,16 @@ h2{
   color: #0645AD;
 }
 
+/* BLINK ANIMATION */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+.blink {
+  animation: blink 1.2s ease-in-out infinite;
+  display: inline-block;
+}
+
 /* HAMBURGER BUTTON - hidden on desktop */
 .hamburger{
   display:none;
