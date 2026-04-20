@@ -16,30 +16,29 @@ Sr. Manager, NTPC Ltd."
 4. "Dr. Komal Bapna, Sr. Scientist, CSIR - National Physical Laboratory, New Delhi, India"
 5. "Prof. Patrick Oyirwoth Abedigamba, Head, Department of Physics, Kyambogo University, Uganda"
 -Photo of 4th is uploaded, rest are in advisory committee. 
-** 17 April 
+** 17 April (completed)
 *** Speaker
 1. replace Photo to Komal Bapna, New file name Dr_Komal, Please remove the old one. 
 
-** 19 April
+** 19 April (completed)
 *** Call for papers
 1. Submission guidelines, replace by these new ones:
-•	Word limit: 200–250 words.
-•	The abstract should clearly state the objectives, methodology, key results, and major conclusions of the research.
-•	Submissions must be original and free from plagiarism (similarity index below 10%).
-•	Authors are required to select the appropriate conference track at the time of submission.
-•	All submissions will be reviewed based on: originality, novelty, technical quality and relevance to conference themes.
-•	Accepted abstracts will be invited for: Oral or Poster presentation 
-•	Detailed presentation instructions will be shared after acceptance 
-•	After abstract acceptance a full-length paper can be submitted.  
-•	A full paper submission is not mandatory to present a paper or attend ICAPST.
-•	At least one author must register and present the paper at the conference for it to be included in the ICAPST proceedings and considered for journal publication recommendation. 
+   - Word limit: 200–250 words.
+   - The abstract should clearly state the objectives, methodology, key results, and major conclusions of the research.
+   - Submissions must be original and free from plagiarism (similarity index below 10%).
+   - Authors are required to select the appropriate conference track at the time of submission.
+   - All submissions will be reviewed based on: originality, novelty, technical quality and relevance to conference themes.
+   - Accepted abstracts will be invited for: Oral or Poster presentation
+   - Detailed presentation instructions will be shared after acceptance
+   - After abstract acceptance a full-length paper can be submitted.
+   - A full paper submission is not mandatory to present a paper or attend ICAPST.
+   - At least one author must register and present the paper at the conference for it to be included in the ICAPST proceedings and considered for journal publication recommendation. 
 2. Journal Publication, replace first line "Authors can submit full manuscript in conference-aligned journals after conference." by "Selected papers may be recommended for further peer review process in the partnered journals.”
 3. Abstract Template, change "Download Abstract Template". The formate is in uploaded file name "Abstract_Template_ICAPST.doc" Link this file in doc, pdf and linex format.
 4. Poster Template, change the pop-up "It will be avaliable after 15 July"
 5. Important dates:
-       "Abstract Submission Deadline: Submit by 15 August 2026" change "Abstract Submission Deadline: Submit by 1 July 2026"
-      "Acceptance Notification: will be communicated by 25 August 2026" change "Acceptance Notification: will be communicated by 15 July 2026"
-       add "Full-length Paper Submission Deadline: Submit by 15 August 2026"
+   - "Abstract Submission Deadline: Submit by 15 August 2026" change "Abstract Submission Deadline: Submit by 1 July 2026"
+   - "Acceptance Notification: will be communicated by 25 August 2026" change "Acceptance Notification: will be communicated by 15 July 2026" add "Full-length Paper Submission Deadline: Submit by 15 August 2026"
 *** Home
 1. Make a orange box after venue and write "Importance Dates" either link this or repeate the same information given in call for papers. 
  
