@@ -41,6 +41,9 @@ Sr. Manager, NTPC Ltd."
    - "Acceptance Notification: will be communicated by 25 August 2026" change "Acceptance Notification: will be communicated by 15 July 2026" add "Full-length Paper Submission Deadline: Submit by 15 August 2026"
 *** Home
 1. Make a orange box after venue and write "Importance Dates" either link this or repeate the same information given in call for papers. 
+
+** 24 April
+**** "Selected papers will be recommended for publication in Scopus- and SCI-indexed journals in collaboration with ICAPST" Please add this line, it should scroll on the top of site page.
  
 
 * March 2026 updates (completed)
