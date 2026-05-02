@@ -1,3 +1,7 @@
+* May 2026
+** 2 May (completed)
+- Updated KK in invited speakers.
+- Updated a test file, where people can submit their abstract. Still need to update, so did not gave link at Abstract tab yet.
 * April 2026
 ** 02 April (completed)
 *** Advisory committee "Dr. Narendra K Soni
@@ -42,7 +46,7 @@ Sr. Manager, NTPC Ltd."
 *** Home
 1. Make a orange box after venue and write "Importance Dates" either link this or repeate the same information given in call for papers. 
 
-** 24 April
+** 24 April (completed)
 **** "Selected papers will be recommended for publication in Scopus- and SCI-indexed journals in collaboration with ICAPST" Please add this line, it should scroll on the top of site page.
  
 
