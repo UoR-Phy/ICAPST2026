@@ -2,6 +2,19 @@
 ** 2 May (completed)
 - Updated KK in invited speakers.
 - Updated a test file, where people can submit their abstract. Still need to update, so did not gave link at Abstract tab yet.
+** 4 May
+*** Call for Abstract
+1. Abstract limit minimum 200 and maximum 250 should be checked
+2. Country code should be manual 
+3. Ask full detials of Second author and third author and rest in othe big box. 
+4. Upload file limit 1 MB
+5. Submission Id should include conference track 
+*** Markquee
+1. Remove icon
+2. Text colour Dark Green
+
+
+
 * April 2026
 ** 02 April (completed)
 *** Advisory committee "Dr. Narendra K Soni
