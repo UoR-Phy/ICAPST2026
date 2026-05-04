@@ -12,6 +12,7 @@
 *** Markquee
 1. Remove icon
 2. Text colour Dark Green
+3. Remove - after scopus
 
 
 
