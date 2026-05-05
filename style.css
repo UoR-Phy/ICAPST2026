@@ -745,6 +745,32 @@ h2{
   color: #0645AD;
 }
 
+/* MARQUEE RUNNING TEXT */
+.marquee-wrap{
+  background: white;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track{
+  display: inline-block;
+  animation: marquee-scroll 30s linear infinite;
+}
+
+.marquee-text{
+  display: inline-block;
+  color: #155724;
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 80px;  /* gap between repetitions */
+}
+
+@keyframes marquee-scroll{
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 /* BLINK ANIMATION */
 @keyframes blink {
   0%, 100% { opacity: 1; }

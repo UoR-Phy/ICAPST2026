@@ -37,10 +37,21 @@ window.onload = function() { document.getElementById('btn-registration').classLi
 </header>
 
 <div class="marquee-wrap">
-  <marquee behavior="scroll" direction="left" scrollamount="5">
-    🎓&nbsp;&nbsp;Selected papers will be recommended for publication in Scopus- and SCI-indexed journals in collaboration with ICAPST&nbsp;&nbsp;&nbsp;&nbsp;🎓&nbsp;&nbsp;Selected papers will be recommended for publication in Scopus- and SCI-indexed journals in collaboration with ICAPST&nbsp;&nbsp;&nbsp;&nbsp;
-  </marquee>
+  <div class="marquee-track">
+    <span class="marquee-text">📄&nbsp;&nbsp;Selected papers will be recommended for publication in Scopus and SCI-indexed journals in collaboration with ICAPST</span>
+  </div>
 </div>
+<script>
+(function(){
+  var track = document.currentScript.previousElementSibling.querySelector('.marquee-track');
+  var original = track.querySelector('.marquee-text');
+  // Clone enough times to fill screen and loop seamlessly
+  for(var i = 0; i < 5; i++){
+    var clone = original.cloneNode(true);
+    track.appendChild(clone);
+  }
+})();
+</script>
 
 <div class="tab-inner" style="text-align:center;">
   <h2>Registration</h2>
