@@ -2,7 +2,7 @@
 ** 2 May (completed)
 - Updated KK in invited speakers.
 - Updated a test file, where people can submit their abstract. Still need to update, so did not gave link at Abstract tab yet.
-** 4 May
+** 4 May (completed)
 *** Call for Abstract
 1. Abstract limit minimum 200 and maximum 250 should be checked
 2. Country code should be manual 
