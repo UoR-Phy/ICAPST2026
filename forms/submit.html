@@ -24,7 +24,8 @@
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
         @media(max-width:600px){ .grid-2{ grid-template-columns:1fr; } }
         .phone-row { display: flex; gap: 10px; }
-        .phone-code { width: 110px; flex-shrink: 0; }
+        .phone-code { width: 75px !important; flex-shrink: 0; box-sizing: border-box; }
+        .phone-num  { flex: 1 !important; width: auto !important; min-width: 0; box-sizing: border-box; }
         .phone-code::placeholder { color: #aaa; }
         .option-group { display: flex; gap: 20px; margin: 10px 0; flex-wrap: wrap; }
         .option-item { display: flex; align-items: center; cursor: pointer; }
@@ -96,7 +97,7 @@
       <div class="grid-2">
         <div class="form-group">
           <label>Title <span class="req">*</span></label>
-          <input type="text" name="faTitle" required placeholder="Prof. / Dr. / Mr. / Ms.">
+          <input type="text" name="faTitle" id="faTitle" required placeholder="Prof. / Dr. / Mr. / Ms.">
         </div>
         <div class="form-group">
           <label>Full Name <span class="req">*</span></label>
@@ -106,17 +107,17 @@
       <div class="grid-2">
         <div class="form-group">
           <label>Department <span class="req">*</span></label>
-          <input type="text" name="faDept" required>
+          <input type="text" name="faDept" id="faDept" required>
         </div>
         <div class="form-group">
           <label>Institution <span class="req">*</span></label>
-          <input type="text" name="faInst" required>
+          <input type="text" name="faInst" id="faInst" required>
         </div>
       </div>
       <div class="grid-2">
         <div class="form-group">
           <label>Country <span class="req">*</span></label>
-          <input type="text" name="faCountry" required>
+          <input type="text" name="faCountry" id="faCountry" required>
         </div>
         <div class="form-group">
           <label>Email Address <span class="req">*</span></label>
@@ -127,7 +128,7 @@
         <label>Contact Number <span class="req">*</span></label>
         <div class="phone-row">
           <input type="text" name="faCode" id="faCode" class="phone-code" placeholder="+91" maxlength="6" required>
-          <input type="tel" name="faPhone" id="faPhone" required placeholder="Mobile Number (8–12 digits)" pattern="[0-9]{8,12}" style="flex:1;">
+          <input type="tel" name="faPhone" id="faPhone" required placeholder="Mobile Number (8–12 digits)" pattern="[0-9]{8,12}" class="phone-num">
         </div>
       </div>
 
@@ -157,7 +158,7 @@
           <label>Contact Number <span class="req">*</span></label>
           <div class="phone-row">
             <input type="text" name="caCode" class="phone-code" placeholder="+91" maxlength="6">
-            <input type="tel" name="caPhone" class="ca-req" placeholder="Mobile Number (8–12 digits)" pattern="[0-9]{8,12}" style="flex:1;">
+            <input type="tel" name="caPhone" class="ca-req" placeholder="Mobile Number (8–12 digits)" pattern="[0-9]{8,12}" class="phone-num">
           </div>
         </div>
       </div>
@@ -321,17 +322,44 @@ document.getElementById('pdfFile').addEventListener('change', function(){ valida
 
 // ── Phone number validation ───────────────────────────────────────────────────
 function validatePhone(codeId, phoneId, label){
-  var code = document.getElementById(codeId).value.trim();
-  var phone = document.getElementById(phoneId).value.trim();
-  if(!code){ alert('Please enter the country code for ' + label + ' (e.g. +91)'); return false; }
-  if(!/^\+\d{1,5}$/.test(code)){ alert('Country code for ' + label + ' must start with + followed by digits (e.g. +91)'); return false; }
-  if(!/^[0-9]{8,12}$/.test(phone)){ alert('Please enter a valid phone number for ' + label + ' (8–12 digits, no spaces)'); return false; }
+  var codeEl  = document.getElementById(codeId);
+  var phoneEl = document.getElementById(phoneId);
+  var code  = codeEl.value.trim();
+  var phone = phoneEl.value.trim();
+  if(!code){
+    alert('⚠ Please enter the country code for ' + label + ' (e.g. +91)');
+    codeEl.focus(); return false;
+  }
+  if(!/^\+\d{1,5}$/.test(code)){
+    alert('⚠ Country code must start with + followed by digits (e.g. +91)');
+    codeEl.focus(); return false;
+  }
+  if(!/^[0-9]{8,12}$/.test(phone)){
+    alert('⚠ Please enter a valid phone number for ' + label + ' (8–12 digits, no spaces)');
+    phoneEl.focus(); return false;
+  }
   return true;
 }
 
 // ── Form submission ───────────────────────────────────────────────────────────
 document.getElementById('mainForm').onsubmit = function(e){
   e.preventDefault();
+
+  // Title of Abstract
+  var titleEl = document.querySelector('[name="abstractTitle"]');
+  if(!titleEl.value.trim()){
+    alert('⚠ Please enter the Title of Abstract.');
+    titleEl.focus();
+    return;
+  }
+
+  // Conference Track
+  var trackEl = document.getElementById('trackSelect');
+  if(!trackEl.value){
+    alert('⚠ Please select a Conference Track.');
+    trackEl.focus();
+    return;
+  }
 
   // Word count
   var wc = countWords(abstractTA.value);
@@ -341,25 +369,78 @@ document.getElementById('mainForm').onsubmit = function(e){
   }
 
   // Keywords
-  var kw = document.getElementById('kwInput').value.split(',').filter(function(x){ return x.trim() !== ''; });
-  if(kw.length < 4 || kw.length > 6){ alert('Please provide between 4 and 6 keywords.'); return; }
+  var kwEl = document.getElementById('kwInput');
+  var kw = kwEl.value.split(',').filter(function(x){ return x.trim() !== ''; });
+  if(kw.length < 4 || kw.length > 6){
+    alert('⚠ Please provide between 4 and 6 keywords (comma-separated).');
+    kwEl.focus(); return;
+  }
+
+  // First Author required fields
+  var faFields = [
+    { id: 'faTitle',   label: 'Title (First Author)' },
+    { id: 'faName',    label: 'Full Name (First Author)' },
+    { id: 'faDept',    label: 'Department (First Author)' },
+    { id: 'faInst',    label: 'Institution (First Author)' },
+    { id: 'faCountry', label: 'Country (First Author)' }
+  ];
+  for(var i = 0; i < faFields.length; i++){
+    var el = document.getElementById(faFields[i].id);
+    if(!el.value.trim()){
+      alert('⚠ Please enter: ' + faFields[i].label);
+      el.focus();
+      return;
+    }
+  }
 
   // First author email
   var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  var faEmail = document.getElementById('faEmail').value;
-  if(!emailPattern.test(faEmail)){ alert('Please enter a valid email for the First Author.'); return; }
+  var faEmailEl = document.getElementById('faEmail');
+  if(!emailPattern.test(faEmailEl.value)){
+    alert('⚠ Please enter a valid email for the First Author.');
+    faEmailEl.focus(); return;
+  }
 
   // First author phone
   if(!validatePhone('faCode', 'faPhone', 'First Author')) return;
 
+  // Corresponding Author validation (only if "No" is selected)
+  var corrNo = document.querySelector('input[name="isCorr"][value="No"]');
+  if(corrNo && corrNo.checked){
+    var caFields = [
+      { name: 'caName',    label: 'Full Name (Corresponding Author)' },
+      { name: 'caDept',    label: 'Department (Corresponding Author)' },
+      { name: 'caInst',    label: 'Institution (Corresponding Author)' },
+      { name: 'caCountry', label: 'Country (Corresponding Author)' }
+    ];
+    for(var j = 0; j < caFields.length; j++){
+      var caEl = document.querySelector('[name="' + caFields[j].name + '"]');
+      if(caEl && !caEl.value.trim()){
+        alert('⚠ Please enter: ' + caFields[j].label);
+        caEl.focus();
+        return;
+      }
+    }
+    var caEmailEl = document.querySelector('[name="caEmail"]');
+    if(caEmailEl && !emailPattern.test(caEmailEl.value)){
+      alert('⚠ Please enter a valid email for the Corresponding Author.');
+      caEmailEl.focus(); return;
+    }
+  }
+
   // Presentation preference
   if(document.querySelectorAll('input[name="pref"]:checked').length === 0){
-    alert('Please select at least one Presentation Preference.'); return;
+    alert('⚠ Please select at least one Presentation Preference (Oral or Poster).');
+    document.querySelector('input[name="pref"]').scrollIntoView({behavior:'smooth', block:'center'});
+    return;
   }
 
   // Abstract file
   var absFile = document.getElementById('abstractFile');
-  if(!absFile.files[0]){ alert('Please upload your abstract file.'); return; }
+  if(!absFile.files[0]){
+    alert('⚠ Please upload your abstract file (.docx or .tex).');
+    absFile.focus(); return;
+  }
   if(!validateFile(absFile, ['docx','tex'], 1)) return;
 
   // PDF file (optional)
@@ -367,8 +448,11 @@ document.getElementById('mainForm').onsubmit = function(e){
   if(pdfFile.files[0] && !validateFile(pdfFile, ['pdf'], 1)) return;
 
   // Declaration
-  if(!document.getElementById('declaration').checked){
-    alert('Please confirm the declaration before submitting.'); return;
+  var declEl = document.getElementById('declaration');
+  if(!declEl.checked){
+    alert('⚠ Please confirm the declaration before submitting.');
+    declEl.scrollIntoView({behavior:'smooth', block:'center'});
+    return;
   }
 
   var btn = this.querySelector('.submit-btn');
@@ -399,51 +483,74 @@ document.getElementById('mainForm').onsubmit = function(e){
   }
 
   var formData = new FormData(this);
-  var reader = new FileReader();
-  reader.onload = function(ev){
-    var payload = {
-      submissionID:  generatedID,
-      fileName:      absFile.files[0].name,
-      mimeType:      absFile.files[0].type,
-      fileBase64:    ev.target.result.split(',')[1],
-      abstractTitle: formData.get('abstractTitle'),
-      track:         formData.get('track'),
-      keywords:      formData.get('keywords'),
-      faTitle:       formData.get('faTitle'),
-      faName:        formData.get('faName'),
-      faDept:        formData.get('faDept'),
-      faInst:        formData.get('faInst'),
-      faCountry:     formData.get('faCountry'),
-      faEmail:       formData.get('faEmail'),
-      faPhone:       formData.get('faCode') + formData.get('faPhone'),
-      isCorr:        formData.get('isCorr'),
-      caName:        formData.get('caName') || '',
-      caEmail:       formData.get('caEmail') || '',
-      caPhone:       (formData.get('caCode') || '') + (formData.get('caPhone') || ''),
-      coAuthors:     JSON.stringify(coAuthors),
-      presentation:  Array.from(formData.getAll('pref'))
-    };
 
-    fetch('https://script.google.com/macros/s/AKfycbyU5m7eIuZY9kRhbEWs8M67NG6lPjOhLs_5jymob7WB_80ZRsGHOL5G9n3x76dgkDD4/exec', {
-      method: 'POST', mode: 'no-cors', body: JSON.stringify(payload)
-    })
-    .then(function(){
-      document.getElementById('formSection').style.display = 'none';
-      document.getElementById('submissionReport').style.display = 'block';
-      document.getElementById('repID').innerText     = generatedID;
-      document.getElementById('repTitle').innerText  = payload.abstractTitle;
-      document.getElementById('repTrack').innerText  = payload.track;
-      document.getElementById('repAuthor').innerText = payload.faName;
-      document.getElementById('repEmail').innerText  = payload.faEmail;
-      document.getElementById('repDate').innerText   = new Date().toLocaleString();
-    })
-    .catch(function(err){
-      alert('Submission failed. Error: ' + err);
-      btn.disabled = false;
-      btn.innerText = 'Submit Abstract for ICAPST 2026';
-    });
-  };
-  reader.readAsDataURL(absFile.files[0]);
+  // Read PDF if present, then read abstract file
+  function readPDF(cb){
+    if(pdfFile.files[0]){
+      var r = new FileReader();
+      r.onload = function(e){ cb(e.target.result.split(',')[1]); };
+      r.readAsDataURL(pdfFile.files[0]);
+    } else { cb(''); }
+  }
+
+  readPDF(function(pdfBase64){
+    var reader = new FileReader();
+    reader.onload = function(ev){
+      // Rename file to SubmissionID.ext
+      var origExt = absFile.files[0].name.split('.').pop().toLowerCase();
+      var renamedFile = generatedID + '.' + origExt;
+      var renamedPdf  = pdfFile.files[0] ? generatedID + '_supporting.pdf' : '';
+
+      var payload = {
+        submissionID:  generatedID,
+        fileName:      renamedFile,
+        mimeType:      absFile.files[0].type,
+        fileBase64:    ev.target.result.split(',')[1],
+        pdfBase64:     pdfBase64,
+        pdfFileName:   renamedPdf,
+        abstractTitle: formData.get('abstractTitle'),
+        abstractBody:  formData.get('abstractBody'),
+        track:         formData.get('track'),
+        keywords:      formData.get('keywords'),
+        faTitle:       formData.get('faTitle'),
+        faName:        formData.get('faName'),
+        faDept:        formData.get('faDept'),
+        faInst:        formData.get('faInst'),
+        faCountry:     formData.get('faCountry'),
+        faEmail:       formData.get('faEmail'),
+        faPhone:       formData.get('faCode') + formData.get('faPhone'),
+        isCorr:        formData.get('isCorr'),
+        caName:        formData.get('caName') || '',
+        caDept:        formData.get('caDept') || '',
+        caInst:        formData.get('caInst') || '',
+        caCountry:     formData.get('caCountry') || '',
+        caEmail:       formData.get('caEmail') || '',
+        caPhone:       (formData.get('caCode') || '') + (formData.get('caPhone') || ''),
+        coAuthors:     JSON.stringify(coAuthors),
+        presentation:  Array.from(formData.getAll('pref'))
+      };
+
+      fetch('https://script.google.com/macros/s/AKfycbyU5m7eIuZY9kRhbEWs8M67NG6lPjOhLs_5jymob7WB_80ZRsGHOL5G9n3x76dgkDD4/exec', {
+        method: 'POST', mode: 'no-cors', body: JSON.stringify(payload)
+      })
+      .then(function(){
+        document.getElementById('formSection').style.display = 'none';
+        document.getElementById('submissionReport').style.display = 'block';
+        document.getElementById('repID').innerText     = generatedID;
+        document.getElementById('repTitle').innerText  = payload.abstractTitle;
+        document.getElementById('repTrack').innerText  = payload.track;
+        document.getElementById('repAuthor').innerText = payload.faName;
+        document.getElementById('repEmail').innerText  = payload.faEmail;
+        document.getElementById('repDate').innerText   = new Date().toLocaleString();
+      })
+      .catch(function(err){
+        alert('Submission failed. Error: ' + err);
+        btn.disabled = false;
+        btn.innerText = 'Submit Abstract for ICAPST 2026';
+      });
+    };
+    reader.readAsDataURL(absFile.files[0]);
+  });
 };
 </script>
 </body>
