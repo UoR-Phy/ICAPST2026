@@ -530,11 +530,10 @@ document.getElementById('mainForm').onsubmit = function(e){
         presentation:  Array.from(formData.getAll('pref'))
       };
 
-      fetch('https://script.google.com/macros/s/AKfycbyU5m7eIuZY9kRhbEWs8M67NG6lPjOhLs_5jymob7WB_80ZRsGHOL5G9n3x76dgkDD4/exec', {
-        method: 'POST', mode: 'no-cors', body: JSON.stringify(payload)
-      })
-      .then(function(){
-        document.getElementById('formSection').style.display = 'none';
+      var scriptURL = 'https://script.google.com/macros/s/AKfycbyU5m7eIuZY9kRhbEWs8M67NG6lPjOhLs_5jymob7WB_80ZRsGHOL5G9n3x76dgkDD4/exec';
+
+      function showReceipt(){
+        document.getElementById('formSection').style.display  = 'none';
         document.getElementById('submissionReport').style.display = 'block';
         document.getElementById('repID').innerText     = generatedID;
         document.getElementById('repTitle').innerText  = payload.abstractTitle;
@@ -542,11 +541,53 @@ document.getElementById('mainForm').onsubmit = function(e){
         document.getElementById('repAuthor').innerText = payload.faName;
         document.getElementById('repEmail').innerText  = payload.faEmail;
         document.getElementById('repDate').innerText   = new Date().toLocaleString();
-      })
-      .catch(function(err){
-        alert('Submission failed. Error: ' + err);
+        window.scrollTo(0,0);
+      }
+
+      function resetBtn(){
         btn.disabled = false;
         btn.innerText = 'Submit Abstract for ICAPST 2026';
+      }
+
+      // Send as URL-encoded form data so Google Apps Script reads e.parameter.data
+      var body = new URLSearchParams();
+      body.append('data', JSON.stringify(payload));
+
+      fetch(scriptURL, {
+        method: 'POST',
+        body: body
+      })
+      .then(function(response){
+        if(!response.ok){
+          throw new Error('Server returned status ' + response.status);
+        }
+        return response.json();
+      })
+      .then(function(result){
+        if(result.status === 'success'){
+          // Use the server-generated sequential ID for the receipt
+          var serverID = result.submissionID || generatedID;
+          document.getElementById('formSection').style.display  = 'none';
+          document.getElementById('submissionReport').style.display = 'block';
+          document.getElementById('repID').innerText     = serverID;
+          document.getElementById('repTitle').innerText  = payload.abstractTitle;
+          document.getElementById('repTrack').innerText  = payload.track;
+          document.getElementById('repAuthor').innerText = payload.faName;
+          document.getElementById('repEmail').innerText  = payload.faEmail;
+          document.getElementById('repDate').innerText   = new Date().toLocaleString();
+          window.scrollTo(0,0);
+        } else {
+          alert('Submission failed on server: ' + (result.message || 'Unknown error'));
+          resetBtn();
+        }
+      })
+      .catch(function(err){
+        if(!navigator.onLine){
+          alert('⚠ You are offline. Please check your internet connection and try again.');
+        } else {
+          alert('⚠ Submission failed. Please try again.\nError: ' + err.message);
+        }
+        resetBtn();
       });
     };
     reader.readAsDataURL(absFile.files[0]);
