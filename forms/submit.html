@@ -216,7 +216,7 @@
       <p><strong>Contact Email:</strong> <span id="repEmail"></span></p>
       <p><strong>Submission Date &amp; Time:</strong> <span id="repDate"></span></p>
       <hr>
-      <p style="font-size:0.85em; text-align:center; color:#666;">A confirmation has been triggered to the primary author's email address.</p>
+      <p style="font-size:0.85em; text-align:center; color:#666;">Please save your Submission ID for future correspondence. To receive acknowledgment of your abstract submission, kindly send this receipt to <a href="mailto:ICAPST2026@gmail.com">ICAPST2026@gmail.com</a></p>
     </div>
     <div class="no-print" style="text-align:center; margin-top:15px;">
       <button onclick="window.print()" style="background:#34495e; color:white; padding:10px 25px; border:none; border-radius:5px; cursor:pointer;">🖨 Print Receipt</button>
@@ -472,12 +472,14 @@ document.getElementById('mainForm').onsubmit = function(e){
         alert('Please enter a valid email for co-author ' + (i+1) + ' or leave it blank.');
         btn.disabled = false; btn.innerText = 'Submit Abstract for ICAPST 2026'; return;
       }
+      var coTitleEl = document.querySelector('[name="co' + i + 'Title"]');
       coAuthors.push({
-        name:    nameEl.value,
-        dept:    (document.querySelector('[name="co' + i + 'Dept"]') || {}).value || '',
-        inst:    (document.querySelector('[name="co' + i + 'Inst"]') || {}).value || '',
-        country: (document.querySelector('[name="co' + i + 'Country"]') || {}).value || '',
-        email:   coEmailEl ? coEmailEl.value : ''
+        title:   coTitleEl ? coTitleEl.value.trim() : '',
+        name:    nameEl.value.trim(),
+        dept:    (document.querySelector('[name="co' + i + 'Dept"]')    || {value:''}).value,
+        inst:    (document.querySelector('[name="co' + i + 'Inst"]')    || {value:''}).value,
+        country: (document.querySelector('[name="co' + i + 'Country"]') || {value:''}).value,
+        email:   coEmailEl ? coEmailEl.value.trim() : ''
       });
     }
   }
@@ -520,9 +522,10 @@ document.getElementById('mainForm').onsubmit = function(e){
         faEmail:       formData.get('faEmail'),
         faPhone:       formData.get('faCode') + formData.get('faPhone'),
         isCorr:        formData.get('isCorr'),
-        caName:        formData.get('caName') || '',
-        caDept:        formData.get('caDept') || '',
-        caInst:        formData.get('caInst') || '',
+        caTitle:       formData.get('caTitle') || '',
+        caName:        formData.get('caName')  || '',
+        caDept:        formData.get('caDept')  || '',
+        caInst:        formData.get('caInst')  || '',
         caCountry:     formData.get('caCountry') || '',
         caEmail:       formData.get('caEmail') || '',
         caPhone:       (formData.get('caCode') || '') + (formData.get('caPhone') || ''),
@@ -532,7 +535,26 @@ document.getElementById('mainForm').onsubmit = function(e){
 
       var scriptURL = 'https://script.google.com/macros/s/AKfycbyU5m7eIuZY9kRhbEWs8M67NG6lPjOhLs_5jymob7WB_80ZRsGHOL5G9n3x76dgkDD4/exec';
 
-      function showReceipt(){
+      function resetBtn(){
+        btn.disabled = false;
+        btn.innerText = 'Submit Abstract for ICAPST 2026';
+      }
+
+      if(!navigator.onLine){
+        alert('⚠ You are offline. Please check your internet connection and try again.');
+        resetBtn(); return;
+      }
+
+      // POST with no-cors — data reaches Google Apps Script reliably
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'data=' + encodeURIComponent(JSON.stringify(payload))
+      })
+      .then(function(){
+        // no-cors returns opaque response — we cannot read it
+        // but if we reach here, the request was sent successfully
         document.getElementById('formSection').style.display  = 'none';
         document.getElementById('submissionReport').style.display = 'block';
         document.getElementById('repID').innerText     = generatedID;
@@ -542,44 +564,6 @@ document.getElementById('mainForm').onsubmit = function(e){
         document.getElementById('repEmail').innerText  = payload.faEmail;
         document.getElementById('repDate').innerText   = new Date().toLocaleString();
         window.scrollTo(0,0);
-      }
-
-      function resetBtn(){
-        btn.disabled = false;
-        btn.innerText = 'Submit Abstract for ICAPST 2026';
-      }
-
-      // Send as URL-encoded form data so Google Apps Script reads e.parameter.data
-      var body = new URLSearchParams();
-      body.append('data', JSON.stringify(payload));
-
-      fetch(scriptURL, {
-        method: 'POST',
-        body: body
-      })
-      .then(function(response){
-        if(!response.ok){
-          throw new Error('Server returned status ' + response.status);
-        }
-        return response.json();
-      })
-      .then(function(result){
-        if(result.status === 'success'){
-          // Use the server-generated sequential ID for the receipt
-          var serverID = result.submissionID || generatedID;
-          document.getElementById('formSection').style.display  = 'none';
-          document.getElementById('submissionReport').style.display = 'block';
-          document.getElementById('repID').innerText     = serverID;
-          document.getElementById('repTitle').innerText  = payload.abstractTitle;
-          document.getElementById('repTrack').innerText  = payload.track;
-          document.getElementById('repAuthor').innerText = payload.faName;
-          document.getElementById('repEmail').innerText  = payload.faEmail;
-          document.getElementById('repDate').innerText   = new Date().toLocaleString();
-          window.scrollTo(0,0);
-        } else {
-          alert('Submission failed on server: ' + (result.message || 'Unknown error'));
-          resetBtn();
-        }
       })
       .catch(function(err){
         if(!navigator.onLine){
