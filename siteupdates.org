@@ -14,9 +14,9 @@
 2. Text colour Dark Green
 3. Remove - after scopus
 
-** 7 May
-- Added an [[email draft][docs/email1.html]]
-** 8 May
+** 7 May (completed)
+- Added an [[docs/email1.html][email draft]]
+** 8 May (completed)
 - Added Open Graph meta tags or social media previews
 
 * April 2026
