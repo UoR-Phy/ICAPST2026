@@ -21,9 +21,9 @@
 
 ** 11 May
 *** Home
--1. Add "Reach Us" from Others, after "Sponsers are welcome"
--2. Keep Reach Us in Others also
--3. Corrections in "Reach Us"
+- Add "Reach Us" from Others, after "Sponsers are welcome"
+- Keep Reach Us in Others also
+- Corrections in "Reach Us"
 -- General Query change email : ICAPST2026@gmail.com
 --Submission & Registration, add email: info.icapst@gmail.com
 --Visa & Travel Assistance, add email: info.icapst@gmail.com
