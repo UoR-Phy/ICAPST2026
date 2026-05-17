@@ -49,13 +49,15 @@
         .report-card { text-align: left; background: #fdfdfd; border: 2px dashed #ccc; padding: 25px; margin: 20px 0; border-radius: 8px; }
         .hidden { display: none; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @media print { .no-print { display: none; } }
+        @media print { .no-print { display: none; } .print-only { display: block !important; } }
     </style>
 </head>
 <body>
 <div class="container">
   <div id="formSection">
+    <div style="text-align:center; margin-bottom:10px;"><a href="../index.html" style="color:#3498db; font-size:13px; text-decoration:none;">← Back to ICAPST 2026 Main Website</a></div>
     <h1>ICAPST 2026 – Abstract Submission</h1>
+    <p style="text-align:center; margin-top:-10px; font-size:14px;"><a href="../index.html" style="color:#3498db;">← Back to Main Website</a></p>
     <div class="download-box no-print">
       <strong>Templates:</strong>
       <a href="../docs/Abstract_Template_ICAPST.docx" download>Download Word Format</a> |
@@ -83,9 +85,9 @@
         </select>
       </div>
       <div class="form-group">
-        <label>Abstract <span class="req">*</span> <small style="font-weight:normal;color:#777;">(200–250 words)</small></label>
-        <textarea name="abstractBody" id="abstractBody" rows="10" required placeholder="200–250 words..."></textarea>
-        <div class="word-counter" id="wordCount">0 / 200–250 words</div>
+        <label>Abstract <span class="req">*</span> <small style="font-weight:normal;color:#777;">(100–200 words)</small></label>
+        <textarea name="abstractBody" id="abstractBody" rows="10" required placeholder="100–200 words..."></textarea>
+        <div class="word-counter" id="wordCount">0 / 100–200 words</div>
       </div>
       <div class="form-group">
         <label>Keywords <span class="req">*</span> <small style="font-weight:normal;color:#777;">(4–6, comma-separated)</small></label>
@@ -216,7 +218,7 @@
       <p><strong>Contact Email:</strong> <span id="repEmail"></span></p>
       <p><strong>Submission Date &amp; Time:</strong> <span id="repDate"></span></p>
       <hr>
-      <p style="font-size:0.85em; text-align:center; color:#666;">Please save your Submission ID for future correspondence. To receive acknowledgment of your abstract submission, kindly send this receipt to <a href="mailto:info.icapst@gmail.com">info.icapst@gmail.com</a></p>
+      <p class="no-print" style="font-size:14px; text-align:center; color:#333; background:#fff9db; border:1px solid #ffe066; border-radius:8px; padding:12px; margin-top:15px;">Please save your Submission ID for future correspondence. To receive acknowledgment of your abstract submission, kindly send this receipt to <strong>info.icapst@gmail.com</strong></p>
     </div>
     <div class="no-print" style="text-align:center; margin-top:15px;">
       <button onclick="window.print()" style="background:#34495e; color:white; padding:10px 25px; border:none; border-radius:5px; cursor:pointer;">🖨 Print Receipt</button>
@@ -232,10 +234,10 @@ var wordCountEl = document.getElementById('wordCount');
 function countWords(str){ return str.trim() === '' ? 0 : str.trim().split(/\s+/).length; }
 abstractTA.addEventListener('input', function(){
   var wc = countWords(this.value);
-  wordCountEl.textContent = wc + ' / 200–250 words';
+  wordCountEl.textContent = wc + ' / 100–200 words';
   wordCountEl.className = 'word-counter';
-  if(wc >= 200 && wc <= 250) wordCountEl.classList.add('ok');
-  else if(wc > 250) wordCountEl.classList.add('over');
+  if(wc >= 100 && wc <= 200) wordCountEl.classList.add('ok');
+  else if(wc > 200) wordCountEl.classList.add('over');
 });
 
 // ── Corresponding author toggle ───────────────────────────────────────────────
@@ -363,8 +365,8 @@ document.getElementById('mainForm').onsubmit = function(e){
 
   // Word count
   var wc = countWords(abstractTA.value);
-  if(wc < 200 || wc > 250){
-    alert('Abstract word count is ' + wc + '. Please keep it between 200 and 250 words.');
+  if(wc < 100 || wc > 200){
+    alert('Abstract word count is ' + wc + '. Please keep it between 100 and 200 words.');
     abstractTA.focus(); return;
   }
 
