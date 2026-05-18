@@ -19,7 +19,7 @@
 ** 8 May (completed)
 - Added Open Graph meta tags or social media previews
 
-** 11 May
+** 11 May (completed)
 *** Home
 - Add "Reach Us" from Others, after "Sponsers are welcome"
 - Keep Reach Us in Others also
@@ -28,11 +28,13 @@
 - Submission & Registration, add email: info.icapst@gmail.com
 - Visa & Travel Assistance, add email: info.icapst@gmail.com
 
-** 12 May
+** 12 May (completed)
 *** Call for Abstract
 - submission guidline: word limit is changed 200
 - abstract templete is changed and uploaded
 
+** 17 May (completed)
+- Updated new email icapst.info@gmail.com
 
 * April 2026
 ** 02 April (completed)
