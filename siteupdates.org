@@ -19,6 +19,16 @@ Use photo from advisory committee
 - before download flyer add an organge box "Conference Attractions"
 add a box and add these bullet point in that box
 "(i) Interdisciplinary Scientific Sessions covering Physics, Chemistry, Materials Science, Nanotechnology, Energy, Environment, and Emerging Technologies. Keynote and Invited Lectures on cutting-edge research and future technological trends. (ii) Abstract Publication in Conference Proceedings. (iii) Selected papers may be recommended for publication in Scopus/SCI-indexed journals/proceedings: Solar Compass  (Elsevier), Springer Proceedings in Physics, AIP conference proceedings. (iv) ICAPST Awards (v) Experience the rich heritage of Jaipur, known as the Pink City."
+*** Registration
+-Guidelines, add this point "Foreign students/scholars may request a fee concession if they face difficulty in paying the conference fee."
+-Add a organce box before Guidelines "Mode of Payment" 
+Make a table: 
+Beneficiary Name:	CONVENER ICAPST UOR JAIPUR
+Account No:	674701702992
+Bank:	ICICI, Univeristy of Rajasthan Campus
+IFSC	ICIC0006747
+SWIFT code: ICICINBBNRI
+add this text after this table: "Upload your payment receipt and transaction details to complete your registration." Here we need to make a google form receipt option.
 
 * May 2026
 ** 2 May (completed)
