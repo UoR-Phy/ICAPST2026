@@ -23,12 +23,12 @@ add a box and add these bullet point in that box
 - Guidelines, add this point "Foreign students/scholars may request a fee concession if they face difficulty in paying the conference fee."
 - Add a organce box before Guidelines "Mode of Payment" 
 - Make a table: 
-Beneficiary Name:	CONVENER ICAPST UOR JAIPUR
-Account No:	674701702992
-Bank:	ICICI, Univeristy of Rajasthan Campus
-IFSC	ICIC0006747
-SWIFT code: ICICINBBNRI
-add this text after this table: "Upload your payment receipt and transaction details to complete your registration." Here we need to make a google form receipt option.
+  Beneficiary Name:	CONVENER ICAPST UOR JAIPUR
+  Account No:	674701702992
+  Bank:	ICICI, Univeristy of Rajasthan Campus
+  IFSC	ICIC0006747
+  SWIFT code: ICICINBBNRI
+-add this text after this table: "Upload your payment receipt and transaction details to complete your registration." Here we need to make a google form receipt option.
 
 * May 2026
 ** 2 May (completed)
