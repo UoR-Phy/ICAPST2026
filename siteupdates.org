@@ -1,3 +1,21 @@
+* June 2026
+** 6 June 2026
+*** Call for abstract
+- Add "ICAPST Awards" in a orange box between "journal publication" and "important dates" add following detials in this section:
+•	ICAPST Best Research Paper Award
+•	Young Scientist Award
+•	Women in Science Excellence Award
+•	Best Oral Presentation Award
+•	Best Poster Presentation Award
+•	Best Master's Student Presentation Award
+Similar to important dates, also link "ICAPST Awards" at home page after important dates.
+
+*** Invited spearkers 
+- add "Dr. Anshu Sharma, Department of Applied Sciences & Humanities, Central University of Haryana, Mahendergarh, Haryana"
+Use photo from advisory committee
+- add "Prof. Boris V. Balakin, Western Norway University of Applied Sciences, Norway" 
+  Use photo from advisory committee
+
 * May 2026
 ** 2 May (completed)
 - Updated KK in invited speakers.
