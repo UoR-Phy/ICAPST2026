@@ -2,12 +2,12 @@
 ** 6 June 2026
 *** Call for abstract
 - Add "ICAPST Awards" in a orange box between "journal publication" and "important dates" add following detials in this section:
-•	ICAPST Best Research Paper Award
-•	Young Scientist Award
-•	Women in Science Excellence Award
-•	Best Oral Presentation Award
-•	Best Poster Presentation Award
-•	Best Master's Student Presentation Award
+  - ICAPST Best Research Paper Award
+  - Young Scientist Award
+  - Women in Science Excellence Award
+  - Best Oral Presentation Award
+  - Best Poster Presentation Award
+  - Best Master's Student Presentation Award
 Similar to important dates, also link "ICAPST Awards" at home page after important dates.
 
 *** Invited spearkers 
@@ -23,11 +23,11 @@ add a box and add these bullet point in that box
 - Guidelines, add this point "Foreign students/scholars may request a fee concession if they face difficulty in paying the conference fee."
 - Add a organce box before Guidelines "Mode of Payment" 
 - Make a table with following points: 
-1. Beneficiary Name:	CONVENER ICAPST UOR JAIPUR
-2. Account No:	674701702992
-3. Bank:	ICICI, Univeristy of Rajasthan Campus
-4. IFSC	ICIC0006747
-5. SWIFT code: ICICINBBNRI
+  1. Beneficiary Name:	CONVENER ICAPST UOR JAIPUR
+  2. Account No:	674701702992
+  3. Bank:	ICICI, Univeristy of Rajasthan Campus
+  4. IFSC	ICIC0006747
+  5. SWIFT code: ICICINBBNRI
 - add this text after this table: "Upload your payment receipt and transaction details to complete your registration." Here we need to make a google form receipt option.
 ** 7 June
 *** Speakers: Please add following 
