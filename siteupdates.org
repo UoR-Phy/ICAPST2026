@@ -36,6 +36,9 @@ add a box and add these bullet point in that box
 - Dr. Ashish Kumar Meena, Assistant Professor, Physics Department, IISc Bengaluru, India
 - Dr. Lata Panwar, Department of Physics, IIT Jodhpur, India.
 - Phots uploaded
+** 9 June
+*** Registration
+- add this line at bottom for fee structure as star "Special concessional Conference Day Tickets are available for UG and PG students presenting their research papers. Students interested in this opportunity may submit their request to ICAPST2026@gmail.com"
 
 * May 2026
 ** 2 May (completed)
