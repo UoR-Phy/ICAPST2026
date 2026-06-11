@@ -39,6 +39,9 @@ add a box and add these bullet point in that box
 ** 9 June
 *** Registration
 - add this line at bottom for fee structure as star "Special concessional Conference Day Tickets are available for UG and PG students presenting their research papers. Students interested in this opportunity may submit their request to ICAPST2026@gmail.com"
+** 11 June
+*** Home
+- add following in conference attraction "Fee concessions are available for foreign students/scholars, and special discounted Conference Day Tickets are offered for Indian UG/PG students."
 
 * May 2026
 ** 2 May (completed)
