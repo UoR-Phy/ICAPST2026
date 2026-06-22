@@ -1,5 +1,5 @@
 * June 2026
-** 6 June 2026
+** 6 June 2026 (completed)
 *** Call for abstract
 - Add "ICAPST Awards" in a orange box between "journal publication" and "important dates" add following detials in this section:
   - ICAPST Best Research Paper Award
@@ -29,19 +29,22 @@ add a box and add these bullet point in that box
   4. IFSC	ICIC0006747
   5. SWIFT code: ICICINBBNRI
 - add this text after this table: "Upload your payment receipt and transaction details to complete your registration." Here we need to make a google form receipt option.
-** 7 June
+** 7 June (completed)
 *** Speakers: Please add following 
 - Dr. Purushottam Soni,Chemical Engineering, Marian University, USA
 - Dr. Samantha Wijewardane, University of South Florida, USA
 - Dr. Ashish Kumar Meena, Assistant Professor, Physics Department, IISc Bengaluru, India
 - Dr. Lata Panwar, Department of Physics, IIT Jodhpur, India.
 - Phots uploaded
-** 9 June
+** 9 June (completed)
 *** Registration
 - add this line at bottom for fee structure as star "Special concessional Conference Day Tickets are available for UG and PG students presenting their research papers. Students interested in this opportunity may submit their request to ICAPST2026@gmail.com"
-** 11 June
+** 11 June (done)
 *** Home
 - add following in conference attraction "Fee concessions are available for foreign students/scholars, and special discounted Conference Day Tickets are offered for Indian UG/PG students."
+
+** 22 June (updated)
+- Given TeX file for abstract template
 
 * May 2026
 ** 2 May (completed)
