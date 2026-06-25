@@ -45,6 +45,8 @@ add a box and add these bullet point in that box
 
 ** 22 June (updated)
 - Given TeX file for abstract template
+** 25 June (updated)
+- Participants are requested to send their registration slip to ICAPST2026@gmail.com for confirmation
 
 * May 2026
 ** 2 May (completed)
