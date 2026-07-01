@@ -48,7 +48,7 @@ add a box and add these bullet point in that box
 ** 25 June (updated)
 - Participants are requested to send their registration slip to ICAPST2026@gmail.com for confirmation
 
-** 30 June
+** 30 June (updated)
 - Home 
  add the "Submisison by Presenter" link above the "Venue" in a orange box. 
 
