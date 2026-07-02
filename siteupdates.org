@@ -12,6 +12,8 @@
 - Prof. Sanjeev Kumar Sharma (add from advisory committee)
 - Dr. Sanjeev Yadav, Department of Electronics and Communication Engineering, University of Delhi, India
 - Dr. Chandra Shekhar Tripati (add from advisory committee)
+- Prof. Devendra Kumar Mishra, Department of Physics, Institute of Science, Banaras Hindu University, Varanasi, Uttar Pradesh, India
+- Please Remove "more to be announced" 
 
 * June 2026
 ** 6 June 2026 (completed)
