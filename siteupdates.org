@@ -4,6 +4,14 @@
 - submission date is changed
 *** Home
 -conference flyer is updated
+** 2 July
+*** Speaker
+- please add following speakers
+- Dr Jitendra Singh, Scientist F, CSIR-CEERI Pilani, Rajasthan, India
+- Prof. Manish Dev Srimali (add from advisory committee)
+- Prof. Sanjeev Kumar Sharma (add from advisory committee)
+- Dr. Sanjeev Yadav, Department of Electronics and Communication Engineering, University of Delhi, India
+- Dr. Chandra Shekhar Tripati (add from advisory committee)
 
 * June 2026
 ** 6 June 2026 (completed)
