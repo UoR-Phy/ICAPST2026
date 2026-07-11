@@ -22,12 +22,12 @@
 
 Publication Opportunity (orange box)
 Insert a text box and write
--Selected high-quality papers related to the conference tracks and presented at ICAPST 2026 will be considered for publication (subject to the respective journal's peer-review process and editorial decision) in a Special Issue/Collection of the participating Wiley journals:
---	Physica Status Solidi B (PSS B)
---	Annalen der Physik (ANDP)
---	Energy Technology (ENTE)
+- Selected high-quality papers related to the conference tracks and presented at ICAPST 2026 will be considered for publication (subject to the respective journal's peer-review process and editorial decision) in a Special Issue/Collection of the participating Wiley journals:
+-	Physica Status Solidi B (PSS B)
+-	Annalen der Physik (ANDP)
+-	Energy Technology (ENTE)
 - and the Elsevier journal:
--- Solar Compass
+- Solar Compass
 - Publication Charges:
 - Wiley Journals: There is no mandatory Article Processing Charge (APC) for papers published under the subscription (non-Open Access) model.
 - Solar Compass: APC charges are waived for papers accepted under the conference publication arrangement.
