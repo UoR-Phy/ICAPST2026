@@ -22,7 +22,7 @@
 
 Publication Opportunity (orange box)
 Insert a text box and write
-"Selected high-quality papers related to the conference tracks and presented at ICAPST 2026 will be considered for publication (subject to the respective journal's peer-review process and editorial decision) in a Special Issue/Collection of the participating Wiley journals:
+-Selected high-quality papers related to the conference tracks and presented at ICAPST 2026 will be considered for publication (subject to the respective journal's peer-review process and editorial decision) in a Special Issue/Collection of the participating Wiley journals:
 •	Physica Status Solidi B (PSS B)
 •	Annalen der Physik (ANDP)
 •	Energy Technology (ENTE)
@@ -35,7 +35,7 @@ Publication Charges:
 
 Instructions for Authors (orange box)
 Insert a text box and write "
-•	Participants are encouraged to prepare a full-length research paper after receiving acceptance of their abstract for presentation at ICAPST 2026.
+- •	Participants are encouraged to prepare a full-length research paper after receiving acceptance of their abstract for presentation at ICAPST 2026.
 •	Conference registration is mandatory before submitting the full-length paper. The submission deadline is 15 August 2026. The paper submission link will be shared with registered participants.
 •	Submitted manuscripts will be screened by the conference organizers to ensure alignment with the scope and requirements of the participating journals.
 •	Manuscripts must present original, unpublished research and comply with accepted standards of publication ethics and research integrity.
@@ -44,7 +44,7 @@ Insert a text box and write "
 Submission Process to journal (orange box)
 Insert a text box and write "
 
-•	After the conference, the organizers will identify and nominate a limited number of outstanding papers from different conference tracks for submission to the participating journals.
+- •	After the conference, the organizers will identify and nominate a limited number of outstanding papers from different conference tracks for submission to the participating journals.
 •	Depending on the journal's requirements, manuscripts will be submitted either directly through the journal's online submission system by the authors or through a submission process coordinated by the conference organizers.
 •	Authors must prepare and submit their manuscripts according to the author guidelines available on the respective journal websites.
 •	The nomination by the conference organizers does not guarantee acceptance for publication. 
