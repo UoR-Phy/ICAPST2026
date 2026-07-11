@@ -199,44 +199,64 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
 }
 
 /* JOURNAL SECTION */
-.journal-section{
-  max-width:900px;
-  margin:50px auto;
-  padding:20px;
+.journal-section {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-.journal-card{
-  display:flex;
-  flex-wrap:wrap;
-  align-items:center;
-  text-decoration:none;
-  border:1px solid #e8e8e8;
-  border-radius:12px;
-  padding:15px;
-  margin-bottom:20px;
-  transition:0.3s;
-  color:black;
+/* Base card layout */
+.journal-card {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  border: 1px solid #e8e8e8;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  color: black;
 }
 
-.journal-card img{
-  width:100px;
-  margin-right:20px;
-  border-radius:6px;
+.journal-card:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
-.journal-card:hover{
-  box-shadow:0 4px 20px rgba(0,0,0,0.1);
+/* First card image (Side-by-side stays untouched) */
+.journal-card:not(.banner-card) img {
+  width: 100px;
+  margin-right: 20px;
+  border-radius: 6px;
 }
 
-.journal-info h4{
-  margin:0 0 8px 0;
-  color:#2b1361;
+/* -------------------------------------------
+   Updated layout rules for the last 3 Wiley cards 
+------------------------------------------- */
+.journal-card.banner-card {
+  flex-direction: column;   /* Stacks the image on top and text below */
+  align-items: center;      /* CHANGED: Centers the image horizontally */
+  text-align: center;       /* NEW: Centers the text inside the card */
 }
 
-.journal-info p{
-  margin:0;
-  font-size:16px;
-  line-height:1.5;
+.journal-card.banner-card img {
+  width: 100%;              
+  max-width: 350px;         
+  height: auto;             
+  margin-bottom: 15px;      
+  border-radius: 6px;
+}
+
+/* Text styling */
+.journal-info h4 {
+  margin: 0 0 8px 0;
+  color: #2b1361;
+}
+
+.journal-info p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 /* SPONSORS SECTION */
