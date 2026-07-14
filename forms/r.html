@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICAPST 2026 – Registration Details</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7fafc;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            position: relative;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        /* High-Visibility Multi-Colored Watermark Grid Background */
+        .bg-watermark-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+            user-select: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 50px;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+        
+        .wm-item {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .wm-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .wm-sub {
+            font-size: 13px;
+            font-weight: 600;
+            max-width: 260px;
+            line-height: 1.3;
+        }
+
+        /* Visible, Distinct Color Palettes for the Background Elements */
+        .wm-navy   { transform: rotate(-18deg); opacity: 0.18; color: #0f2d59; }
+        .wm-indigo { transform: rotate(-25deg); opacity: 0.15; color: #2b3a67; }
+        .wm-teal   { transform: rotate(-15deg); opacity: 0.16; color: #145c63; }
+        .wm-steel  { transform: rotate(-22deg); opacity: 0.18; color: #1a5276; }
+        
+        .form-container {
+            max-width: 700px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 25px rgba(15, 45, 89, 0.15);
+            border: 1px solid rgba(200, 210, 225, 0.9);
+            position: relative;
+            z-index: 1;
+        }
+        .top-nav {
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        h1 {
+            color: #1a365d;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+        .intro-text {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        a.info-link {
+            color: #2b6cb0;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        a.info-link:hover {
+            color: #1a365d;
+        }
+        .fee-hint {
+            font-size: 13px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3748;
+        }
+        label span {
+            color: #e53e3e;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #3182ce;
+            box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
+        }
+        .radio-group, .checkbox-group {
+            margin-top: 5px;
+        }
+        .radio-option, .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+        .radio-option input, .checkbox-option input {
+            margin-right: 10px;
+        }
+        .phone-container, .amount-container {
+            display: flex;
+            gap: 10px;
+        }
+        .phone-container input[type="text"] {
+            width: 25%;
+        }
+        .phone-container input[type="tel"] {
+            width: 75%;
+        }
+        .amount-container select {
+            width: 25%;
+        }
+        .amount-container input[type="number"] {
+            width: 75%;
+            padding: 10px;
+            border: 1px solid #cbd5e0;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        .date-picker-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+        .date-btn {
+            background-color: #e2e8f0;
+            border: 1px solid #cbd5e0;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .date-btn:hover {
+            background-color: #cbd5e0;
+        }
+        .hidden-picker-input {
+            position: absolute;
+            visibility: hidden;
+            width: 0;
+            height: 0;
+        }
+
+        .file-help {
+            display: block;
+            font-size: 12px;
+            color: #718096;
+            margin-top: 5px;
+        }
+        .submit-btn {
+            background-color: #3182ce;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background-color: #2b6cb0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Dynamic vivid-color watermark background grid layout -->
+<div class="bg-watermark-container">
+    <div class="wm-item wm-navy">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-indigo">
+        <div class="wm-title" style="font-size: 22px;">ICAPST 2026</div>
+        <div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-teal">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-steel">
+        <div class="wm-title" style="font-size: 25px;">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-navy">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub" style="font-size: 12px;">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-indigo">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-teal">
+        <div class="wm-title" style="font-size: 24px;">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-steel">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+    <div class="wm-item wm-navy">
+        <div class="wm-title">ICAPST 2026</div>
+        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
+    </div>
+</div>
+
+<div class="form-container">
+    <!-- Top Nav Link to Main Website -->
+    <div class="top-nav">
+        ← <a class="info-link" href="../index.html">Go to Main Website</a>
+    </div>
+
+    <h1>ICAPST 2026 – Registration Details</h1>
+    
+    <div class="intro-text">
+        Thank you for registering for the International Conference on Advances in Physical Sciences & Technologies (ICAPST 2026). Kindly submit your payment details and upload the payment receipt for verification. Your registration will be confirmed after successful verification of the payment. Please check <a class="info-link" href="../registration.html" target="_blank">for fee and other details</a>.
+    </div>
+
+    <form action="#" method="POST" enctype="multipart/form-data">
+        
+        <!-- Full Name -->
+        <div class="form-group">
+            <label for="fullname">Full Name <span>*</span></label>
+            <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+            <label for="email">Email <span>*</span></label>
+            <input type="email" id="email" name="email" required placeholder="example@domain.com">
+        </div>
+
+        <!-- Contact Number -->
+        <div class="form-group">
+            <label for="mobile">Contact Number <span>*</span></label>
+            <div class="phone-container">
+                <input type="text" name="country_code" required placeholder="+91" pattern="^\+[0-9]{1,4}$" title="Include '+' followed by 1 to 4 digits">
+                <input type="tel" id="mobile" name="mobile" required placeholder="Mobile Number" pattern="[0-9]{7,15}" title="Please enter a valid mobile number (7 to 15 digits)">
+            </div>
+        </div>
+
+        <!-- Affiliation/Organization -->
+        <div class="form-group">
+            <label for="affiliation">Affiliation/Organization <span>*</span></label>
+            <input type="text" id="affiliation" name="affiliation" required placeholder="University, Institute, or Company">
+        </div>
+
+        <!-- Category of Registration -->
+        <div class="form-group">
+            <label>Category of Registration <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="category" value="Indian and SAARC" required> Indian and SAARC Participants
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="category" value="Foreign"> Foreign Participants
+                </label>
+            </div>
+        </div>
+
+        <!-- Registered as -->
+        <div class="form-group">
+            <label>Registered as <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Scholars/Students" required> Scholars/Students
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Postdoc/Faculty"> Postdoc/Faculty
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Industry person"> Industry person
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="role" value="Attendees/Accompany"> Attendees/Accompany
+                </label>
+            </div>
+        </div>
+
+        <!-- Abstract ID -->
+        <div class="form-group">
+            <label for="abstract_id">Abstract ID <span>*</span></label>
+            <input type="text" id="abstract_id" name="abstract_id" required placeholder="ICAPST-2026-ABCD-123456" pattern="^ICAPST-2026-[A-Za-z]{4}-[0-9]+$" title="Format must match style: ICAPST-2026-ABCD-123456" oninput="autoDetectTrack(this)">
+        </div>
+
+        <!-- Abstract Title -->
+        <div class="form-group">
+            <label for="abstract_title">Abstract Title <span>*</span></label>
+            <input type="text" id="abstract_title" name="abstract_title" required placeholder="Enter abstract title">
+        </div>
+
+        <!-- Presenting Author -->
+        <div class="form-group">
+            <label for="presenting_author">Presenting Author <span>*</span></label>
+            <input type="text" id="presenting_author" name="presenting_author" required placeholder="Enter presenting author's name">
+        </div>
+
+        <!-- Conference Track -->
+        <div class="form-group">
+            <label for="track">Conference Track <span>*</span></label>
+            <select id="track" name="track" required>
+                <option value="" disabled selected>Select a track</option>
+                <option value="NPHP">NPHP: Nuclear, Plasma & High-Energy Physics</option>
+                <option value="AMNS">AMNS: Advanced Materials & Nanoscience</option>
+                <option value="ESHT">ESHT: Energy Storage & Hydrogen Technologies</option>
+                <option value="RSES">RSES: Renewable & Solar Energy Systems</option>
+                <option value="EPIS">EPIS: Electronics, Photonics & Intelligent Systems</option>
+                <option value="EAS">EAS: Environmental & Agricultural Systems</option>
+            </select>
+        </div>
+
+        <!-- Journal preference -->
+        <div class="form-group">
+            <label>Journal preference <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="Annalen der Physik" required> Annalen der Physik (Wiley)
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="Energy Technology"> Energy Technology (Wiley)
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="Physica Status Solidi B"> Physica Status Solidi B (Wiley)
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="Solar compass"> Solar compass (Elsevier)
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="Springer Proceedings in Physics"> Springer Proceedings in Physics (Springer Nature)
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="journal" value="AIP Conference Proceedings"> AIP Conference Proceedings
+                </label>
+            </div>
+        </div>
+
+        <!-- Ticket of City Tour -->
+        <div class="form-group">
+            <label>Ticket of City Tour <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="city_tour" value="Yes" required> Yes
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="city_tour" value="No"> No
+                </label>
+            </div>
+        </div>
+
+        <!-- Date of Payment -->
+        <div class="form-group">
+            <label for="payment_date_display">Date of Payment <span>*</span></label>
+            <div class="date-picker-wrapper">
+                <input type="text" id="payment_date_display" name="payment_date" required placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$" title="Please ensure value matches the format: dd/mm/yyyy">
+                
+                <button type="button" class="date-btn" onclick="openCalendarPicker()">Open Calendar 📅</button>
+                <input type="date" id="hidden_picker" class="hidden-picker-input" onchange="applyCustomDateFormat(this)">
+            </div>
+        </div>
+
+        <!-- Paid Amount -->
+        <div class="form-group">
+            <label for="amount">Paid Amount <span>*</span></label>
+            <span class="fee-hint">👉 <a class="info-link" href="../registration.html" target="_blank">Click here to view the full registration fee structure</a></span>
+            <div class="amount-container">
+                <select name="currency" required>
+                    <option value="INR">₹</option>
+                    <option value="USD">US$</option>
+                </select>
+                <input type="number" id="amount" name="amount" min="1" step="any" required placeholder="Enter amount">
+            </div>
+        </div>
+
+        <!-- Transaction/Reference Number -->
+        <div class="form-group">
+            <label for="transaction_id">Transaction/Reference Number <span>*</span></label>
+            <input type="text" id="transaction_id" name="transaction_id" required placeholder="Enter reference number">
+        </div>
+
+        <!-- Upload Receipt -->
+        <div class="form-group">
+            <label for="receipt">Upload Receipt <span>*</span></label>
+            <input type="file" id="receipt" name="receipt" required accept=".pdf,.jpg,.jpeg,.png" onchange="validateFileSize(this)">
+            <span class="file-help">Upload 1 supported file (PDF, JPG, PNG). Max 1 MB.</span>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #cbd5e0; margin: 30px 0;">
+
+        <!-- Declaration -->
+        <div class="form-group">
+            <label class="checkbox-option">
+                <input type="checkbox" name="declaration" required> 
+                <strong>Declaration</strong> – I certify that the information provided above is correct and that the uploaded payment receipt is authentic. <span>*</span>
+            </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn">Submit Registration</button>
+
+    </form>
+</div>
+
+<script>
+    function openCalendarPicker() {
+        const picker = document.getElementById('hidden_picker');
+        picker.showPicker();
+    }
+
+    function applyCustomDateFormat(picker) {
+        if(picker.value) {
+            const [year, month, day] = picker.value.split('-');
+            document.getElementById('payment_date_display').value = `${day}/${month}/${year}`;
+        }
+    }
+
+    function autoDetectTrack(input) {
+        const value = input.value.toUpperCase();
+        const regex = /^ICAPST-2026-([A-Z]{4})-[0-9]+$/;
+        const match = value.match(regex);
+        
+        if (match && match[1]) {
+            const detectedTrack = match[1];
+            const trackSelect = document.getElementById('track');
+            
+            for (let option of trackSelect.options) {
+                if (option.value === detectedTrack) {
+                    trackSelect.value = detectedTrack;
+                    break;
+                }
+            }
+        }
+    }
+
+    function validateFileSize(input) {
+        if(input.files && input.files[0]) {
+            const fileSize = input.files[0].size / 1024 / 1024; // size in MB
+            if (fileSize > 1) {
+                alert('File size exceeds 1 MB. Please upload a smaller file.');
+                input.value = ''; 
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
