@@ -57,7 +57,6 @@
             line-height: 1.3;
         }
 
-        /* Visible, Distinct Color Palettes for the Background Elements */
         .wm-navy   { transform: rotate(-18deg); opacity: 0.18; color: #0f2d59; }
         .wm-indigo { transform: rotate(-25deg); opacity: 0.15; color: #2b3a67; }
         .wm-teal   { transform: rotate(-15deg); opacity: 0.16; color: #145c63; }
@@ -74,16 +73,19 @@
             position: relative;
             z-index: 1;
         }
+
         .top-nav {
             margin-bottom: 20px;
             font-size: 14px;
         }
+
         h1 {
             color: #1a365d;
             text-align: center;
             margin-bottom: 10px;
             font-size: 24px;
         }
+
         .intro-text {
             background-color: #ebf8ff;
             border-left: 4px solid #3182ce;
@@ -92,31 +94,38 @@
             font-size: 14px;
             border-radius: 4px;
         }
+
         a.info-link {
             color: #2b6cb0;
             font-weight: bold;
             text-decoration: underline;
         }
+
         a.info-link:hover {
             color: #1a365d;
         }
+
         .fee-hint {
             font-size: 13px;
             margin-bottom: 6px;
             display: block;
         }
+
         .form-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
             color: #2d3748;
         }
+
         label span {
             color: #e53e3e;
         }
+
         input[type="text"],
         input[type="email"],
         input[type="tel"],
@@ -128,6 +137,7 @@
             box-sizing: border-box;
             font-size: 14px;
         }
+
         input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="tel"]:focus,
@@ -136,9 +146,11 @@
             border-color: #3182ce;
             box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
         }
-        .radio-group, .checkbox-group {
+
+        .radio-group {
             margin-top: 5px;
         }
+
         .radio-option, .checkbox-option {
             display: flex;
             align-items: center;
@@ -146,22 +158,28 @@
             font-weight: normal;
             cursor: pointer;
         }
+
         .radio-option input, .checkbox-option input {
             margin-right: 10px;
         }
+
         .phone-container, .amount-container {
             display: flex;
             gap: 10px;
         }
-        .phone-container input[type="text"] {
+
+        .phone-container input[name="country_code"] {
             width: 25%;
         }
+
         .phone-container input[type="tel"] {
             width: 75%;
         }
+
         .amount-container select {
             width: 25%;
         }
+
         .amount-container input[type="number"] {
             width: 75%;
             padding: 10px;
@@ -174,6 +192,7 @@
             display: flex;
             gap: 10px;
         }
+
         .date-btn {
             background-color: #e2e8f0;
             border: 1px solid #cbd5e0;
@@ -187,9 +206,11 @@
             align-items: center;
             gap: 5px;
         }
+
         .date-btn:hover {
             background-color: #cbd5e0;
         }
+
         .hidden-picker-input {
             position: absolute;
             visibility: hidden;
@@ -203,6 +224,7 @@
             color: #718096;
             margin-top: 5px;
         }
+
         .submit-btn {
             background-color: #3182ce;
             color: white;
@@ -215,58 +237,55 @@
             width: 100%;
             transition: background-color 0.2s;
         }
-        .submit-btn:hover {
+
+        .submit-btn:disabled {
+            background-color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .submit-btn:hover:not(:disabled) {
             background-color: #2b6cb0;
+        }
+
+        /* Success Page Layout Styling */
+        .success-wrapper {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .success-icon {
+            font-size: 64px;
+            color: #48bb78;
+            margin-bottom: 20px;
+        }
+
+        .success-title {
+            color: #2f855a;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .success-msg {
+            font-size: 16px;
+            color: #4a5568;
+            max-width: 550px;
+            margin: 0 auto 30px auto;
+            line-height: 1.8;
         }
     </style>
 </head>
 <body>
 
-<!-- Dynamic vivid-color watermark background grid layout -->
 <div class="bg-watermark-container">
-    <div class="wm-item wm-navy">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-indigo">
-        <div class="wm-title" style="font-size: 22px;">ICAPST 2026</div>
-        <div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-teal">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-steel">
-        <div class="wm-title" style="font-size: 25px;">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-navy">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub" style="font-size: 12px;">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-indigo">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-teal">
-        <div class="wm-title" style="font-size: 24px;">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-steel">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
-    <div class="wm-item wm-navy">
-        <div class="wm-title">ICAPST 2026</div>
-        <div class="wm-sub">International Conference on Advances in Physical Sciences & Technologies</div>
-    </div>
+    <div class="wm-item wm-navy"><div class="wm-title">ICAPST 2026</div><div class="wm-sub">International Conference on Advances in Physical Sciences</div></div>
+    <div class="wm-item wm-indigo"><div class="wm-title" style="font-size: 22px;">ICAPST 2026</div><div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences</div></div>
+    <div class="wm-item wm-teal"><div class="wm-title">ICAPST 2026</div><div class="wm-sub">International Conference on Advances in Physical Sciences</div></div>
+    <div class="wm-item wm-steel"><div class="wm-title" style="font-size: 25px;">ICAPST 2026</div><div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences</div></div>
 </div>
 
-<div class="form-container">
-    <!-- Top Nav Link to Main Website -->
-    <div class="top-nav">
-        ← <a class="info-link" href="../index.html">Go to Main Website</a>
-    </div>
+<div class="form-container" id="mainContentContainer">
+    <div class="top-nav">← <a class="info-link" href="../index.html">Go to Main Website</a></div>
 
     <h1>ICAPST 2026 – Registration Details</h1>
     
@@ -274,8 +293,7 @@
         Thank you for registering for the International Conference on Advances in Physical Sciences & Technologies (ICAPST 2026). Kindly submit your payment details and upload the payment receipt for verification. Your registration will be confirmed after successful verification of the payment. Please check <a class="info-link" href="../registration.html" target="_blank">for fee and other details</a>.
     </div>
 
-    <form action="#" method="POST" enctype="multipart/form-data">
-        
+    <form id="registrationForm">
         <!-- Full Name -->
         <div class="form-group">
             <label for="fullname">Full Name <span>*</span></label>
@@ -307,12 +325,8 @@
         <div class="form-group">
             <label>Category of Registration <span>*</span></label>
             <div class="radio-group">
-                <label class="radio-option">
-                    <input type="radio" name="category" value="Indian and SAARC" required> Indian and SAARC Participants
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="category" value="Foreign"> Foreign Participants
-                </label>
+                <label class="radio-option"><input type="radio" name="category" value="Indian and SAARC" required> Indian and SAARC Participants</label>
+                <label class="radio-option"><input type="radio" name="category" value="Foreign"> Foreign Participants</label>
             </div>
         </div>
 
@@ -320,88 +334,76 @@
         <div class="form-group">
             <label>Registered as <span>*</span></label>
             <div class="radio-group">
-                <label class="radio-option">
-                    <input type="radio" name="role" value="Scholars/Students" required> Scholars/Students
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="role" value="Postdoc/Faculty"> Postdoc/Faculty
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="role" value="Industry person"> Industry person
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="role" value="Attendees/Accompany"> Attendees/Accompany
-                </label>
+                <label class="radio-option"><input type="radio" name="role" value="Scholars/Students" required onchange="toggleAbstractFields(this)"> Scholars/Students</label>
+                <label class="radio-option"><input type="radio" name="role" value="Postdoc/Faculty" onchange="toggleAbstractFields(this)"> Postdoc/Faculty</label>
+                <label class="radio-option"><input type="radio" name="role" value="Industry person" onchange="toggleAbstractFields(this)"> Industry person</label>
+                <label class="radio-option"><input type="radio" name="role" value="Attendees/Accompany" onchange="toggleAbstractFields(this)"> Attendees/Accompany</label>
             </div>
         </div>
 
-        <!-- Abstract ID -->
-        <div class="form-group">
-            <label for="abstract_id">Abstract ID <span>*</span></label>
-            <input type="text" id="abstract_id" name="abstract_id" required placeholder="ICAPST-2026-ABCD-123456" pattern="^ICAPST-2026-[A-Za-z]{4}-[0-9]+$" title="Format must match style: ICAPST-2026-ABCD-123456" oninput="autoDetectTrack(this)">
-        </div>
+        <!-- Conditional Abstract and Journal Fields Container -->
+        <div id="abstract-fields-container">
+            <!-- Abstract ID -->
+            <div class="form-group">
+                <label for="abstract_id">Abstract ID <span>*</span></label>
+                <input type="text" id="abstract_id" name="abstract_id" required placeholder="ICAPST-2026-EAS-123456" pattern="^ICAPST-2026-[A-Za-z]{3,4}-[0-9]+$" title="Format must match style: ICAPST-2026-XXXX-123456 or ICAPST-2026-EAS-123456" oninput="validateAndAutoDetectTrack(this)">
+            </div>
 
-        <!-- Abstract Title -->
-        <div class="form-group">
-            <label for="abstract_title">Abstract Title <span>*</span></label>
-            <input type="text" id="abstract_title" name="abstract_title" required placeholder="Enter abstract title">
-        </div>
+            <!-- Abstract Title -->
+            <div class="form-group">
+                <label for="abstract_title">Abstract Title <span>*</span></label>
+                <input type="text" id="abstract_title" name="abstract_title" required placeholder="Enter abstract title">
+            </div>
 
-        <!-- Presenting Author -->
-        <div class="form-group">
-            <label for="presenting_author">Presenting Author <span>*</span></label>
-            <input type="text" id="presenting_author" name="presenting_author" required placeholder="Enter presenting author's name">
-        </div>
+            <!-- Presenting Author -->
+            <div class="form-group">
+                <label for="presenting_author">Presenting Author <span>*</span></label>
+                <input type="text" id="presenting_author" name="presenting_author" required placeholder="Enter presenting author's name">
+            </div>
 
-        <!-- Conference Track -->
-        <div class="form-group">
-            <label for="track">Conference Track <span>*</span></label>
-            <select id="track" name="track" required>
-                <option value="" disabled selected>Select a track</option>
-                <option value="NPHP">NPHP: Nuclear, Plasma & High-Energy Physics</option>
-                <option value="AMNS">AMNS: Advanced Materials & Nanoscience</option>
-                <option value="ESHT">ESHT: Energy Storage & Hydrogen Technologies</option>
-                <option value="RSES">RSES: Renewable & Solar Energy Systems</option>
-                <option value="EPIS">EPIS: Electronics, Photonics & Intelligent Systems</option>
-                <option value="EAS">EAS: Environmental & Agricultural Systems</option>
-            </select>
-        </div>
+            <!-- Conference Track -->
+            <div class="form-group">
+                <label for="track">Conference Track <span>*</span></label>
+                <select id="track" name="track" required>
+                    <option value="" disabled selected>Select a track</option>
+                    <option value="NPHP">NPHP: Nuclear, Plasma & High-Energy Physics</option>
+                    <option value="AMNS">AMNS: Advanced Materials & Nanoscience</option>
+                    <option value="ESHT">ESHT: Energy Storage & Hydrogen Technologies</option>
+                    <option value="RSES">RSES: Renewable & Solar Energy Systems</option>
+                    <option value="EPIS">EPIS: Electronics, Photonics & Intelligent Systems</option>
+                    <option value="EAS">EAS: Environmental & Agricultural Systems</option>
+                </select>
+            </div>
 
-        <!-- Journal preference -->
-        <div class="form-group">
-            <label>Journal preference <span>*</span></label>
-            <div class="radio-group">
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="Annalen der Physik" required> Annalen der Physik (Wiley)
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="Energy Technology"> Energy Technology (Wiley)
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="Physica Status Solidi B"> Physica Status Solidi B (Wiley)
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="Solar compass"> Solar compass (Elsevier)
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="Springer Proceedings in Physics"> Springer Proceedings in Physics (Springer Nature)
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="journal" value="AIP Conference Proceedings"> AIP Conference Proceedings
-                </label>
+            <!-- Journal preference -->
+            <div class="form-group">
+                <label>Journal preference <span>*</span></label>
+                <div class="radio-group">
+                    <label class="radio-option"><input type="radio" name="journal" value="Annalen der Physik" required> Annalen der Physik (Wiley)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="Energy Technology"> Energy Technology (Wiley)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="Physica Status Solidi B"> Physica Status Solidi B (Wiley)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="Solar compass"> Solar compass (Elsevier)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="Springer Proceedings in Physics"> Springer Proceedings in Physics (Springer Nature)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="AIP Conference Proceedings"> AIP Conference Proceedings</label>
+                </div>
             </div>
         </div>
 
         <!-- Ticket of City Tour -->
         <div class="form-group">
-            <label>Ticket of City Tour <span>*</span></label>
+            <label>Interested in Ticket of City Tour (Additional payment: ₹1500/ US$ 20) <span>*</span></label>
             <div class="radio-group">
-                <label class="radio-option">
-                    <input type="radio" name="city_tour" value="Yes" required> Yes
-                </label>
-                <label class="radio-option">
-                    <input type="radio" name="city_tour" value="No"> No
-                </label>
+                <label class="radio-option"><input type="radio" name="city_tour" value="Yes" required> Yes</label>
+                <label class="radio-option"><input type="radio" name="city_tour" value="No"> No</label>
+            </div>
+        </div>
+
+        <!-- Accommodation -->
+        <div class="form-group">
+            <label>Accommodation required (Please note: registration fee does not include this) <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="accommodation" value="Yes" required> Yes</label>
+                <label class="radio-option"><input type="radio" name="accommodation" value="No"> No</label>
             </div>
         </div>
 
@@ -410,7 +412,6 @@
             <label for="payment_date_display">Date of Payment <span>*</span></label>
             <div class="date-picker-wrapper">
                 <input type="text" id="payment_date_display" name="payment_date" required placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$" title="Please ensure value matches the format: dd/mm/yyyy">
-                
                 <button type="button" class="date-btn" onclick="openCalendarPicker()">Open Calendar 📅</button>
                 <input type="date" id="hidden_picker" class="hidden-picker-input" onchange="applyCustomDateFormat(this)">
             </div>
@@ -452,16 +453,17 @@
             </label>
         </div>
 
-        <!-- Submit Button -->
-        <button type="submit" class="submit-btn">Submit Registration</button>
-
+        <button type="submit" id="submitBtn" class="submit-btn">Submit Registration</button>
     </form>
 </div>
 
 <script>
+    // Replace with your actual deployed Google Web App URL
+    const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxafbLj3l9hjubBsSeCySplbhiuBRxPnHFJbqpka0Myw94W7fVGNEWrM8w6BM8nuH2s/exec";
+
     function openCalendarPicker() {
         const picker = document.getElementById('hidden_picker');
-        picker.showPicker();
+        if (typeof picker.showPicker === 'function') { picker.showPicker(); } else { picker.click(); }
     }
 
     function applyCustomDateFormat(picker) {
@@ -471,34 +473,131 @@
         }
     }
 
-    function autoDetectTrack(input) {
-        const value = input.value.toUpperCase();
-        const regex = /^ICAPST-2026-([A-Z]{4})-[0-9]+$/;
-        const match = value.match(regex);
+    function toggleAbstractFields(radioInput) {
+        const abstractContainer = document.getElementById('abstract-fields-container');
+        const childInputs = abstractContainer.querySelectorAll('input, select');
         
-        if (match && match[1]) {
-            const detectedTrack = match[1];
-            const trackSelect = document.getElementById('track');
-            
-            for (let option of trackSelect.options) {
-                if (option.value === detectedTrack) {
-                    trackSelect.value = detectedTrack;
-                    break;
-                }
-            }
+        if (radioInput.value === 'Attendees/Accompany') {
+            abstractContainer.style.display = 'none';
+            childInputs.forEach(input => { input.required = false; input.disabled = true; if(input.type === 'radio') input.checked = false; });
+        } else {
+            abstractContainer.style.display = 'block';
+            childInputs.forEach(input => { input.disabled = false; if(input.type !== 'radio') input.required = true; });
         }
+    }
+
+    let debounceTimer;
+    function validateAndAutoDetectTrack(input) {
+        const value = input.value.trim();
+        const regex = /^ICAPST-2026-([A-Z]{3,4})-[0-9]+$/;
+        const match = value.toUpperCase().match(regex);
+
+        if (value === "") { input.setCustomValidity(""); return; }
+
+        if (!match) {
+            input.setCustomValidity("Format error. Must match: ICAPST-2026-XXXX-123456");
+            return;
+        } else {
+            input.setCustomValidity(""); 
+        }
+
+        const detectedTrack = match[1];
+        const trackSelect = document.getElementById('track');
+        for (let option of trackSelect.options) {
+            if (option.value === detectedTrack) { trackSelect.value = detectedTrack; break; }
+        }
+
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+            input.setCustomValidity("Checking database... ⏳");
+            input.reportValidity();
+            
+            fetch(`${WEB_APP_URL}?abstractId=${encodeURIComponent(value)}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.valid) {
+                        input.setCustomValidity(""); 
+                    } else {
+                        // Custom updated message requested by user
+                        input.setCustomValidity("Please check your abstract ID and abstract acceptance email.");
+                    }
+                    input.reportValidity();
+                })
+                .catch(err => {
+                    console.error("Validation failed to connect:", err);
+                    input.setCustomValidity(""); 
+                });
+        }, 500);
     }
 
     function validateFileSize(input) {
         if(input.files && input.files[0]) {
-            const fileSize = input.files[0].size / 1024 / 1024; // size in MB
-            if (fileSize > 1) {
-                alert('File size exceeds 1 MB. Please upload a smaller file.');
-                input.value = ''; 
-            }
+            const fileSize = input.files[0].size / 1024 / 1024;
+            if (fileSize > 1) { alert('File size exceeds 1 MB. Please upload a smaller file.'); input.value = ''; }
         }
     }
-</script>
 
+    // Handles rewriting the container DOM directly into a clean template layout screen upon data ingest completion
+    function renderSuccessView() {
+        const container = document.getElementById('mainContentContainer');
+        container.innerHTML = `
+            <div class="success-wrapper">
+                <div class="success-icon">🎉</div>
+                <div class="success-title">Submission Received</div>
+                <div class="success-msg">
+                    Your registration is successful at first step. You will soon get a confirmation message after verifying the details you submitted.
+                </div>
+                <a href="../index.html" class="submit-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 12px 30px;">Return to Homepage</a>
+            </div>
+        `;
+    }
+
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = document.getElementById('submitBtn');
+        submitBtn.disabled = true;
+        submitBtn.innerText = "Submitting registration details...";
+
+        const formData = new FormData(this);
+        const formObject = {};
+        formData.forEach((value, key) => { formObject[key] = value; });
+
+        const fileInput = document.getElementById('receipt');
+        
+        if (fileInput.files.length > 0) {
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                formObject.fileData = e.target.result.split(',')[1];
+                formObject.fileName = file.name;
+                formObject.fileMimeType = file.type;
+                sendData(formObject);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            sendData(formObject);
+        }
+    });
+
+    function sendData(data) {
+        fetch(WEB_APP_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        })
+        .then(() => {
+            renderSuccessView(); // Call UI change screen instead of standard legacy popup
+        })
+        .catch(err => {
+            alert('Submission Error: ' + err.message);
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = false;
+            submitBtn.innerText = "Submit Registration";
+        });
+    }
+</script>
 </body>
 </html>
