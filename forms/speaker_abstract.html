@@ -231,6 +231,7 @@
 <div class="container">
   <div id="formSection">
     
+    <!-- CONSOLIDATED LOGO & TITLE HEADER AREA -->
     <div class="logo-header">
         <img src="../pics/logo_icapst.png" alt="ICAPST Logo Left" onerror="this.style.display='none'">
         
@@ -255,6 +256,7 @@
     </div>
 
     <form id="mainForm" novalidate>
+      <!-- ABSTRACT DETAILS -->
       <h3>Abstract Details</h3>
       <div class="form-group">
         <label>Title of Abstract <span class="req">*</span></label>
@@ -274,6 +276,21 @@
         </select>
       </div>
 
+      <!-- JOURNAL PREFERENCE (OPTIONAL) -->
+      <div class="form-group">
+        <label>Journal Preference</label>
+        <select name="journalPreference" id="journalSelect">
+          <option value="" selected>-- Select Preferred Journal (Optional) --</option>
+          <option value="Annalen der Physik">Annalen der Physik (Wiley)</option>
+          <option value="Energy Technology">Energy Technology (Wiley)</option>
+          <option value="Physica Status Solidi B">Physica Status Solidi B (Wiley)</option>
+          <option value="Solar compass">Solar compass (Elsevier)</option>
+          <option value="Springer Proceedings in Physics">Springer Proceedings in Physics (Springer Nature)</option>
+          <option value="AIP Conference Proceedings">AIP Conference Proceedings</option>
+        </select>
+      </div>
+
+      <!-- SPEAKER DETAILS -->
       <h3>Speaker Details</h3>
       <div class="grid-2">
         <div class="form-group">
@@ -316,6 +333,7 @@
         </div>
       </div>
 
+      <!-- FILE UPLOADS -->
       <h3>File Submissions</h3>
       <div class="form-group">
         <label>Upload Abstract <span class="req">*</span></label>
@@ -332,6 +350,7 @@
     </form>
   </div>
 
+  <!-- RECEIPT -->
   <div id="submissionReport">
     <h2 style="color:var(--success); font-weight: 700;">✔ Abstract Successfully Submitted</h2>
     <p>Your submission for ICAPST 2026 has been recorded. Please save this receipt.</p>
@@ -345,10 +364,10 @@
       <p><strong>Contact Email:</strong> <span id="repEmail"></span></p>
       <p><strong>Submission Date &amp; Time:</strong> <span id="repDate"></span></p>
       <hr>
-      <p class="no-print" style="font-size:14px; text-align:center; color:#1e293b; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:14px; margin-top:15px; line-height: 1.5;">
-          <strong>Thank you for your abstract submission!</strong><br>
-          Your abstract has been received successfully. We will send you an official invitation letter shortly. We look forward to welcoming you to the Department of Physics, University of Rajasthan, Jaipur, from 22–24 October 2026, and to your valuable presentation at ICAPST 2026.<br>
-          Thank you for your support and participation in ICAPST 2026.
+      <p class="no-print" style="font-size:14px; text-align:center; color:#1e293b; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:18px; margin-top:15px; line-height: 1.6;">
+        <strong>Thank you for your abstract submission!</strong><br>
+        Your abstract has been received successfully. We will send you an official invitation letter shortly. We look forward to welcoming you to the Department of Physics, University of Rajasthan, Jaipur, from 22–24 October 2026, and to your valuable presentation at ICAPST 2026.<br><br>
+        Thank you for your support and participation in ICAPST 2026.
       </p>
     </div>
     <div class="no-print" style="text-align:center; margin-top:20px;">
@@ -477,7 +496,6 @@ document.getElementById('mainForm').onsubmit = function(e){
   btn.disabled = true;
 
   var trackCode = document.getElementById('trackSelect').value;
-  // UPDATED GENERATED ID LOGIC: IT-[TRACK]-[4-DIGIT RANDOM NUMBER]
   var randomNum = Math.floor(1000 + Math.random() * 9000);
   var generatedID = 'IT-' + trackCode + '-' + randomNum;
 
@@ -496,25 +514,26 @@ document.getElementById('mainForm').onsubmit = function(e){
       var renamedPdf  = generatedID + '_biodata.pdf';
 
       var payload = {
-        submissionID:  generatedID,
-        fileName:      renamedFile,
-        mimeType:      absFile.files[0].type,
-        fileBase64:    ev.target.result.split(',')[1],
-        pdfBase64:     pdfBase64,
-        pdfFileName:   renamedPdf,
-        abstractTitle: formData.get('abstractTitle'),
-        abstractBody:  "[Direct document upload - body text input skipped]",
-        track:         formData.get('track'),
-        keywords:      "",
-        faTitle:       formData.get('faTitle'),
-        faName:        formData.get('faName'),
-        faDept:        formData.get('faDept'),
-        faInst:        formData.get('faInst'),
-        faCountry:     formData.get('faCountry'),
-        faEmail:       formData.get('faEmail'),
-        faPhone:       formData.get('faCode') + formData.get('faPhone'),
-        coAuthors:     JSON.stringify([]),
-        presentation:  []
+        submissionID:      generatedID,
+        fileName:          renamedFile,
+        mimeType:          absFile.files[0].type,
+        fileBase64:        ev.target.result.split(',')[1],
+        pdfBase64:         pdfBase64,
+        pdfFileName:       renamedPdf,
+        abstractTitle:     formData.get('abstractTitle'),
+        abstractBody:      "[Direct document upload - body text input skipped]",
+        track:             formData.get('track'),
+        journalPreference: formData.get('journalPreference') || "", // Defaults to empty string if left empty
+        keywords:          "",
+        faTitle:           formData.get('faTitle'),
+        faName:            formData.get('faName'),
+        faDept:            formData.get('faDept'),
+        faInst:            formData.get('faInst'),
+        faCountry:         formData.get('faCountry'),
+        faEmail:           formData.get('faEmail'),
+        faPhone:           formData.get('faCode') + formData.get('faPhone'),
+        coAuthors:         JSON.stringify([]),
+        presentation:      []
       };
 
       var scriptURL = 'https://script.google.com/macros/s/AKfycby3u0LrfKHxwc50lXQwyqHDUv8nNlXjFdFmqbYNmyHBI-ea2Ob-1i5bvZjHaj3203WB7w/exec';

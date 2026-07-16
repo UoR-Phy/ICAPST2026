@@ -15,7 +15,6 @@
             margin: 0;
             min-height: 100vh;
         }
-        
         /* High-Visibility Multi-Colored Watermark Grid Background */
         .bg-watermark-container {
             position: fixed;
@@ -33,7 +32,6 @@
             padding: 40px;
             box-sizing: border-box;
         }
-        
         .wm-item {
             display: flex;
             flex-direction: column;
@@ -42,26 +40,23 @@
             text-align: center;
             padding: 20px;
         }
-
         .wm-title {
             font-size: 28px;
             font-weight: 800;
             margin-bottom: 5px;
             letter-spacing: 1px;
         }
-
         .wm-sub {
             font-size: 13px;
             font-weight: 600;
             max-width: 260px;
             line-height: 1.3;
         }
-
         .wm-navy   { transform: rotate(-18deg); opacity: 0.18; color: #0f2d59; }
         .wm-indigo { transform: rotate(-25deg); opacity: 0.15; color: #2b3a67; }
         .wm-teal   { transform: rotate(-15deg); opacity: 0.16; color: #145c63; }
         .wm-steel  { transform: rotate(-22deg); opacity: 0.18; color: #1a5276; }
-        
+                
         .form-container {
             max-width: 700px;
             margin: 30px auto;
@@ -73,19 +68,16 @@
             position: relative;
             z-index: 1;
         }
-
         .top-nav {
             margin-bottom: 20px;
             font-size: 14px;
         }
-
         h1 {
             color: #1a365d;
             text-align: center;
             margin-bottom: 10px;
             font-size: 24px;
         }
-
         .intro-text {
             background-color: #ebf8ff;
             border-left: 4px solid #3182ce;
@@ -94,38 +86,31 @@
             font-size: 14px;
             border-radius: 4px;
         }
-
         a.info-link {
             color: #2b6cb0;
             font-weight: bold;
             text-decoration: underline;
         }
-
         a.info-link:hover {
             color: #1a365d;
         }
-
         .fee-hint {
             font-size: 13px;
             margin-bottom: 6px;
             display: block;
         }
-
         .form-group {
             margin-bottom: 20px;
         }
-
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 8px;
             color: #2d3748;
         }
-
         label span {
             color: #e53e3e;
         }
-
         input[type="text"],
         input[type="email"],
         input[type="tel"],
@@ -137,7 +122,6 @@
             box-sizing: border-box;
             font-size: 14px;
         }
-
         input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="tel"]:focus,
@@ -146,40 +130,54 @@
             border-color: #3182ce;
             box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2);
         }
-
         .radio-group {
             margin-top: 5px;
         }
-
-        .radio-option, .checkbox-option {
+        .radio-option {
             display: flex;
             align-items: center;
             margin-bottom: 8px;
             font-weight: normal;
             cursor: pointer;
         }
-
-        .radio-option input, .checkbox-option input {
+        .radio-option input {
             margin-right: 10px;
+        }
+        
+        /* Clean alignment layout for the declaration checkbox wrapper */
+        .declaration-option {
+            display: block;
+            position: relative;
+            padding-left: 28px;
+            font-weight: normal;
+            cursor: pointer;
+            line-height: 1.5;
+            color: #2d3748;
+        }
+        .declaration-option input {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            margin: 0;
+        }
+        .declaration-option span {
+            color: #e53e3e;
+            font-weight: bold;
         }
 
         .phone-container, .amount-container {
             display: flex;
             gap: 10px;
         }
-
         .phone-container input[name="country_code"] {
             width: 25%;
         }
-
         .phone-container input[type="tel"] {
             width: 75%;
         }
-
         .amount-container select {
             width: 25%;
         }
-
         .amount-container input[type="number"] {
             width: 75%;
             padding: 10px;
@@ -187,12 +185,10 @@
             border-radius: 4px;
             font-size: 14px;
         }
-        
         .date-picker-wrapper {
             display: flex;
             gap: 10px;
         }
-
         .date-btn {
             background-color: #e2e8f0;
             border: 1px solid #cbd5e0;
@@ -206,25 +202,21 @@
             align-items: center;
             gap: 5px;
         }
-
         .date-btn:hover {
             background-color: #cbd5e0;
         }
-
         .hidden-picker-input {
             position: absolute;
             visibility: hidden;
             width: 0;
             height: 0;
         }
-
         .file-help {
             display: block;
             font-size: 12px;
             color: #718096;
             margin-top: 5px;
         }
-
         .submit-btn {
             background-color: #3182ce;
             color: white;
@@ -237,35 +229,29 @@
             width: 100%;
             transition: background-color 0.2s;
         }
-
         .submit-btn:disabled {
             background-color: #a0aec0;
             cursor: not-allowed;
         }
-
         .submit-btn:hover:not(:disabled) {
             background-color: #2b6cb0;
         }
-
         /* Success Page Layout Styling */
         .success-wrapper {
             text-align: center;
             padding: 40px 20px;
         }
-
         .success-icon {
             font-size: 64px;
             color: #48bb78;
             margin-bottom: 20px;
         }
-
         .success-title {
             color: #2f855a;
             font-size: 26px;
             font-weight: 700;
             margin-bottom: 15px;
         }
-
         .success-msg {
             font-size: 16px;
             color: #4a5568;
@@ -286,13 +272,10 @@
 
 <div class="form-container" id="mainContentContainer">
     <div class="top-nav">← <a class="info-link" href="../index.html">Go to Main Website</a></div>
-
     <h1>ICAPST 2026 – Registration Details</h1>
-    
     <div class="intro-text">
         Thank you for registering for the International Conference on Advances in Physical Sciences & Technologies (ICAPST 2026). Kindly submit your payment details and upload the payment receipt for verification. Your registration will be confirmed after successful verification of the payment. Please check <a class="info-link" href="../registration.html" target="_blank">for fee and other details</a>.
     </div>
-
     <form id="registrationForm">
         <!-- Full Name -->
         <div class="form-group">
@@ -375,11 +358,11 @@
                 </select>
             </div>
 
-            <!-- Journal preference -->
+            <!-- Journal preference (Optional) -->
             <div class="form-group">
-                <label>Journal preference <span>*</span></label>
+                <label>Journal preference <span style="font-weight: normal; font-size: 13px; color: #718096;">(Optional - Click selected option to remove)</span></label>
                 <div class="radio-group">
-                    <label class="radio-option"><input type="radio" name="journal" value="Annalen der Physik" required> Annalen der Physik (Wiley)</label>
+                    <label class="radio-option"><input type="radio" name="journal" value="Annalen der Physik"> Annalen der Physik (Wiley)</label>
                     <label class="radio-option"><input type="radio" name="journal" value="Energy Technology"> Energy Technology (Wiley)</label>
                     <label class="radio-option"><input type="radio" name="journal" value="Physica Status Solidi B"> Physica Status Solidi B (Wiley)</label>
                     <label class="radio-option"><input type="radio" name="journal" value="Solar compass"> Solar compass (Elsevier)</label>
@@ -419,14 +402,14 @@
 
         <!-- Paid Amount -->
         <div class="form-group">
-            <label for="amount">Paid Amount <span>*</span></label>
+            <label for="amountInput">Paid Amount <span>*</span></label>
             <span class="fee-hint">👉 <a class="info-link" href="../registration.html" target="_blank">Click here to view the full registration fee structure</a></span>
             <div class="amount-container">
-                <select name="currency" required>
+                <select id="currencySelect" name="currency" required>
                     <option value="INR">₹</option>
                     <option value="USD">US$</option>
                 </select>
-                <input type="number" id="amount" name="amount" min="1" step="any" required placeholder="Enter amount">
+                <input type="number" id="amountInput" name="amount" min="1" step="any" required placeholder="Enter amount">
             </div>
         </div>
 
@@ -447,7 +430,7 @@
 
         <!-- Declaration -->
         <div class="form-group">
-            <label class="checkbox-option">
+            <label class="declaration-option">
                 <input type="checkbox" name="declaration" required> 
                 <strong>Declaration</strong> – I certify that the information provided above is correct and that the uploaded payment receipt is authentic. <span>*</span>
             </label>
@@ -457,16 +440,9 @@
     </form>
 </div>
 
-<!-- Keep your HTML structure as it is. Ensure the currency select and amount inputs have matching IDs for easy JS access:
-     Change <select name="currency" required> to <select id="currencySelect" name="currency" required>
-     Change <input type="number" id="amount" ...> to <input type="number" id="amountInput" name="amount" ...>
--->
-
 <script>
-    // Replace with your actual deployed Google Web App URL
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxafbLj3l9hjubBsSeCySplbhiuBRxPnHFJbqpka0Myw94W7fVGNEWrM8w6BM8nuH2s/exec";
 
-    // Pricing Matrices (Valid till 31 August 2026)
     const PRICING = {
         "Indian and SAARC": {
             currency: "INR",
@@ -490,12 +466,26 @@
         }
     };
 
-    // Attach real-time event listeners to form inputs to recalculate price
     document.addEventListener("DOMContentLoaded", () => {
         const triggers = ['input[name="category"]', 'input[name="role"]', 'input[name="city_tour"]'];
         triggers.forEach(selector => {
             document.querySelectorAll(selector).forEach(input => {
                 input.addEventListener('change', updateCalculatedAmount);
+            });
+        });
+
+        // Setup click-to-deselect functionality for Journal Preferences
+        document.querySelectorAll('input[name="journal"]').forEach(radio => {
+            radio.addEventListener('click', function(e) {
+                if (this.getAttribute('data-was-checked') === 'true') {
+                    this.checked = false;
+                    this.setAttribute('data-was-checked', 'false');
+                } else {
+                    document.querySelectorAll('input[name="journal"]').forEach(r => {
+                        r.setAttribute('data-was-checked', 'false');
+                    });
+                    this.setAttribute('data-was-checked', 'true');
+                }
             });
         });
     });
@@ -505,26 +495,18 @@
         const role = document.querySelector('input[name="role"]:checked')?.value;
         const cityTour = document.querySelector('input[name="city_tour"]:checked')?.value;
 
-        if (!category || !role) return; // Wait until basic selections are active
+        if (!category || !role) return; 
+        const currencySelect = document.getElementById('currencySelect');
+        const amountInput = document.getElementById('amountInput');
 
-        const currencySelect = document.getElementById('currencySelect') || document.querySelector('select[name="currency"]');
-        const amountInput = document.getElementById('amountInput') || document.getElementById('amount');
-
-        // Target Configuration Matrix
         const config = PRICING[category];
-        
-        // Auto-switch currency dropdown display
         currencySelect.value = config.currency;
 
-        // Base Calculations
         let finalAmount = config.roles[role] || 0;
-
-        // Add City Tour fee if chosen
         if (cityTour === "Yes") {
             finalAmount += config.tourFee;
         }
 
-        // Populate field (remains user editable)
         amountInput.value = finalAmount;
     }
 
@@ -542,14 +524,26 @@
 
     function toggleAbstractFields(radioInput) {
         const abstractContainer = document.getElementById('abstract-fields-container');
-        const childInputs = abstractContainer.querySelectorAll('input, select');                
-        
+        const childInputs = abstractContainer.querySelectorAll('input, select');
+                        
         if (radioInput.value === 'Attendees/Accompany') {
             abstractContainer.style.display = 'none';
-            childInputs.forEach(input => { input.required = false; input.disabled = true; if(input.type === 'radio') input.checked = false; });
+            childInputs.forEach(input => { 
+                input.required = false; 
+                input.disabled = true; 
+                if(input.type === 'radio') {
+                    input.checked = false; 
+                    input.setAttribute('data-was-checked', 'false');
+                }
+            });
         } else {
             abstractContainer.style.display = 'block';
-            childInputs.forEach(input => { input.disabled = false; if(input.type !== 'radio') input.required = true; });
+            childInputs.forEach(input => { 
+                input.disabled = false; 
+                if(input.type !== 'radio' && input.name !== 'journal') {
+                    input.required = true; 
+                }
+            });
         }
     }
 
@@ -577,7 +571,7 @@
         debounceTimer = setTimeout(() => {
             input.setCustomValidity("Checking database... ⏳");
             input.reportValidity();
-                        
+            
             fetch(`${WEB_APP_URL}?abstractId=${encodeURIComponent(value)}`)
                 .then(res => res.json())
                 .then(data => {
@@ -636,24 +630,22 @@
             reader.onload = function(eEvent) {
                 formObject.fileData = eEvent.target.result.split(',')[1];
                 formObject.fileMimeType = file.type;
-                
-                // Extract file extension cleanly
                 const fileExt = file.name.split('.').pop();
                 
-                // Pull values for dynamic naming
-                const currency = formObject.currency; // "INR" or "USD"
+                const currency = formObject.currency; 
                 const amountFilled = formObject.amount;
                 const roleSelected = formObject.role;
                 
+                const randomFourDigits = Math.floor(1000 + Math.random() * 9000);
                 let processedFileName = "";
 
                 if (roleSelected === "Attendees/Accompany") {
-                    // Generates unique 4 digit suffix placeholder to prevent cloud overwrite conflicts
-                    const randomFourDigits = Math.floor(1000 + Math.random() * 9000);
-                    processedFileName = `guest_receipt-${currency}${amountFilled}-${randomFourDigits}.${fileExt}`;
+                    // Strip non-alphanumeric characters from name to keep dynamic storage path clean
+                    const sanitizedName = (formObject.fullname || "Guest").replace(/[^a-zA-Z0-9]/g, "");
+                    processedFileName = `${sanitizedName}_${currency}${amountFilled}_receipt-${randomFourDigits}.${fileExt}`;
                 } else {
                     const abstractId = formObject.abstract_id || "Registration";
-                    processedFileName = `${abstractId}_receipt.${fileExt}`;
+                    processedFileName = `${abstractId}_receipt-${randomFourDigits}.${fileExt}`;
                 }
 
                 formObject.fileName = processedFileName;
