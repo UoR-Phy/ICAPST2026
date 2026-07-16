@@ -53,8 +53,11 @@ Insert a text box and write
 - All submitted manuscripts will undergo the respective journal's standard editorial assessment and peer-review process and will be evaluated according to the same high-quality standards and editorial criteria as regular submissions.
 - Publication decisions will be based solely on scientific quality, scope fit, and peer-review outcomes.
 
-** 13 July (speaker list re-arranged)
+** 13 July (updated)
+- speaker list re-arranged
 
+** 15 July (done)
+- Creation of [[forms/registration][registration]] and [[forms/speaker_abstract.html][speaker abstraction submission]] forms. Tested and now ready to share.
 
 * June 2026
 ** 6 June 2026 (completed)

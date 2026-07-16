@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 1. UPDATED BROWSER TAB TITLE -->
     <title>ICAPST 2026 - Abstract Submission by Speakers</title>
     <style>
         :root { 
@@ -232,7 +231,6 @@
 <div class="container">
   <div id="formSection">
     
-    <!-- CONSOLIDATED LOGO & TITLE HEADER AREA -->
     <div class="logo-header">
         <img src="../pics/logo_icapst.png" alt="ICAPST Logo Left" onerror="this.style.display='none'">
         
@@ -240,7 +238,6 @@
             <div style="text-align:center; margin-bottom:8px;">
                 <a href="../index.html" style="color:var(--accent); font-size:13px; text-decoration:none; font-weight: 600;">← Back to ICAPST 2026 Main Website</a>
             </div>
-            <!-- 2. UPDATED DISPLAYED HEADER TITLE -->
             <h1>ICAPST 2026 - Abstract Submission by Speakers</h1>
             <div style="text-align:center; margin-top:8px;">
                 <a href="../abstract.html" style="color:var(--accent); text-decoration: none; font-size:14px;">← Back to Submission Guidelines</a>
@@ -258,7 +255,6 @@
     </div>
 
     <form id="mainForm" novalidate>
-      <!-- ABSTRACT DETAILS -->
       <h3>Abstract Details</h3>
       <div class="form-group">
         <label>Title of Abstract <span class="req">*</span></label>
@@ -278,7 +274,6 @@
         </select>
       </div>
 
-      <!-- SPEAKER DETAILS -->
       <h3>Speaker Details</h3>
       <div class="grid-2">
         <div class="form-group">
@@ -321,7 +316,6 @@
         </div>
       </div>
 
-      <!-- FILE UPLOADS -->
       <h3>File Submissions</h3>
       <div class="form-group">
         <label>Upload Abstract <span class="req">*</span></label>
@@ -338,7 +332,6 @@
     </form>
   </div>
 
-  <!-- RECEIPT -->
   <div id="submissionReport">
     <h2 style="color:var(--success); font-weight: 700;">✔ Abstract Successfully Submitted</h2>
     <p>Your submission for ICAPST 2026 has been recorded. Please save this receipt.</p>
@@ -352,7 +345,7 @@
       <p><strong>Contact Email:</strong> <span id="repEmail"></span></p>
       <p><strong>Submission Date &amp; Time:</strong> <span id="repDate"></span></p>
       <hr>
-      <p class="no-print" style="font-size:14px; text-align:center; color:#1e293b; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:14px; margin-top:15px; line-height: 1.5;">Please save your Submission ID for future correspondence. To receive acknowledgment of your abstract submission, kindly send this receipt to <strong>icapst.info@gmail.com</strong></p>
+      <p class="no-print" style="font-size:14px; text-align:center; color:#1e293b; background:#f1f5f9; border:1px solid #e2e8f0; border-radius:8px; padding:14px; margin-top:15px; line-height: 1.5;">Thank you for your submission. It has been received successfully. You will receive acknowledgement shortly.</p>
     </div>
     <div class="no-print" style="text-align:center; margin-top:20px;">
       <button onclick="window.print()" style="background:#334155; color:white; padding:12px 28px; border:none; border-radius:6px; cursor:pointer; font-weight: 600;">🖨 Print Receipt</button>
@@ -480,7 +473,9 @@ document.getElementById('mainForm').onsubmit = function(e){
   btn.disabled = true;
 
   var trackCode = document.getElementById('trackSelect').value;
-  var generatedID = 'ICAPST-2026-' + trackCode + '-' + Math.floor(100000 + Math.random() * 900000);
+  // UPDATED GENERATED ID LOGIC: IT-[TRACK]-[4-DIGIT RANDOM NUMBER]
+  var randomNum = Math.floor(1000 + Math.random() * 9000);
+  var generatedID = 'IT-' + trackCode + '-' + randomNum;
 
   var formData = new FormData(this);
 

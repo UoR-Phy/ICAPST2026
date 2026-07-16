@@ -457,9 +457,76 @@
     </form>
 </div>
 
+<!-- Keep your HTML structure as it is. Ensure the currency select and amount inputs have matching IDs for easy JS access:
+     Change <select name="currency" required> to <select id="currencySelect" name="currency" required>
+     Change <input type="number" id="amount" ...> to <input type="number" id="amountInput" name="amount" ...>
+-->
+
 <script>
     // Replace with your actual deployed Google Web App URL
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxafbLj3l9hjubBsSeCySplbhiuBRxPnHFJbqpka0Myw94W7fVGNEWrM8w6BM8nuH2s/exec";
+
+    // Pricing Matrices (Valid till 31 August 2026)
+    const PRICING = {
+        "Indian and SAARC": {
+            currency: "INR",
+            tourFee: 1500,
+            roles: {
+                "Scholars/Students": 2500,
+                "Postdoc/Faculty": 3000,
+                "Industry person": 4000,
+                "Attendees/Accompany": 1000
+            }
+        },
+        "Foreign": {
+            currency: "USD",
+            tourFee: 20,
+            roles: {
+                "Scholars/Students": 150,
+                "Postdoc/Faculty": 250,
+                "Industry person": 350,
+                "Attendees/Accompany": 100
+            }
+        }
+    };
+
+    // Attach real-time event listeners to form inputs to recalculate price
+    document.addEventListener("DOMContentLoaded", () => {
+        const triggers = ['input[name="category"]', 'input[name="role"]', 'input[name="city_tour"]'];
+        triggers.forEach(selector => {
+            document.querySelectorAll(selector).forEach(input => {
+                input.addEventListener('change', updateCalculatedAmount);
+            });
+        });
+    });
+
+    function updateCalculatedAmount() {
+        const category = document.querySelector('input[name="category"]:checked')?.value;
+        const role = document.querySelector('input[name="role"]:checked')?.value;
+        const cityTour = document.querySelector('input[name="city_tour"]:checked')?.value;
+
+        if (!category || !role) return; // Wait until basic selections are active
+
+        const currencySelect = document.getElementById('currencySelect') || document.querySelector('select[name="currency"]');
+        const amountInput = document.getElementById('amountInput') || document.getElementById('amount');
+
+        // Target Configuration Matrix
+        const config = PRICING[category];
+        
+        // Auto-switch currency dropdown display
+        currencySelect.value = config.currency;
+
+        // Base Calculations
+        let finalAmount = config.roles[role] || 0;
+
+        // Add City Tour fee if chosen
+        if (cityTour === "Yes") {
+            finalAmount += config.tourFee;
+        }
+
+        // Populate field (remains user editable)
+        amountInput.value = finalAmount;
+    }
 
     function openCalendarPicker() {
         const picker = document.getElementById('hidden_picker');
@@ -475,7 +542,7 @@
 
     function toggleAbstractFields(radioInput) {
         const abstractContainer = document.getElementById('abstract-fields-container');
-        const childInputs = abstractContainer.querySelectorAll('input, select');
+        const childInputs = abstractContainer.querySelectorAll('input, select');                
         
         if (radioInput.value === 'Attendees/Accompany') {
             abstractContainer.style.display = 'none';
@@ -493,7 +560,6 @@
         const match = value.toUpperCase().match(regex);
 
         if (value === "") { input.setCustomValidity(""); return; }
-
         if (!match) {
             input.setCustomValidity("Format error. Must match: ICAPST-2026-XXXX-123456");
             return;
@@ -511,14 +577,13 @@
         debounceTimer = setTimeout(() => {
             input.setCustomValidity("Checking database... ⏳");
             input.reportValidity();
-            
+                        
             fetch(`${WEB_APP_URL}?abstractId=${encodeURIComponent(value)}`)
                 .then(res => res.json())
                 .then(data => {
                     if (data.valid) {
                         input.setCustomValidity(""); 
                     } else {
-                        // Custom updated message requested by user
                         input.setCustomValidity("Please check your abstract ID and abstract acceptance email.");
                     }
                     input.reportValidity();
@@ -537,7 +602,6 @@
         }
     }
 
-    // Handles rewriting the container DOM directly into a clean template layout screen upon data ingest completion
     function renderSuccessView() {
         const container = document.getElementById('mainContentContainer');
         container.innerHTML = `
@@ -545,7 +609,7 @@
                 <div class="success-icon">🎉</div>
                 <div class="success-title">Submission Received</div>
                 <div class="success-msg">
-                    Your registration is successful at first step. You will soon get a confirmation message after verifying the details you submitted.
+                   Thank you for your registration. It has been received successfully. We will provide you with an official invitation letter shortly. Looking forward to meeting you at ICAPST, Jaipur, India
                 </div>
                 <a href="../index.html" class="submit-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 12px 30px;">Return to Homepage</a>
             </div>
@@ -554,7 +618,7 @@
 
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        
+                
         const submitBtn = document.getElementById('submitBtn');
         submitBtn.disabled = true;
         submitBtn.innerText = "Submitting registration details...";
@@ -564,15 +628,35 @@
         formData.forEach((value, key) => { formObject[key] = value; });
 
         const fileInput = document.getElementById('receipt');
-        
+                
         if (fileInput.files.length > 0) {
             const file = fileInput.files[0];
             const reader = new FileReader();
-            
-            reader.onload = function(e) {
-                formObject.fileData = e.target.result.split(',')[1];
-                formObject.fileName = file.name;
+                        
+            reader.onload = function(eEvent) {
+                formObject.fileData = eEvent.target.result.split(',')[1];
                 formObject.fileMimeType = file.type;
+                
+                // Extract file extension cleanly
+                const fileExt = file.name.split('.').pop();
+                
+                // Pull values for dynamic naming
+                const currency = formObject.currency; // "INR" or "USD"
+                const amountFilled = formObject.amount;
+                const roleSelected = formObject.role;
+                
+                let processedFileName = "";
+
+                if (roleSelected === "Attendees/Accompany") {
+                    // Generates unique 4 digit suffix placeholder to prevent cloud overwrite conflicts
+                    const randomFourDigits = Math.floor(1000 + Math.random() * 9000);
+                    processedFileName = `guest_receipt-${currency}${amountFilled}-${randomFourDigits}.${fileExt}`;
+                } else {
+                    const abstractId = formObject.abstract_id || "Registration";
+                    processedFileName = `${abstractId}_receipt.${fileExt}`;
+                }
+
+                formObject.fileName = processedFileName;
                 sendData(formObject);
             };
             reader.readAsDataURL(file);
@@ -589,7 +673,7 @@
             body: JSON.stringify(data)
         })
         .then(() => {
-            renderSuccessView(); // Call UI change screen instead of standard legacy popup
+            renderSuccessView();
         })
         .catch(err => {
             alert('Submission Error: ' + err.message);
