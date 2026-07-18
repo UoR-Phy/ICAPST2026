@@ -58,6 +58,16 @@ Insert a text box and write
 
 ** 15 July (done)
 - Creation of [[forms/registration.html][registration]] and [[forms/speaker_abstract.html][speaker abstraction submission]] forms. Tested and now ready to share.
+** 18 July 
+- Payment QR uploaded
+- Add this upi: msconvenericapstuorjaipur.eazypay@icici
+
+
+
+
+
+
+
 
 * June 2026
 ** 6 June 2026 (completed)
