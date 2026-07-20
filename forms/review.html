@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paper Review Portal</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; }
+    body { background-color: #f4f6f9; display: flex; justify-content: center; padding: 40px 20px; }
+    .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); width: 100%; max-width: 650px; }
+    h2, h3 { margin-top: 0; color: #333; }
+    h3 { margin-top: 20px; border-bottom: 2px solid #e9ecef; padding-bottom: 5px; font-size: 16px; color: #007bff; }
+    .form-group { margin-bottom: 15px; }
+    label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+    input[type="text"], input[type="password"], input[type="date"], select, textarea { 
+      width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; font-size: 14px;
+    }
+    textarea { resize: vertical; min-height: 80px; }
+    input[readonly] { background-color: #e9ecef; color: #495057; cursor: not-allowed; }
+    
+    .radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 5px; }
+    .radio-inline { display: flex; gap: 20px; margin-top: 5px; }
+    .radio-option { display: flex; align-items: center; gap: 8px; font-weight: normal; cursor: pointer; }
+    .radio-option input { cursor: pointer; }
+    
+    .eval-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 15px; }
+    .eval-row label { font-weight: normal; margin: 0; flex: 1; }
+    .eval-row select { width: 120px; }
+
+    .btn-group { display: flex; gap: 10px; margin-top: 25px; }
+    button { width: 100%; padding: 12px; background-color: #007bff; border: none; color: white; font-size: 16px; border-radius: 4px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+    button.btn-secondary { background-color: #6c757d; }
+    button.btn-secondary:hover { background-color: #5a6268; }
+    button:disabled { background-color: #aaa; cursor: not-allowed; }
+
+    .hidden { display: none; }
+    .message { margin-top: 15px; padding: 10px; border-radius: 4px; display: none; }
+    .error { background-color: #f8d7da; color: #721c24; }
+    .success { background-color: #d4edda; color: #155724; }
+    .welcome-text { background: #e9ecef; padding: 10px; border-radius: 4px; margin-bottom: 20px; font-size: 15px; }
+    .optional-tag { font-weight: normal; font-size: 12px; color: #888; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  
+  <!-- STEP 1: LOGIN FORM -->
+  <div id="step-login">
+    <h2>Reviewer Login</h2>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="reviewerId">Reviewer ID</label>
+        <input type="text" id="reviewerId" required placeholder="Enter Reviewer ID">
+      </div>
+      <div class="form-group">
+        <label for="pin">PIN</label>
+        <input type="password" id="pin" required placeholder="Enter PIN">
+      </div>
+      <button type="submit" id="btnLogin">Login</button>
+    </form>
+  </div>
+
+  <!-- STEP 2: PAPER VERIFICATION FORM -->
+  <div id="step-paper" class="hidden">
+    <h2>Verify Paper</h2>
+    <div class="welcome-text">
+      Welcome, <strong id="displayName"></strong>!
+    </div>
+    <form id="paperForm">
+      <div class="form-group">
+        <label for="paperId">Paper ID</label>
+        <input type="text" id="paperId" required placeholder="Enter Paper ID">
+      </div>
+      <button type="submit" id="btnVerifyPaper">Verify Paper ID</button>
+    </form>
+  </div>
+
+  <!-- STEP 3: REVIEW FORM -->
+  <div id="step-review" class="hidden">
+    <h2>Paper Review Form</h2>
+    <form id="reviewForm">
+      
+      <h3>Paper Information</h3>
+      <div class="form-group">
+        <label>Paper ID</label>
+        <input type="text" id="revPaperId" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Paper Title</label>
+        <input type="text" id="revPaperTitle" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Reviewer Name</label>
+        <input type="text" id="revReviewerName" readonly>
+      </div>
+
+      <div class="form-group">
+        <label>Conference Track</label>
+        <input type="text" id="revTrack" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="reviewDate">Date of Review (DD/MM/YYYY)</label>
+        <input type="date" id="reviewDate" required>
+      </div>
+
+      <h3>Evaluation Criteria (Rate 1-5)</h3>
+      <div class="eval-row">
+        <label for="evalNovelty">1. Novelty</label>
+        <select id="evalNovelty" required>
+          <option value="">Select</option>
+          <option value="1">1 (Poor)</option>
+          <option value="2">2 (Fair)</option>
+          <option value="3">3 (Good)</option>
+          <option value="4">4 (Very Good)</option>
+          <option value="5">5 (Excellent)</option>
+        </select>
+      </div>
+
+      <div class="eval-row">
+        <label for="evalTech">2. Technical Quality / Methodology</label>
+        <select id="evalTech" required>
+          <option value="">Select</option>
+          <option value="1">1 (Poor)</option>
+          <option value="2">2 (Fair)</option>
+          <option value="3">3 (Good)</option>
+          <option value="4">4 (Very Good)</option>
+          <option value="5">5 (Excellent)</option>
+        </select>
+      </div>
+
+      <div class="eval-row">
+        <label for="evalRelevance">3. Relevance to Conference Theme</label>
+        <select id="evalRelevance" required>
+          <option value="">Select</option>
+          <option value="1">1 (Poor)</option>
+          <option value="2">2 (Fair)</option>
+          <option value="3">3 (Good)</option>
+          <option value="4">4 (Very Good)</option>
+          <option value="5">5 (Excellent)</option>
+        </select>
+      </div>
+
+      <div class="eval-row">
+        <label for="evalResults">4. Results</label>
+        <select id="evalResults" required>
+          <option value="">Select</option>
+          <option value="1">1 (Poor)</option>
+          <option value="2">2 (Fair)</option>
+          <option value="3">3 (Good)</option>
+          <option value="4">4 (Very Good)</option>
+          <option value="5">5 (Excellent)</option>
+        </select>
+      </div>
+
+      <h3>Recommendation & Comments</h3>
+
+      <div class="form-group">
+        <label>Reviewer Recommendation</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="recommendation" value="Accept (No changes required)" required>
+            Accept (No changes required)
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="recommendation" value="Accept with Minor Revisions">
+            Accept with Minor Revisions
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="recommendation" value="Accept with Major Revisions">
+            Accept with Major Revisions
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="recommendation" value="Reject">
+            Reject
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="authorComments">Specific Comments for Authors</label>
+        <textarea id="authorComments" required placeholder="Enter detailed feedback for authors..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="committeeComments">Confidential Comments to Organizing Committee <span class="optional-tag">(Optional)</span></label>
+        <textarea id="committeeComments" placeholder="Enter private remarks for the committee..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Presentation Recommendation <span class="optional-tag">(Optional)</span></label>
+        <div class="radio-inline">
+          <label class="radio-option">
+            <input type="radio" name="presentation" value="Oral"> Oral
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="presentation" value="Poster"> Poster
+          </label>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button type="button" class="btn-secondary" id="btnBack">Back</button>
+        <button type="submit" id="btnSubmitReview">Submit Review</button>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- Status Message Alert Box -->
+  <div id="msgBox" class="message"></div>
+
+</div>
+
+<script>
+  // Replace with your Google Apps Script Web App URL
+  const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxaedIMfLxa6QGytAXOe0ei2Z0t9BxzPNhghMImiW7JQ7mZT-3RccokZDWZku06Ya7cHA/exec";
+
+  let currentReviewerId = "";
+  let loggedInReviewerName = "";
+  let paperDetailsCache = {};
+
+  const loginForm = document.getElementById("loginForm");
+  const paperForm = document.getElementById("paperForm");
+  const reviewForm = document.getElementById("reviewForm");
+  const msgBox = document.getElementById("msgBox");
+
+  function showMessage(msg, isError = true) {
+    msgBox.textContent = msg;
+    msgBox.className = `message ${isError ? 'error' : 'success'}`;
+    msgBox.style.display = "block";
+  }
+
+  function clearMessage() {
+    msgBox.style.display = "none";
+  }
+
+  function formatDateToDDMMYYYY(dateString) {
+    if (!dateString) return "";
+    const [year, month, day] = dateString.split("-");
+    return `${day}/${month}/${year}`;
+  }
+
+  // Handle Step 1: Login
+  loginForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearMessage();
+
+    const revId = document.getElementById("reviewerId").value.trim();
+    const pin = document.getElementById("pin").value.trim();
+    const btn = document.getElementById("btnLogin");
+
+    btn.disabled = true;
+    btn.textContent = "Authenticating...";
+
+    try {
+      const response = await fetch(`${SCRIPT_URL}?action=login&reviewerId=${encodeURIComponent(revId)}&pin=${encodeURIComponent(pin)}`);
+      const result = await response.json();
+
+      if (result.success) {
+        currentReviewerId = revId;
+        loggedInReviewerName = result.reviewerName; // Cache logged in reviewer name
+        
+        document.getElementById("displayName").textContent = loggedInReviewerName;
+        document.getElementById("step-login").classList.add("hidden");
+        document.getElementById("step-paper").classList.remove("hidden");
+      } else {
+        showMessage(result.message, true);
+      }
+    } catch (err) {
+      showMessage("Connection error. Please try again.", true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Login";
+    }
+  });
+
+  // Handle Step 2: Paper Verification
+  paperForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearMessage();
+
+    const paperId = document.getElementById("paperId").value.trim();
+    const btn = document.getElementById("btnVerifyPaper");
+
+    btn.disabled = true;
+    btn.textContent = "Verifying...";
+
+    try {
+      const response = await fetch(`${SCRIPT_URL}?action=verifyPaper&reviewerId=${encodeURIComponent(currentReviewerId)}&paperId=${encodeURIComponent(paperId)}`);
+      const result = await response.json();
+
+      if (result.success) {
+        paperDetailsCache = result.paperDetails;
+
+        // Populate Step 3 fields using loggedInReviewerName to prevent 'undefined'
+        document.getElementById("revPaperId").value = paperDetailsCache.paperId;
+        document.getElementById("revPaperTitle").value = paperDetailsCache.paperTitle;
+        document.getElementById("revReviewerName").value = loggedInReviewerName;
+        document.getElementById("revTrack").value = paperDetailsCache.track;
+
+        // Set default date to today
+        document.getElementById("reviewDate").valueAsDate = new Date();
+
+        document.getElementById("step-paper").classList.add("hidden");
+        document.getElementById("step-review").classList.remove("hidden");
+      } else {
+        showMessage(result.message, true);
+      }
+    } catch (err) {
+      showMessage("Connection error. Please try again.", true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Verify Paper ID";
+    }
+  });
+
+  // Handle Back Button
+  document.getElementById("btnBack").addEventListener("click", () => {
+    clearMessage();
+    document.getElementById("step-review").classList.add("hidden");
+    document.getElementById("step-paper").classList.remove("hidden");
+  });
+
+  // Handle Step 3: Submission
+  reviewForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    clearMessage();
+
+    const selectedRecommendation = document.querySelector('input[name="recommendation"]:checked');
+    const selectedPresentation = document.querySelector('input[name="presentation"]:checked');
+    const rawDate = document.getElementById("reviewDate").value;
+
+    if (!selectedRecommendation) {
+      showMessage("Please select a recommendation option.", true);
+      return;
+    }
+
+    const payload = {
+      paperId: document.getElementById("revPaperId").value,
+      paperTitle: document.getElementById("revPaperTitle").value,
+      reviewerName: document.getElementById("revReviewerName").value,
+      conferenceTrack: document.getElementById("revTrack").value,
+      reviewDate: formatDateToDDMMYYYY(rawDate),
+      novelty: document.getElementById("evalNovelty").value,
+      technicalQuality: document.getElementById("evalTech").value,
+      relevance: document.getElementById("evalRelevance").value,
+      resultsScore: document.getElementById("evalResults").value,
+      recommendation: selectedRecommendation.value,
+      authorComments: document.getElementById("authorComments").value.trim(),
+      committeeComments: document.getElementById("committeeComments").value.trim(),
+      presentationRec: selectedPresentation ? selectedPresentation.value : "N/A"
+    };
+
+    const btn = document.getElementById("btnSubmitReview");
+    btn.disabled = true;
+    btn.textContent = "Submitting...";
+
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      
+      const result = await response.json();
+
+      if (result.success) {
+        showMessage("Review submitted successfully!", false);
+        reviewForm.reset();
+        setTimeout(() => {
+          location.reload(); // Reset form back to step 1
+        }, 2500);
+      } else {
+        showMessage(result.message || "Failed to submit review.", true);
+      }
+    } catch (err) {
+      showMessage("Connection error while submitting. Please try again.", true);
+    } finally {
+      btn.disabled = false;
+      btn.textContent = "Submit Review";
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -472,6 +472,33 @@ footer p{
   margin-top: 10px;
 }
 
+/* Tested on 20 July 2026 */
+.reg-btn-wrap {
+  text-align: center;
+  margin: 40px auto 15px auto;
+}
+
+/* Forces the link to render as the yellow-orange pill button */
+a.reg-btn-yellow {
+  display: table !important;
+  margin: 0 auto !important;
+  background: linear-gradient(135deg, #f5c800, #ff8c00) !important;
+  color: #0645AD !important;
+  padding: 8px 30px !important;
+  border-radius: 50px !important;
+  font-size: 20px !important;
+  font-weight: bold !important;
+  text-decoration: none !important;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12) !important;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+a.reg-btn-yellow:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+/* 20 July 2026 test is over and accepted. */
+
 /* h3 inside committee-section: no extra top margin, tight bottom */
 .committee-section h3.yellow-h3{
   margin-top: 0;
@@ -798,6 +825,21 @@ h2{
 }
 .blink {
   animation: blink 1.2s ease-in-out infinite;
+  display: inline-block;
+}
+/* Custom Speed Utility Classes */
+.blink-fast {
+  animation: blink 0.6s ease-in-out infinite !important;
+  display: inline-block;
+}
+
+.blink-medium {
+  animation: blink 1.2s ease-in-out infinite !important; /* Default site speed */
+  display: inline-block;
+}
+
+.blink-slow {
+  animation: blink 2.0s ease-in-out infinite !important;
   display: inline-block;
 }
 
