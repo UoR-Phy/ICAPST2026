@@ -62,6 +62,9 @@ Insert a text box and write
 - Payment QR uploaded
 - Add this upi: msconvenericapstuorjaipur.eazypay@icici
 
+** 20 July
+- registration form "two journal options are hided" 
+
 
 
 
