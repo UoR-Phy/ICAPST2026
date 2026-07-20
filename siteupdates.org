@@ -64,6 +64,12 @@ Insert a text box and write
 
 ** 20 July
 - registration form "two journal options are hided" 
+- Registration 
+- aad a organge box before guidelines and write "Click here to Register" (give the registration link)
+- remove this line now "Participants are requested to send their registration slip to ICAPST2026@gmail.com for confirmation"
+- Home
+- Add a orange box after "submission by presenter" write "Click here to Register" (give the registration link)
+
 
 
 
