@@ -58,17 +58,15 @@ Insert a text box and write
 
 ** 15 July (done)
 - Creation of [[forms/registration.html][registration]] and [[forms/speaker_abstract.html][speaker abstraction submission]] forms. Tested and now ready to share.
-** 18 July 
+** 18 July (updated)
 - Payment QR uploaded
 - Add this upi: msconvenericapstuorjaipur.eazypay@icici
 
-** 20 July
+** 20 July (done)
 - registration form "two journal options are hided" 
-- Registration 
-- aad a organge box before guidelines and write "Click here to Register" (give the registration link)
+- Registration: aad a organge box before guidelines and write "Click here to Register" (give the registration link)
 - remove this line now "Participants are requested to send their registration slip to ICAPST2026@gmail.com for confirmation"
-- Home
-- Add a orange box after "submission by presenter" write "Click here to Register" (give the registration link)
+- Home: Add a orange box after "submission by presenter" write "Click here to Register" (give the registration link)
 
 
 
