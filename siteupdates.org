@@ -68,6 +68,11 @@ Insert a text box and write
 - remove this line now "Participants are requested to send their registration slip to ICAPST2026@gmail.com for confirmation"
 - Home: Add a orange box after "submission by presenter" write "Click here to Register" (give the registration link)
 
+** 26 July
+- flyer is updated
+- abstract and paper submission date is changed 
+- acceptance date is changed
+
 
 
 
