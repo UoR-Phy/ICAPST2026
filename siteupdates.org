@@ -72,7 +72,8 @@ Insert a text box and write
 - flyer is updated
 - abstract and paper submission date is changed 
 - acceptance date is changed
-
+ ** 27 July
+- flyer is again updated
 
 
 
