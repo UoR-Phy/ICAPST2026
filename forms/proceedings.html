@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICAPST 2026 - Conference Submission Portal</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col items-center justify-between p-4">
+
+    <!-- Top Navigation / Home Link -->
+    <div class="w-full max-w-3xl flex justify-between items-center py-2">
+        <a href="../index.html" class="text-sm font-semibold text-blue-600 hover:underline flex items-center gap-1 cursor-pointer">
+            ← Back to ICAPST 2026 Home
+        </a>
+    </div>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-3xl bg-white shadow-xl rounded-2xl p-8 border border-slate-100 my-auto">
+        
+        <!-- HEADER WITH LOGOS -->
+        <div class="flex justify-between items-center border-b pb-6 mb-6">
+            <div class="flex items-center gap-3">
+                <img src="../pics/logo_icapst.png" alt="ICAPST 2026 Logo" class="h-14 w-auto object-contain" onerror="this.src='https://via.placeholder.com/120x50?text=ICAPST+2026'">
+                <div>
+                    <h1 class="text-xl font-bold text-slate-900">ICAPST 2026</h1>
+                    <p class="text-xs text-slate-500">Submission & Review Portal</p>
+                </div>
+            </div>
+            <div>
+                <img src="../pics/logo2.png" alt="University Logo" class="h-12 w-auto object-contain" onerror="this.src='https://via.placeholder.com/100x40?text=University+Logo'">
+            </div>
+        </div>
+
+        <!-- LOGIN VIEW -->
+        <div id="loginSection" class="max-w-md mx-auto space-y-4">
+            <div class="text-center mb-6">
+                <h2 class="text-lg font-semibold text-slate-800">Participant Login</h2>
+                <p class="text-xs text-slate-500 mt-1">Please enter your registered Email and Abstract ID</p>
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Registered Email</label>
+                <input type="email" id="loginEmail" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1">Abstract ID</label>
+                <input type="text" id="loginAbstractId" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <button onclick="handleLogin()" id="loginBtn" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 rounded-lg transition-all cursor-pointer">
+                Log In
+            </button>
+            <p id="loginError" class="text-red-500 text-sm text-center hidden"></p>
+        </div>
+
+        <!-- DASHBOARD VIEW -->
+        <div id="dashboardSection" class="hidden space-y-6">
+            <div class="flex justify-between items-center border-b pb-4">
+                <h2 class="text-lg font-semibold text-slate-800">Welcome, <span id="dispFullName" class="text-blue-600"></span></h2>
+                <button onclick="handleLogout()" class="text-sm text-red-600 hover:underline cursor-pointer">Log Out</button>
+            </div>
+
+            <form id="submissionForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <input type="hidden" id="rowIndex">
+                <input type="hidden" id="hiddenAbstractId">
+
+                <!-- Read-only Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-200 text-sm">
+                    <div>
+                        <span class="block font-medium text-slate-500">Full Name</span>
+                        <p id="fName" class="font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-slate-500">Email</span>
+                        <p id="fEmail" class="font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-slate-500">Mobile Number</span>
+                        <p id="fMobile" class="font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-slate-500">Affiliation</span>
+                        <p id="fAffiliation" class="font-semibold text-slate-800"></p>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-slate-500">Category & Role</span>
+                        <p><span id="fCategory"></span> / <span id="fRole"></span></p>
+                    </div>
+                    <div>
+                        <span class="block font-medium text-slate-500">Abstract ID & Track</span>
+                        <p><span id="fAbstractId" class="font-mono font-bold"></span> - <span id="fTrack"></span></p>
+                    </div>
+                    <div class="md:col-span-2">
+                        <span class="block font-medium text-slate-500">Abstract Title</span>
+                        <p id="fTitle" class="font-semibold text-slate-800"></p>
+                    </div>
+                </div>
+
+                <!-- Editable Fields -->
+                <div class="space-y-4 pt-2">
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Presenting Author *</label>
+                        <input type="text" id="presentingAuthor" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Journal Preference *</label>
+                        <select id="journalPreference" required class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none bg-white">
+                            <option value="">Select Journal Preference</option>
+                            <option value="Annalen der Physik (Wiley)">1. Annalen der Physik (Wiley)</option>
+                            <option value="Energy Technology (Wiley)">2. Energy Technology (Wiley)</option>
+                            <option value="Physica Status Solidi B (Wiley)">3. Physica Status Solidi B (Wiley)</option>
+                            <option value="Solar compass (Elsevier)">4. Solar compass (Elsevier)</option>
+                        </select>
+                    </div>
+
+                    <!-- File Uploads -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="p-4 border border-dashed border-slate-300 rounded-xl">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Full Length Paper (.docx / .zip) *</label>
+                            <span class="text-xs text-slate-400 block mb-2">Max limit: 10 MB (Compulsory)</span>
+                            <input type="file" id="paperFile" required accept=".docx,.zip" onchange="processFile(this, 10)" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                            <p id="paperStatus" class="text-xs text-blue-600 mt-2 font-medium"></p>
+                        </div>
+
+                        <div class="p-4 border border-dashed border-slate-300 rounded-xl">
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Plagiarism Certificate (.pdf) *</label>
+                            <span class="text-xs text-slate-400 block mb-2">Max limit: 2 MB (Compulsory)</span>
+                            <input type="file" id="plagiarismFile" required accept=".pdf" onchange="processFile(this, 2)" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                            <p id="plagiarismStatus" class="text-xs text-blue-600 mt-2 font-medium"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-lg transition-all cursor-pointer">
+                    Save and Upload Documents
+                </button>
+            </form>
+        </div>
+
+        <!-- THANK YOU VIEW -->
+        <div id="thankYouSection" class="hidden text-center py-12 space-y-4">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
+            <h2 class="text-2xl font-bold text-slate-900">Submission Successful!</h2>
+            <p class="text-slate-600 max-w-md mx-auto">Your details and documents have been successfully uploaded for ICAPST 2026.</p>
+            <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
+                <button onclick="handleLogout()" class="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded-lg transition-all cursor-pointer">
+                    Log Out / Update Again
+                </button>
+                <a href="../index.html" class="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all inline-block">
+                    Return to Home
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        const WEB_APP_URL = "https://script.google.com/macros/s/AKfycby-BUWymcSNDz5rmsyUtkSAIHq98quwpUYVw2AHQmCw6XL0N9vr_H96C8RrX2sPgooo/exec";
+
+        function handleLogin() {
+            const email = document.getElementById('loginEmail').value.trim();
+            const abstractId = document.getElementById('loginAbstractId').value.trim();
+            const errorEl = document.getElementById('loginError');
+            const btn = document.getElementById('loginBtn');
+
+            if (!email || !abstractId) {
+                errorEl.textContent = "Please fill in both fields.";
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            btn.textContent = "Verifying...";
+            errorEl.classList.add('hidden');
+
+            fetch(WEB_APP_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify({ action: "login", email, abstractId })
+            })
+            .then(res => res.json())
+            .then(res => {
+                btn.textContent = "Log In";
+                if (res.success) {
+                    populateDashboard(res.data);
+                } else {
+                    errorEl.textContent = res.message || "Invalid Email or Abstract ID combination.";
+                    errorEl.classList.add('hidden'); // Fixed class toggle
+                }
+            })
+            .catch(err => {
+                btn.textContent = "Log In";
+                errorEl.textContent = "Connection failed. Check your Web App deployment URL.";
+                errorEl.classList.remove('hidden');
+            });
+        }
+
+        function populateDashboard(data) {
+            document.getElementById('loginSection').classList.add('hidden');
+            document.getElementById('thankYouSection').classList.add('hidden');
+            document.getElementById('dashboardSection').classList.remove('hidden');
+
+            document.getElementById('dispFullName').textContent = data.fullName;
+            document.getElementById('fName').textContent = data.fullName;
+            document.getElementById('fEmail').textContent = data.email;
+	    // Prepend '+' if the country code from the sheet doesn't already have it
+	    let formattedCode = data.countryCode ? (data.countryCode.toString().startsWith("+") ? data.countryCode : "+" + data.countryCode) : "";
+	    document.getElementById('fMobile').textContent = `${formattedCode} ${data.mobileNumber}`;
+            document.getElementById('fAffiliation').textContent = data.affiliation;
+            document.getElementById('fCategory').textContent = data.category;
+            document.getElementById('fRole').textContent = data.role;
+            document.getElementById('fAbstractId').textContent = data.abstractId;
+            document.getElementById('fTrack').textContent = data.conferenceTrack;
+            document.getElementById('fTitle').textContent = data.abstractTitle;
+
+            document.getElementById('rowIndex').value = data.rowIndex;
+            document.getElementById('hiddenAbstractId').value = data.abstractId;
+            document.getElementById('presentingAuthor').value = data.presentingAuthor;
+            document.getElementById('journalPreference').value = data.journalPreference;
+        }
+
+        function handleLogout() {
+            document.getElementById('dashboardSection').classList.add('hidden');
+            document.getElementById('thankYouSection').classList.add('hidden');
+            document.getElementById('loginSection').classList.remove('hidden');
+            document.getElementById('submissionForm').reset();
+            document.getElementById('paperStatus').textContent = "";
+            document.getElementById('plagiarismStatus').textContent = "";
+            document.getElementById('loginEmail').value = "";
+            document.getElementById('loginAbstractId').value = "";
+        }
+
+        // Helper function to convert a File object to Base64 safely
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => resolve({
+                    name: file.name,
+                    mimeType: file.type,
+                    data: reader.result.split(',')[1]
+                });
+                reader.onerror = error => reject(error);
+            });
+        }
+
+        function processFile(input, maxMB) {
+            const file = input.files[0];
+            const statusEl = document.getElementById(input.id + 'Status');
+            
+            if (!file) return;
+
+            if (file.size > maxMB * 1024 * 1024) {
+                alert(`File size exceeds the limit of ${maxMB}MB.`);
+                input.value = "";
+                statusEl.textContent = "";
+                return;
+            }
+
+            statusEl.textContent = "✓ Ready: " + file.name;
+        }
+
+        async function handleFormSubmit(e) {
+            e.preventDefault();
+
+            const paperInput = document.getElementById('paperFile');
+            const plagInput = document.getElementById('plagiarismFile');
+
+            if (!paperInput.files[0] || !plagInput.files[0]) {
+                alert("Both Full Length Paper and Plagiarism Certificate files are required.");
+                return;
+            }
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Processing files, please wait...";
+
+            try {
+                // Convert files to base64 right at submission time
+                const paperPayload = await fileToBase64(paperInput.files[0]);
+                const plagPayload = await fileToBase64(plagInput.files[0]);
+
+                submitBtn.textContent = "Uploading Files & Saving...";
+
+                const payload = {
+                    action: "submit",
+                    rowIndex: document.getElementById('rowIndex').value,
+                    abstractId: document.getElementById('hiddenAbstractId').value,
+                    presentingAuthor: document.getElementById('presentingAuthor').value,
+                    journalPreference: document.getElementById('journalPreference').value,
+                    paperFile: paperPayload,
+                    plagiarismFile: plagPayload
+                };
+
+                await fetch(WEB_APP_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Save and Upload Documents";
+                document.getElementById('dashboardSection').classList.add('hidden');
+                document.getElementById('thankYouSection').classList.remove('hidden');
+
+            } catch (err) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Save and Upload Documents";
+                alert("Error processing files: " + err.message);
+            }
+        }
+    </script>
+</body>
+</html>
