@@ -264,16 +264,57 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
   max-width:100%;
   margin:50px auto;
   text-align:center;
+  padding: 0 20px;
 }
 
-.sponsor-images img{
+/* Flex container to hold logos side-by-side and wrap on smaller screens */
+.sponsor-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Individual sponsor card link styling */
+.sponsor-card {
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Yellow background box styling */
+.yellow-box {
+  background-color: #fff3cd; /* Light yellow background */
+  border: 1px solid #ffeeba;
+  padding: 15px;
+  border-radius: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Subtle hover effect for interactivity */
+.yellow-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Uniform image sizing to keep logos balanced */
+.yellow-box img {
+  width: 250px;       /* Adjust this value based on your preferred logo size */
+  height: 120px;      /* Fixed height ensures uniform layout alignment */
+  object-fit: contain;/* Prevents image distortion */
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+/*.sponsor-images img{
   display:block;
   margin:0 auto 25px auto;
   border-radius:20px;
-}
+}*/
 
 /* SPONSOR IMAGE WITH OVERLAY TEXT */
-.sponsor-overlay{
+/*.sponsor-overlay{
   position:relative;
   display:inline-block;
   max-width:100%;
@@ -284,10 +325,10 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
   width:100%;
   border-radius:20px;
   display:block;
-}
+}*/
 
 /* TEXT ON IMAGE */
-.sponsor-text{
+/*.sponsor-text{
   position:absolute;
   top:0;
   left:0;
@@ -304,7 +345,7 @@ p, ul, ol, table, .tab-inner, .about-block, .card{
   flex-direction:column;
   justify-content:center;
   text-align:center;
-}
+}*/
 
 /* HERO welcome text - plain yellow, no box */
 .hero-welcome{
@@ -811,6 +852,19 @@ h2{
   font-size: 15px;
   font-weight: bold;
   padding-right: 80px;  /* gap between repetitions */
+}
+
+.marquee-track-2 {
+  display: inline-block;
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.marquee-text-2 {
+  display: inline-block;
+  color: #0c5460; /* Optional: changed color to distinguish it */
+  font-size: 15px;
+  font-weight: bold;
+  padding-right: 80px;
 }
 
 @keyframes marquee-scroll{
