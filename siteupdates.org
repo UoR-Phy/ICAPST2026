@@ -3,7 +3,7 @@
 *** call for abstract
 - submission date is changed
 *** Home
--conference flyer is updated
+- conference flyer is updated
 ** 2 July (updated)
 *** Speaker
 - please add following speakers
@@ -77,13 +77,15 @@ Insert a text box and write
 - flyer is again updated
 
 
-** 30 July
-- add at home page as discussed. 
--"Funding and Support: The organizers gratefully acknowledge the financial support of the Anusandhan National Research Foundation (ANRF), Government of India, and the support of the Department of Science & Technology, Government of Rajasthan, Jaipur, for ICAPST 2026" Put this in the scroll menu. 
+** 30 July (updated)
+- add at home page as discussed. Put this in the scroll menu.
+#+BEGIN_QUOTE
+Funding and Support: The organizers gratefully acknowledge the financial support of the Anusandhan National Research Foundation (ANRF), Government of India, and the support of the Department of Science & Technology, Government of Rajasthan, Jaipur, for ICAPST 2026
+#+END_QUOTE 
 - Change "Supported by" with "Funding and Support" Add logo ANRF before DST logo (Please change DST logo of high resolution) 
 
-
-
+** 31 July
+- Updated file names on proceedings thank you screen. 
 
 
 
