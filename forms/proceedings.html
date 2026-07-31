@@ -142,6 +142,20 @@
             <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto text-2xl font-bold">✓</div>
             <h2 class="text-2xl font-bold text-slate-900">Submission Successful!</h2>
             <p class="text-slate-600 max-w-md mx-auto">Your details and documents have been successfully uploaded for ICAPST 2026.</p>
+            
+            <!-- Uploaded Files Summary Box -->
+            <div class="max-w-md mx-auto bg-slate-50 p-4 rounded-xl border border-slate-200 text-left space-y-2 mt-4">
+                <h3 class="text-sm font-semibold text-slate-700 border-b pb-1">Uploaded Files Summary:</h3>
+                <div class="text-xs text-slate-600 flex justify-between">
+                    <span class="font-medium">Full Length Paper:</span>
+                    <span id="summaryPaperFile" class="font-mono text-slate-800"></span>
+                </div>
+                <div class="text-xs text-slate-600 flex justify-between">
+                    <span class="font-medium">Plagiarism Certificate:</span>
+                    <span id="summaryPlagFile" class="font-mono text-slate-800"></span>
+                </div>
+            </div>
+
             <div class="pt-4 flex flex-col sm:flex-row justify-center gap-3">
                 <button onclick="handleLogout()" class="px-6 py-2 bg-slate-200 hover:bg-slate-300 text-slate-700 font-medium rounded-lg transition-all cursor-pointer">
                     Log Out / Update Again
@@ -185,7 +199,7 @@
                     populateDashboard(res.data);
                 } else {
                     errorEl.textContent = res.message || "Invalid Email or Abstract ID combination.";
-                    errorEl.classList.add('hidden'); // Fixed class toggle
+                    errorEl.classList.add('hidden');
                 }
             })
             .catch(err => {
@@ -203,9 +217,10 @@
             document.getElementById('dispFullName').textContent = data.fullName;
             document.getElementById('fName').textContent = data.fullName;
             document.getElementById('fEmail').textContent = data.email;
-	    // Prepend '+' if the country code from the sheet doesn't already have it
-	    let formattedCode = data.countryCode ? (data.countryCode.toString().startsWith("+") ? data.countryCode : "+" + data.countryCode) : "";
-	    document.getElementById('fMobile').textContent = `${formattedCode} ${data.mobileNumber}`;
+            
+            let formattedCode = data.countryCode ? (data.countryCode.toString().startsWith("+") ? data.countryCode : "+" + data.countryCode) : "";
+            document.getElementById('fMobile').textContent = `${formattedCode} ${data.mobileNumber}`;
+            
             document.getElementById('fAffiliation').textContent = data.affiliation;
             document.getElementById('fCategory').textContent = data.category;
             document.getElementById('fRole').textContent = data.role;
@@ -230,7 +245,6 @@
             document.getElementById('loginAbstractId').value = "";
         }
 
-        // Helper function to convert a File object to Base64 safely
         function fileToBase64(file) {
             return new Promise((resolve, reject) => {
                 const reader = new FileReader();
@@ -276,7 +290,6 @@
             submitBtn.textContent = "Processing files, please wait...";
 
             try {
-                // Convert files to base64 right at submission time
                 const paperPayload = await fileToBase64(paperInput.files[0]);
                 const plagPayload = await fileToBase64(plagInput.files[0]);
 
@@ -298,6 +311,10 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
                 });
+
+                // Display file names on Thank You section
+                document.getElementById('summaryPaperFile').textContent = paperInput.files[0].name;
+                document.getElementById('summaryPlagFile').textContent = plagInput.files[0].name;
 
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Save and Upload Documents";
