@@ -143,16 +143,18 @@
             <h2 class="text-2xl font-bold text-slate-900">Submission Successful!</h2>
             <p class="text-slate-600 max-w-md mx-auto">Your details and documents have been successfully uploaded for ICAPST 2026.</p>
             
-            <!-- Uploaded Files Summary Box -->
-            <div class="max-w-md mx-auto bg-slate-50 p-4 rounded-xl border border-slate-200 text-left space-y-2 mt-4">
-                <h3 class="text-sm font-semibold text-slate-700 border-b pb-1">Uploaded Files Summary:</h3>
-                <div class="text-xs text-slate-600 flex justify-between">
+            <!-- Uploaded Files Summary & Preview Links Box -->
+            <div class="max-w-md mx-auto bg-slate-50 p-4 rounded-xl border border-slate-200 text-left space-y-3 mt-4">
+                <h3 class="text-sm font-semibold text-slate-700 border-b pb-1">Uploaded Files Preview & Links:</h3>
+                
+                <div class="text-xs text-slate-600 flex justify-between items-center">
                     <span class="font-medium">Full Length Paper:</span>
-                    <span id="summaryPaperFile" class="font-mono text-slate-800"></span>
+                    <a id="summaryPaperLink" href="#" target="_blank" class="font-mono text-blue-600 hover:underline truncate max-w-[200px]" title="Preview/Download File"></a>
                 </div>
-                <div class="text-xs text-slate-600 flex justify-between">
+                
+                <div class="text-xs text-slate-600 flex justify-between items-center">
                     <span class="font-medium">Plagiarism Certificate:</span>
-                    <span id="summaryPlagFile" class="font-mono text-slate-800"></span>
+                    <a id="summaryPlagLink" href="#" target="_blank" class="font-mono text-blue-600 hover:underline truncate max-w-[200px]" title="Preview/Download File"></a>
                 </div>
             </div>
 
@@ -290,8 +292,11 @@
             submitBtn.textContent = "Processing files, please wait...";
 
             try {
-                const paperPayload = await fileToBase64(paperInput.files[0]);
-                const plagPayload = await fileToBase64(plagInput.files[0]);
+                const paperFileObj = paperInput.files[0];
+                const plagFileObj = plagInput.files[0];
+
+                const paperPayload = await fileToBase64(paperFileObj);
+                const plagPayload = await fileToBase64(plagFileObj);
 
                 submitBtn.textContent = "Uploading Files & Saving...";
 
@@ -312,9 +317,17 @@
                     body: JSON.stringify(payload)
                 });
 
-                // Display file names on Thank You section
-                document.getElementById('summaryPaperFile').textContent = paperInput.files[0].name;
-                document.getElementById('summaryPlagFile').textContent = plagInput.files[0].name;
+                // Generate Object URLs for local preview / downloading on the Thank You page
+                const paperUrl = URL.createObjectURL(paperFileObj);
+                const plagUrl = URL.createObjectURL(plagFileObj);
+
+                const paperLinkEl = document.getElementById('summaryPaperLink');
+                paperLinkEl.textContent = paperFileObj.name;
+                paperLinkEl.href = paperUrl;
+
+                const plagLinkEl = document.getElementById('summaryPlagLink');
+                plagLinkEl.textContent = plagFileObj.name;
+                plagLinkEl.href = plagUrl;
 
                 submitBtn.disabled = false;
                 submitBtn.textContent = "Save and Upload Documents";
