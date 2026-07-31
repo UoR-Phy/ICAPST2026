@@ -87,7 +87,9 @@ Funding and Support: The organizers gratefully acknowledge the financial support
 ** 31 July
 - Updated file names on proceedings thank you screen. 
 
-
+** 31 July
+- logo file uploaded and updated
+- marrque minor chages are made
 
 
 * June 2026
