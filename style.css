@@ -861,8 +861,8 @@ h2{
 
 .marquee-text-2 {
   display: inline-block;
-  color: #0c5460; /* Optional: changed color to distinguish it */
-  font-size: 25px;
+  color: #000080; /* Optional: changed color to distinguish it */
+  font-size: 20px;
   font-weight: bold;
   padding-right: 80px;
 }
