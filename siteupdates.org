@@ -1,3 +1,5 @@
+* August 2026
+
 * July 2026
 ** 1 July (updated)
 *** call for abstract
@@ -84,13 +86,10 @@ Funding and Support: The organizers gratefully acknowledge the financial support
 #+END_QUOTE 
 - Change "Supported by" with "Funding and Support" Add logo ANRF before DST logo (Please change DST logo of high resolution) 
 
-** 31 July
+** 31 July (done)
 - Updated file names on proceedings thank you screen. 
-
-** 31 July
 - logo file uploaded and updated
-- marrque minor chages are made
-
+- marquee minor chages are made
 
 * June 2026
 ** 6 June 2026 (completed)
