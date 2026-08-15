@@ -1,22 +1,22 @@
 * August 2026
-** 4 Aug. 
-- Call for Abstract 
+** 4 Aug (done)
+*** Call for Abstract 
 - "Abstract Submission" please replace "Submission by Speakers" from "Submit Abstract" and add its link. 
 - please replace "Submission by presneter" from "Submit Full-length Paper" and add corronsponding link
 
-** 14 Aug.
-- Others
+** 14 Aug (done)
+*** Others
 - Please note that I have added information in accomodation and changed details in reach us
-- Home
+*** Home
 - Please note I have changed details in reach us
-- registration link
+*** registration link
 - "Cambridge Prisms: Energy Transitions" journal publication option is added.
-- Please update this journal on conference site at home in journal puclication as well as in call for abstract.
+- (updated) Please update this journal on conference site at home in journal puclication as well as in call for abstract.
 
-** 15 aug
+** 15 Aug (done)
 - I have updated journal informaiton in "call for abstract"
 - Home: New journal have added in conference attraction.
-- Pending work: The new journal logo and link need to be update in journal publicaition. 
+- (updated) Pending work: The new journal logo and link need to be update in journal publicaition. 
 
 
 * July 2026
