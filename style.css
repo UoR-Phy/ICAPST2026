@@ -843,7 +843,7 @@ h2{
 
 .marquee-track{
   display: inline-block;
-  animation: marquee-scroll 20s linear infinite;
+  animation: marquee-scroll 45s linear infinite;
 }
 
 .marquee-text{
