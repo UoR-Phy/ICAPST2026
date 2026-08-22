@@ -18,15 +18,18 @@
 - Home: New journal have added in conference attraction.
 - (updated) Pending work: The new journal logo and link need to be update in journal publicaition. 
 
-** 18 aug
+** 18 Aug (done)
 - Dr. Harphool kumawat is added in advisory commitee and updated
 - conference flyer is updated for the same purpose. 
 
-** 20 Aug. 
+** 20 Aug (done)
 - abstract submission date extended
 
-** 22 Aug.
--Rgistration: spelling error removed. 
+** 21 Aug (updated)
+- Update marquee text for submission deadline and publication info
+
+** 22 Aug
+- Rgistration: spelling error removed. 
 
 
 * July 2026
