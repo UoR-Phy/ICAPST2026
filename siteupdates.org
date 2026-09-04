@@ -1,3 +1,7 @@
+* September 2026
+** 4 Sept
+- Abstract submission closed, all links are removed. Only submission form is still there if someone have saved the link
+
 * August 2026
 ** 4 Aug (done)
 *** Call for Abstract 
@@ -28,17 +32,16 @@
 ** 21 Aug (updated)
 - Update marquee text for submission deadline and publication info
 
-** 22 Aug
+** 22 Aug (done)
 - Rgistration: spelling error removed. 
 
-** 25 Aug
+** 25 Aug (done)
 -Full lenght paper submission date is extended till 15 September
 
-** 28 Aug
+** 28 Aug (done)
 - following changes are made: Abstract submission date extended 30 Aug.
 - abstract acceptance notification 03 Sept
 - Early bird registration 05 Sept. 
-
 
 * July 2026
 ** 1 July (updated)
