@@ -1,6 +1,8 @@
 * September 2026
-** 4 Sept
+** 4 Sept (updated)
 - Abstract submission closed, all links are removed. Only submission form is still there if someone have saved the link
+** 5 Sept
+- Update modify publication options in speaker abstract submission form
 
 * August 2026
 ** 4 Aug (done)
