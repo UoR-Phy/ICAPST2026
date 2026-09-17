@@ -100,7 +100,7 @@ window.onload = function() { document.getElementById('btn-others').classList.add
     <p>Please email the conference team with the subject "Visa Assistance" to request your official invitation letter for your visa. We'll get back to you within 5 working days. If you need urgent help, feel free to reach out to the Visa and Travel Assistance Team.</p>
   </div>
 
-  <!-- ACCOMMODATION -->
+  <!-- ACCOMMODATION --><!--
   <h2>Accommodation</h2>
   <div class="three-col">
     <div class="info-card">
@@ -120,7 +120,115 @@ window.onload = function() { document.getElementById('btn-others').classList.add
       <div class="info-card-heading">Option 4: Hotels</div>
       <div class="info-card-body">Accommodation in nearby hotels is available for conference attendees seeking additional comfort and amenities. A range of hotels, from budget to premium, is located close to the conference venue. Participants are encouraged to make their reservations directly with the hotels at the earliest.<br><br><strong>Tariff:</strong> Mid-range hotels: $25–$50 per night &amp; Premium hotels: $50–$100+ per night</div>
     </div>
-  </div>
+  </div>-->
+<h2>Accommodation</h2>  
+<div class="three-col">    
+    <!-- Option 1 -->
+    <div class="info-card">      
+        <div class="info-card-heading">Option 1: University Main Guest House</div>      
+        <div class="info-card-body">Accommodation at the University Guest House is provided for conference speakers only. Located on campus, it offers easy access to all conference activities. The guest house features clean, comfortable rooms with basic facilities at affordable rates.<br><br><strong>Tariff:</strong> Approximately ₹1500 per room per night</div>    
+    </div>    
+    
+    <!-- Option 2 -->
+    <div class="info-card">      
+        <div class="info-card-heading">Option 2: Dera Shree Shadan</div>      
+        <div class="info-card-body">
+            We offer budget-friendly accommodation at the university campus for student participants. Comfortable rooms with essential facilities are available at student-friendly rates.         
+            <br><br><strong>Tariff:</strong> 
+            <ul>
+                <li>4-sharing room: INR 1,000 per room (<a href="#" onclick="openModal(['pics/DS_1.jpg', 'pics/DS_2.jpg', 'pics/DS_3.jpg']); return false;" style="color: #0645AD; text-decoration: underline;">View Photos</a>)</li>
+                <li>Double occupancy: INR 600 per room (<a href="#" onclick="openModal(['pics/DS_A1.jpg', 'pics/DS_A2.jpg']); return false;" style="color: #0645AD; text-decoration: underline;">View Photos</a>)</li>
+            </ul>
+            <br><strong>For Booking:</strong> Please contact Mr. Praveen Kumar ji at +91-7425992046. Kindly refer to the ICAPST 2026 conference details for booking and mention that you are a conference participant.
+        </div>    
+    </div>      
+    
+    <!-- Option 3 -->
+    <div class="info-card">      
+        <div class="info-card-heading">Option 3: MMTTC Guest House</div>      
+        <div class="info-card-body">
+            Other affordable accommodation is available near the university campus for student participants. Comfortable rooms equipped with basic amenities are offered at economical rates. 
+            <br><br><strong>Tariff:</strong> Double occupancy: INR 800 per room 
+            <br><a href="#" onclick="openModal(['pics/MMTTC_1.jpg', 'pics/MMTTC_2.jpg', 'pics/MMTTC_3.jpg', 'pics/MMTTC_4.jpg']); return false;" style="color: #0645AD; text-decoration: underline; font-weight: bold;">View MMTTC Guest House Photos</a>
+            <br><br>For its booking, our team will contact you based on the preference indicated in the registration form
+        </div>    
+    </div>    
+    
+    <!-- Option 4 -->
+    <div class="info-card">      
+        <div class="info-card-heading">Option 4: Hotels</div>      
+        <div class="info-card-body">Accommodation in nearby hotels is available for conference attendees seeking additional comfort and amenities. A range of hotels, from budget to premium, is located close to the conference venue. Participants are encouraged to make their reservations directly with the hotels at the earliest.<br><br><strong>Tariff:</strong> Mid-range hotels: $25–$50 per night &amp; Premium hotels: $50–$100+ per night</div>    
+    </div>  
+</div>
+
+<!-- Image Gallery Modal Popup Container -->
+<div id="imageModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); text-align:center; padding-top:40px;">
+    <span onclick="closeModal()" style="position:absolute; top:15px; right:30px; color:#fff; font-size:45px; font-weight:bold; cursor:pointer;">&times;</span>
+    <p style="color: #ddd; font-size: 14px; margin-bottom: 10px;">Click on any picture to view it fully zoomed (Press Esc to close)</p>
+    <div id="modalImagesContainer" style="display:flex; flex-wrap:wrap; justify-content:center; gap:15px; max-width:90%; margin:auto; overflow-y:auto; max-height:80vh; padding:10px;"></div>
+</div>
+
+<!-- Full Screen Zoom Modal Container -->
+<div id="zoomModal" style="display:none; position:fixed; z-index:10000; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); text-align:center; align-items:center; justify-content:center;">
+    <span onclick="closeZoom()" style="position:absolute; top:20px; right:35px; color:#fff; font-size:50px; font-weight:bold; cursor:pointer;">&times;</span>
+    <img id="zoomedImage" src="" style="max-width:90%; max-height:90vh; border-radius:4px; box-shadow: 0 0 20px rgba(255,255,255,0.2);">
+</div>
+
+<script>
+function openModal(imgUrls) {
+    const container = document.getElementById('modalImagesContainer');
+    container.innerHTML = '';
+    imgUrls.forEach(url => {
+        const img = document.createElement('img');
+        img.src = url;
+        img.style.height = '200px';
+        img.style.width = 'auto';
+        img.style.objectFit = 'cover';
+        img.style.borderRadius = '6px';
+        img.style.border = '2px solid white';
+        img.style.cursor = 'pointer';
+        img.style.transition = 'transform 0.2s';
+        
+        img.onmouseover = () => img.style.transform = 'scale(1.03)';
+        img.onmouseout = () => img.style.transform = 'scale(1)';
+
+        img.onclick = () => openZoom(url);
+        
+        container.appendChild(img);
+    });
+    document.getElementById('imageModal').style.display = 'block';
+}
+
+function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+}
+
+function openZoom(url) {
+    document.getElementById('zoomedImage').src = url;
+    document.getElementById('zoomModal').style.display = 'flex';
+}
+
+function closeZoom() {
+    document.getElementById('zoomModal').style.display = 'none';
+}
+
+// Global listener for the Esc key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        // If zoom modal is open, close it first
+        const zoomModal = document.getElementById('zoomModal');
+        if (zoomModal.style.display === 'flex') {
+            closeZoom();
+            return;
+        }
+        // Otherwise, close the main image gallery modal if it's open
+        const imageModal = document.getElementById('imageModal');
+        if (imageModal.style.display === 'block') {
+            closeModal();
+        }
+    }
+});
+</script>
 
   <!-- REACH US -->
   <h2 id="reach-us">Reach Us</h2>

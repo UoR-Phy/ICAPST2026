@@ -754,6 +754,11 @@ h3.purple-h3{
   line-height: 1.6;
   text-align: left;
 }
+.info-card-body ul {
+  margin: 5px 0 10px 15px;
+  padding: 0;
+  list-style-type: disc;
+}
 
 /* TRAVEL PAGE - image left, text right */
 .travel-box{
