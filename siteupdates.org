@@ -4,6 +4,16 @@
 ** 5 Sept
 - Update modify publication options in speaker abstract submission form
 
+** 16 sept
+- Sanjeev please delt accomodation photos from main page, uploaded by mistake
+- Add 4 photos "MMTTC_1 to MMTTC_4" in one link and provide this link in "Option 3: MMTTC Guest House" 
+- change "Tariff: Double Occupancy – INR 800 per room; View Accommodation: Click here to view; For Booking: Please contact Mr. Vikram Ji at +91-8107877485. Kindly refer to the ICAPST 2026 conference details for booking and mention that you are a conference participant.
+- add 3 photos "DS_1, DS_2 and DS_3 in a single link, provide view accomodaiton after "4-sharing room: INR 1,000 per room" in Option 2: Dera Shree Shadan
+- add 2 phtots "DS_A1 and DS_A2" in a single link, provide view accomodaiton after "Double occupancy: INR 600 per room" in Option 2: Dera Shree Shadan
+- in Option 2: Dera Shree Shadan, change "For its booking, our team will contact you based on the preference indicated in the registration form" from "For Booking: Please contact Mr. Praveen Kumar ji at +91-7425992046. Kindly refer to the ICAPST 2026 conference details for booking and mention that you are a conference participant.
+
+
+
 * August 2026
 ** 4 Aug (done)
 *** Call for Abstract 
