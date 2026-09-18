@@ -1,11 +1,11 @@
 * September 2026
 ** 4 Sept (updated)
 - Abstract submission closed, all links are removed. Only submission form is still there if someone have saved the link
-** 5 Sept
+** 5 Sept (updated)
 - Update modify publication options in speaker abstract submission form
 
-** 16 sept
-- Sanjeev please delt accomodation photos from main page, uploaded by mistake
+** 16 Sept (updated)
+- Please delete accomodation photos from main repository, uploaded by mistake
 - Add 4 photos "MMTTC_1 to MMTTC_4" in one link and provide this link in "Option 3: MMTTC Guest House" 
 - change "Tariff: Double Occupancy – INR 800 per room; View Accommodation: Click here to view; For Booking: Please contact Mr. Vikram Ji at +91-8107877485. Kindly refer to the ICAPST 2026 conference details for booking and mention that you are a conference participant.
 - add 3 photos "DS_1, DS_2 and DS_3 in a single link, provide view accomodaiton after "4-sharing room: INR 1,000 per room" in Option 2: Dera Shree Shadan
