@@ -56,7 +56,7 @@
         .wm-indigo { transform: rotate(-25deg); opacity: 0.15; color: #2b3a67; }
         .wm-teal   { transform: rotate(-15deg); opacity: 0.16; color: #145c63; }
         .wm-steel  { transform: rotate(-22deg); opacity: 0.18; color: #1a5276; }
-                
+                        
         .form-container {
             max-width: 700px;
             margin: 30px auto;
@@ -143,8 +143,6 @@
         .radio-option input {
             margin-right: 10px;
         }
-        
-        /* Clean alignment layout for the declaration checkbox wrapper */
         .declaration-option {
             display: block;
             position: relative;
@@ -164,7 +162,6 @@
             color: #e53e3e;
             font-weight: bold;
         }
-
         .phone-container, .amount-container {
             display: flex;
             gap: 10px;
@@ -236,7 +233,6 @@
         .submit-btn:hover:not(:disabled) {
             background-color: #2b6cb0;
         }
-        /* Success Page Layout Styling */
         .success-wrapper {
             text-align: center;
             padding: 40px 20px;
@@ -262,21 +258,28 @@
     </style>
 </head>
 <body>
-
 <div class="bg-watermark-container">
     <div class="wm-item wm-navy"><div class="wm-title">ICAPST 2026</div><div class="wm-sub">International Conference on Advances in Physical Sciences</div></div>
     <div class="wm-item wm-indigo"><div class="wm-title" style="font-size: 22px;">ICAPST 2026</div><div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences</div></div>
     <div class="wm-item wm-teal"><div class="wm-title">ICAPST 2026</div><div class="wm-sub">International Conference on Advances in Physical Sciences</div></div>
     <div class="wm-item wm-steel"><div class="wm-title" style="font-size: 25px;">ICAPST 2026</div><div class="wm-sub" style="font-size: 11px;">International Conference on Advances in Physical Sciences</div></div>
 </div>
-
 <div class="form-container" id="mainContentContainer">
     <div class="top-nav">← <a class="info-link" href="../index.html">Go to Main Website</a></div>
     <h1>ICAPST 2026 – Registration Details</h1>
     <div class="intro-text">
-        Thank you for registering for the International Conference on Advances in Physical Sciences & Technologies (ICAPST 2026). Kindly submit your payment details and upload the payment receipt for verification. Your registration will be confirmed after successful verification of the payment. Please check <a class="info-link" href="../registration.html" target="_blank">for fee and other details</a>.
+        Thank you for your interest in ICAPST 2026. Please fill out your details below. For standard pre-registrations, submit your payment details and upload your receipt. For <strong>On-the-Spot Registrations</strong>, late payment fees apply and payment must be made <strong>in cash only</strong> at the registration desk. Please check <a class="info-link" href="../registration.html" target="_blank">for fee and other details</a>.
     </div>
     <form id="registrationForm">
+        <!-- Registration Mode Selection -->
+        <div class="form-group">
+            <label>Registration Type <span>*</span></label>
+            <div class="radio-group">
+                <label class="radio-option"><input type="radio" name="reg_mode" value="Standard" checked required onchange="toggleRegistrationMode(this)"> Standard Registration (Pre-paid / Online)</label>
+                <label class="radio-option"><input type="radio" name="reg_mode" value="On-the-Spot" onchange="toggleRegistrationMode(this)"> On-the-Spot Registration (Late Fee / Cash Only)</label>
+            </div>
+        </div>
+
         <!-- Full Name -->
         <div class="form-group">
             <label for="fullname">Full Name <span>*</span></label>
@@ -331,19 +334,16 @@
                 <label for="abstract_id">Abstract ID <span>*</span></label>
                 <input type="text" id="abstract_id" name="abstract_id" required placeholder="ICAPST-2026-EAS-123456" pattern="^ICAPST-2026-[A-Za-z]{3,4}-[0-9]+$" title="Format must match style: ICAPST-2026-XXXX-123456 or ICAPST-2026-EAS-123456" oninput="validateAndAutoDetectTrack(this)">
             </div>
-
             <!-- Abstract Title -->
             <div class="form-group">
                 <label for="abstract_title">Abstract Title <span>*</span></label>
                 <input type="text" id="abstract_title" name="abstract_title" required placeholder="Enter abstract title">
             </div>
-
             <!-- Presenting Author -->
             <div class="form-group">
                 <label for="presenting_author">Presenting Author <span>*</span></label>
                 <input type="text" id="presenting_author" name="presenting_author" required placeholder="Enter presenting author's name">
             </div>
-
             <!-- Conference Track -->
             <div class="form-group">
                 <label for="track">Conference Track <span>*</span></label>
@@ -357,7 +357,6 @@
                     <option value="EAS">EAS: Environmental & Agricultural Systems</option>
                 </select>
             </div>
-
             <!-- Journal preference (Optional) -->
             <div class="form-group">
                 <label>Journal preference <span style="font-weight: normal; font-size: 13px; color: #718096;">(Optional - Click selected option to remove)</span></label>
@@ -367,8 +366,6 @@
                     <label class="radio-option"><input type="radio" name="journal" value="Physica Status Solidi B"> Physica Status Solidi B (Wiley)</label>
                     <label class="radio-option"><input type="radio" name="journal" value="Solar compass"> Solar compass (Elsevier)</label>
                     <label class="radio-option"><input type="radio" name="journal" value="Cambridge Prisms: Energy Transitions"> Cambridge Prisms: Energy Transitions (Cambridge University Press)</label>
-                    <!--<label class="radio-option"><input type="radio" name="journal" value="Springer Proceedings in Physics"> Springer Proceedings in Physics (Springer Nature)</label>
-                    <label class="radio-option"><input type="radio" name="journal" value="AIP Conference Proceedings"> AIP Conference Proceedings</label>-->
                 </div>
             </div>
         </div>
@@ -392,7 +389,7 @@
         </div>
 
         <!-- Date of Payment -->
-        <div class="form-group">
+        <div class="form-group" id="payment_date_group">
             <label for="payment_date_display">Date of Payment <span>*</span></label>
             <div class="date-picker-wrapper">
                 <input type="text" id="payment_date_display" name="payment_date" required placeholder="dd/mm/yyyy" pattern="^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[012])\/(19|20)\d\d$" title="Please ensure value matches the format: dd/mm/yyyy">
@@ -403,9 +400,9 @@
 
         <!-- Paid Amount -->
         <div class="form-group">
-            <label for="amountInput">Paid Amount <span>*</span></label>
+            <label for="amountInput">Paid Amount / Payable Fee <span id="fee_mode_label"></span> <span>*</span></label>
             <span class="fee-hint">👉 <a class="info-link" href="../registration.html" target="_blank">Click here to view the full registration fee structure</a></span>
-            <span class="fee-hint">👉 <a class="info-link" href="../registration.html#payment-mode" target="_blank">Click here for payment modes.</a></span>
+            <span class="fee-hint" id="payment_mode_hint">👉 <a class="info-link" href="../registration.html#payment-mode" target="_blank">Click here for payment modes.</a></span>
             <div class="amount-container">
                 <select id="currencySelect" name="currency" required>
                     <option value="INR">₹</option>
@@ -416,13 +413,13 @@
         </div>
 
         <!-- Transaction/Reference Number -->
-        <div class="form-group">
+        <div class="form-group" id="transaction_group">
             <label for="transaction_id">Transaction/Reference Number <span>*</span></label>
             <input type="text" id="transaction_id" name="transaction_id" required placeholder="Enter reference number">
         </div>
 
         <!-- Upload Receipt -->
-        <div class="form-group">
+        <div class="form-group" id="receipt_group">
             <label for="receipt">Upload Receipt <span>*</span></label>
             <input type="file" id="receipt" name="receipt" required accept=".pdf,.jpg,.jpeg,.png" onchange="validateFileSize(this)">
             <span class="file-help">Upload 1 supported file (PDF, JPG, PNG). Max 1 MB.</span>
@@ -433,43 +430,66 @@
         <!-- Declaration -->
         <div class="form-group">
             <label class="declaration-option">
-                <input type="checkbox" name="declaration" required> 
-                <strong>Declaration</strong> – I certify that the information provided above is correct and that the uploaded payment receipt is authentic. <span>*</span>
+                <input type="checkbox" name="declaration" required>                 
+                <strong>Declaration</strong> – I certify that the information provided above is correct and that the payment details provided are authentic. <span>*</span>
             </label>
         </div>
-
         <button type="submit" id="submitBtn" class="submit-btn">Submit Registration</button>
     </form>
 </div>
 
 <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxafbLj3l9hjubBsSeCySplbhiuBRxPnHFJbqpka0Myw94W7fVGNEWrM8w6BM8nuH2s/exec";
-
+    
     const PRICING = {
-        "Indian and SAARC": {
-            currency: "INR",
-            tourFee: 1500,
-            roles: {
-                "Scholars/Students": 3000,
-                "Postdoc/Faculty": 3500,
-                "Industry person": 4500,
-                "Attendees/Accompany": 2000
+        "Standard": {
+            "Indian and SAARC": {
+                currency: "INR",
+                tourFee: 1500,
+                roles: {
+                    "Scholars/Students": 2500,
+                    "Postdoc/Faculty": 3000,
+                    "Industry person": 4000,
+                    "Attendees/Accompany": 1500
+                }
+            },
+            "Foreign": {
+                currency: "USD",
+                tourFee: 20,
+                roles: {
+                    "Scholars/Students": 150,
+                    "Postdoc/Faculty": 250,
+                    "Industry person": 350,
+                    "Attendees/Accompany": 100
+                }
             }
         },
-        "Foreign": {
-            currency: "USD",
-            tourFee: 20,
-            roles: {
-                "Scholars/Students": 200,
-                "Postdoc/Faculty": 300,
-                "Industry person": 400,
-                "Attendees/Accompany": 150
+        "On-the-Spot": {
+            "Indian and SAARC": {
+                currency: "INR",
+                tourFee: 1500,
+                roles: {
+                    "Scholars/Students": 3500,
+                    "Postdoc/Faculty": 4000,
+                    "Industry person": 5000,
+                    "Attendees/Accompany": 2500
+                }
+            },
+            "Foreign": {
+                currency: "USD",
+                tourFee: 20,
+                roles: {
+                    "Scholars/Students": 250,
+                    "Postdoc/Faculty": 330,
+                    "Industry person": 450,
+                    "Attendees/Accompany": 200
+                }
             }
         }
     };
 
     document.addEventListener("DOMContentLoaded", () => {
-        const triggers = ['input[name="category"]', 'input[name="role"]', 'input[name="city_tour"]'];
+        const triggers = ['input[name="category"]', 'input[name="role"]', 'input[name="city_tour"]', 'input[name="reg_mode"]'];
         triggers.forEach(selector => {
             document.querySelectorAll(selector).forEach(input => {
                 input.addEventListener('change', updateCalculatedAmount);
@@ -492,16 +512,60 @@
         });
     });
 
+    function toggleRegistrationMode(radio) {
+        const isSpot = (radio.value === "On-the-Spot");
+        const transactionGroup = document.getElementById('transaction_group');
+        const receiptGroup = document.getElementById('receipt_group');
+        const paymentDateGroup = document.getElementById('payment_date_group');
+        const paymentModeHint = document.getElementById('payment_mode_hint');
+        const feeModeLabel = document.getElementById('fee_mode_label');
+
+        const txInput = document.getElementById('transaction_id');
+        const receiptInput = document.getElementById('receipt');
+        const dateInput = document.getElementById('payment_date_display');
+
+        if (isSpot) {
+            transactionGroup.style.display = 'none';
+            receiptGroup.style.display = 'none';
+            paymentDateGroup.style.display = 'none';
+            
+            txInput.required = false;
+            receiptInput.required = false;
+            dateInput.required = false;
+
+            txInput.value = "CASH_ON_SITE";
+            receiptInput.value = "";
+
+            paymentModeHint.innerHTML = "👉 <strong>Payment Mode: On-site Cash Only</strong>";
+            feeModeLabel.innerHTML = "(Late Fee Applicable)";
+        } else {
+            transactionGroup.style.display = 'block';
+            receiptGroup.style.display = 'block';
+            paymentDateGroup.style.display = 'block';
+
+            txInput.required = true;
+            receiptInput.required = true;
+            dateInput.required = true;
+
+            txInput.value = "";
+            paymentModeHint.innerHTML = '👉 <a class="info-link" href="../registration.html#payment-mode" target="_blank">Click here for payment modes.</a>';
+            feeModeLabel.innerHTML = "";
+        }
+        updateCalculatedAmount();
+    }
+
     function updateCalculatedAmount() {
+        const regMode = document.querySelector('input[name="reg_mode"]:checked')?.value || "Standard";
         const category = document.querySelector('input[name="category"]:checked')?.value;
         const role = document.querySelector('input[name="role"]:checked')?.value;
         const cityTour = document.querySelector('input[name="city_tour"]:checked')?.value;
 
         if (!category || !role) return; 
+
         const currencySelect = document.getElementById('currencySelect');
         const amountInput = document.getElementById('amountInput');
 
-        const config = PRICING[category];
+        const config = PRICING[regMode][category];
         currencySelect.value = config.currency;
 
         let finalAmount = config.roles[role] || 0;
@@ -526,8 +590,7 @@
 
     function toggleAbstractFields(radioInput) {
         const abstractContainer = document.getElementById('abstract-fields-container');
-        const childInputs = abstractContainer.querySelectorAll('input, select');
-                        
+        const childInputs = abstractContainer.querySelectorAll('input, select');                                
         if (radioInput.value === 'Attendees/Accompany') {
             abstractContainer.style.display = 'none';
             childInputs.forEach(input => { 
@@ -573,7 +636,7 @@
         debounceTimer = setTimeout(() => {
             input.setCustomValidity("Checking database... ⏳");
             input.reportValidity();
-            
+                        
             fetch(`${WEB_APP_URL}?abstractId=${encodeURIComponent(value)}`)
                 .then(res => res.json())
                 .then(data => {
@@ -598,14 +661,24 @@
         }
     }
 
-    function renderSuccessView() {
+    function renderSuccessView(isSpotRegistration, currency, amount) {
         const container = document.getElementById('mainContentContainer');
+        const currencySymbol = currency === "INR" ? "₹" : "US$ ";
+        
+        let successMsgContent = "";
+
+        if (isSpotRegistration) {
+            successMsgContent = `<strong>Thank you for your registration!</strong><br>Your on-the-spot registration for ICAPST 2026 has been successfully recorded. Please proceed to the registration desk to pay your late fee of <strong>${currencySymbol}${amount}</strong> in <strong>cash only</strong>. We look forward to welcoming you to the Department of Physics, University of Rajasthan, Jaipur, from 22–24 October 2026.`;
+        } else {
+            successMsgContent = `<strong>Thank you for your registration!</strong><br>Your registration for ICAPST 2026 has been successfully received. A confirmation email will be sent to you shortly. We look forward to welcoming you to the Department of Physics, University of Rajasthan, Jaipur, from 22–24 October 2026.`;
+        }
+
         container.innerHTML = `
             <div class="success-wrapper">
                 <div class="success-icon">🎉</div>
                 <div class="success-title">Submission Received</div>
                 <div class="success-msg">
-                   <strong>Thank you for your registration!</strong><br>Your registration for ICAPST 2026 has been successfully received. A confirmation email will be sent to you shortly. We look forward to welcoming you to the Department of Physics, University of Rajasthan, Jaipur, from 22–24 October 2026.
+                   ${successMsgContent}
                 </div>
                 <a href="../index.html" class="submit-btn" style="text-decoration: none; display: inline-block; width: auto; padding: 12px 30px;">Return to Homepage</a>
             </div>
@@ -614,7 +687,7 @@
 
     document.getElementById('registrationForm').addEventListener('submit', function(e) {
         e.preventDefault();
-                
+                        
         const submitBtn = document.getElementById('submitBtn');
         submitBtn.disabled = true;
         submitBtn.innerText = "Submitting registration details...";
@@ -623,43 +696,43 @@
         const formObject = {};
         formData.forEach((value, key) => { formObject[key] = value; });
 
+        const regMode = formObject.reg_mode || "Standard";
+        const currency = formObject.currency;
+        const amount = formObject.amount;
         const fileInput = document.getElementById('receipt');
-                
-        if (fileInput.files.length > 0) {
+
+        if (regMode === "Standard" && fileInput.files.length > 0) {
             const file = fileInput.files[0];
             const reader = new FileReader();
-                        
+                                    
             reader.onload = function(eEvent) {
                 formObject.fileData = eEvent.target.result.split(',')[1];
                 formObject.fileMimeType = file.type;
                 const fileExt = file.name.split('.').pop();
-                
-                const currency = formObject.currency; 
-                const amountFilled = formObject.amount;
+                                
                 const roleSelected = formObject.role;
-                
                 const randomFourDigits = Math.floor(1000 + Math.random() * 9000);
                 let processedFileName = "";
 
                 if (roleSelected === "Attendees/Accompany") {
-                    // Strip non-alphanumeric characters from name to keep dynamic storage path clean
                     const sanitizedName = (formObject.fullname || "Guest").replace(/[^a-zA-Z0-9]/g, "");
-                    processedFileName = `${sanitizedName}_${currency}${amountFilled}_receipt-${randomFourDigits}.${fileExt}`;
+                    processedFileName = `${sanitizedName}_${currency}${amount}_receipt-${randomFourDigits}.${fileExt}`;
                 } else {
                     const abstractId = formObject.abstract_id || "Registration";
                     processedFileName = `${abstractId}_receipt-${randomFourDigits}.${fileExt}`;
                 }
 
                 formObject.fileName = processedFileName;
-                sendData(formObject);
+                sendData(formObject, false, currency, amount);
             };
             reader.readAsDataURL(file);
         } else {
-            sendData(formObject);
+            formObject.transaction_id = "CASH_ON_SITE";
+            sendData(formObject, true, currency, amount);
         }
     });
 
-    function sendData(data) {
+    function sendData(data, isSpot, currency, amount) {
         fetch(WEB_APP_URL, {
             method: 'POST',
             mode: 'no-cors',
@@ -667,7 +740,7 @@
             body: JSON.stringify(data)
         })
         .then(() => {
-            renderSuccessView();
+            renderSuccessView(isSpot, currency, amount);
         })
         .catch(err => {
             alert('Submission Error: ' + err.message);
