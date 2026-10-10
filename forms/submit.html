@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICAPST 2026 – Abstract Submission</title>
     <style>
-        :root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; }
+        :root { --primary: #2c3e50; --accent: #3498db; --success: #27ae60; --danger: #e74c3c; }
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f2f5; color: #333; line-height: 1.6; padding: 20px; }
         .container { max-width: 900px; margin: auto; background: #fff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         h1 { color: var(--primary); text-align: center; border-bottom: 3px solid var(--accent); padding-bottom: 15px; margin-bottom: 30px; }
         h3 { background: #f8f9fa; padding: 12px; border-left: 6px solid var(--accent); color: var(--primary); margin-top: 30px; }
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: 600; margin-bottom: 8px; color: #444; }
-        .req { color: #e74c3c; }
+        .req { color: var(--danger); }
         input[type="text"], input[type="email"], input[type="tel"], textarea, select {
             width: 100%; padding: 12px; border: 1.5px solid #ddd;
             border-radius: 6px; box-sizing: border-box; transition: 0.3s; font-size: 14px;
@@ -34,8 +34,8 @@
         .download-box a { color: #d9480f; font-weight: bold; margin: 0 10px; text-decoration: none; }
         .download-box a:hover { text-decoration: underline; }
         .word-counter { font-size: 12px; color: #666; text-align: right; margin-top: 4px; }
-        .word-counter.over { color: #e74c3c; font-weight: bold; }
-        .word-counter.ok   { color: #27ae60; font-weight: bold; }
+        .word-counter.over { color: var(--danger); font-weight: bold; }
+        .word-counter.ok   { color: var(--success); font-weight: bold; }
         .upload-note { font-size: 12px; color: #777; margin-top: 4px; }
         button.submit-btn { background: var(--success); color: white; border: none; padding: 18px; border-radius: 8px; font-size: 18px; font-weight: bold; width: 100%; cursor: pointer; transition: 0.3s; margin-top: 20px; }
         button.submit-btn:hover { background: #219150; transform: translateY(-2px); }
@@ -44,7 +44,7 @@
         .author-section.visible { display: block; }
         .add-author-btn { background: var(--accent); color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; margin-top: 5px; }
         .add-author-btn:hover { background: #2176ae; }
-        .remove-author-btn { background: #e74c3c; color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; float: right; margin-bottom: 10px; }
+        .remove-author-btn { background: var(--danger); color: white; border: none; padding: 6px 14px; border-radius: 6px; cursor: pointer; font-size: 13px; float: right; margin-bottom: 10px; }
         #submissionReport { display: none; text-align: center; animation: fadeIn 0.5s ease; }
         .report-card { text-align: left; background: #fdfdfd; border: 2px dashed #ccc; padding: 25px; margin: 20px 0; border-radius: 8px; }
         .hidden { display: none; }
@@ -54,6 +54,24 @@
 </head>
 <body>
 <div class="container">
+  
+  <!-- CLOSED MESSAGE SECTION -->
+  <div id="closedSection" style="display: none; text-align: center; padding: 30px 10px;">
+    <div style="text-align:center; margin-bottom:20px;"><a href="../index.html" style="color:#3498db; font-size:13px; text-decoration:none;">← Back to ICAPST 2026 Main Website</a></div>
+    <h1>ICAPST 2026 – Abstract Submission</h1>
+    <div style="background: #fff5f5; border: 1px solid #fed7d7; border-radius: 8px; padding: 30px; margin: 30px 0; text-align: center;">
+      <h2 style="color: var(--danger); margin-top: 0; margin-bottom: 15px;">Abstract submissions are Now Closed</h2>
+      <p style="font-size: 16px; color: #4a5568; max-width: 600px; margin: 0 auto 20px auto;">
+        Thank you for your overwhelming response and interest in ICAPST 2026. The abstract submission window has officially closed and we are no longer accepting new submissions.
+      </p>
+      <p style="font-size: 14px; color: #718096; margin: 0;">
+        For any queries, please reach out to the organizing committee at <strong>icapst.info@gmail.com</strong>
+      </p>
+    </div>
+    <p style="margin-top: 20px;"><a href="../abstract.html" style="color: #3498db; text-decoration: none; font-weight: 600;">← Back to Submission Guidelines</a></p>
+  </div>
+
+  <!-- ACTIVE FORM SECTION -->
   <div id="formSection">
     <div style="text-align:center; margin-bottom:10px;"><a href="../index.html" style="color:#3498db; font-size:13px; text-decoration:none;">← Back to ICAPST 2026 Main Website</a></div>
     <h1>ICAPST 2026 – Abstract Submission</h1>
@@ -228,6 +246,16 @@
 </div>
 
 <script>
+// ── SUBMISSION STATUS TOGGLE ──────────────────────────────────────────────
+var SUBMISSIONS_CLOSED = true; // Set to false when you want to reopen submissions
+
+window.addEventListener('DOMContentLoaded', function() {
+  if (SUBMISSIONS_CLOSED) {
+    document.getElementById('formSection').style.display = 'none';
+    document.getElementById('closedSection').style.display = 'block';
+  }
+});
+
 // ── Word counter ──────────────────────────────────────────────────────────────
 var abstractTA = document.getElementById('abstractBody');
 var wordCountEl = document.getElementById('wordCount');
@@ -262,7 +290,7 @@ function addAuthor(){
     '<strong style="display:block; margin-bottom:12px; color:var(--primary);">' + num + suffix + ' Author</strong>' +
     '<div class="grid-2">' +
       '<div class="form-group"><label>Title</label><input type="text" name="co' + authorCount + 'Title" placeholder="Prof./Dr./Mr./Ms."></div>' +
-      '<div class="form-group"><label>Full Name</label><input type="text" name="co' + authorCount + 'Name" oninput="checkNextAuthor(' + authorCount + ')"></div>' +
+      '<div class="form-group"><label>Full Name</label><input type="text" name="co' + authorCount + 'Name"></div>' +
     '</div>' +
     '<div class="grid-2">' +
       '<div class="form-group"><label>Department</label><input type="text" name="co' + authorCount + 'Dept"></div>' +
@@ -273,22 +301,12 @@ function addAuthor(){
       '<div class="form-group"><label>Email</label><input type="email" name="co' + authorCount + 'Email" placeholder="email@institution.edu" oninput="validateOptionalEmail(this)"></div>' +
     '</div>';
   document.getElementById('authorContainer').appendChild(div);
-
-  // Auto-show "Add Co-Author" button below
-  if(authorCount >= 2){
-    // Button already visible, just scroll
-    div.scrollIntoView({behavior:'smooth', block:'nearest'});
-  }
+  div.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
 function removeAuthor(id){
   var el = document.getElementById('author-' + id);
   if(el) el.remove();
-}
-
-// Auto-add next author box when current name is filled
-function checkNextAuthor(id){
-  // Not used for auto-add — user clicks button instead
 }
 
 // ── Email validation (optional fields) ───────────────────────────────────────
@@ -347,7 +365,6 @@ function validatePhone(codeId, phoneId, label){
 document.getElementById('mainForm').onsubmit = function(e){
   e.preventDefault();
 
-  // Title of Abstract
   var titleEl = document.querySelector('[name="abstractTitle"]');
   if(!titleEl.value.trim()){
     alert('⚠ Please enter the Title of Abstract.');
@@ -355,7 +372,6 @@ document.getElementById('mainForm').onsubmit = function(e){
     return;
   }
 
-  // Conference Track
   var trackEl = document.getElementById('trackSelect');
   if(!trackEl.value){
     alert('⚠ Please select a Conference Track.');
@@ -363,14 +379,12 @@ document.getElementById('mainForm').onsubmit = function(e){
     return;
   }
 
-  // Word count
   var wc = countWords(abstractTA.value);
   if(wc < 100 || wc > 200){
     alert('Abstract word count is ' + wc + '. Please keep it between 100 and 200 words.');
     abstractTA.focus(); return;
   }
 
-  // Keywords
   var kwEl = document.getElementById('kwInput');
   var kw = kwEl.value.split(',').filter(function(x){ return x.trim() !== ''; });
   if(kw.length < 4 || kw.length > 6){
@@ -378,7 +392,6 @@ document.getElementById('mainForm').onsubmit = function(e){
     kwEl.focus(); return;
   }
 
-  // First Author required fields
   var faFields = [
     { id: 'faTitle',   label: 'Title (First Author)' },
     { id: 'faName',    label: 'Full Name (First Author)' },
@@ -395,7 +408,6 @@ document.getElementById('mainForm').onsubmit = function(e){
     }
   }
 
-  // First author email
   var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   var faEmailEl = document.getElementById('faEmail');
   if(!emailPattern.test(faEmailEl.value)){
@@ -403,10 +415,8 @@ document.getElementById('mainForm').onsubmit = function(e){
     faEmailEl.focus(); return;
   }
 
-  // First author phone
   if(!validatePhone('faCode', 'faPhone', 'First Author')) return;
 
-  // Corresponding Author validation (only if "No" is selected)
   var corrNo = document.querySelector('input[name="isCorr"][value="No"]');
   if(corrNo && corrNo.checked){
     var caFields = [
@@ -430,14 +440,12 @@ document.getElementById('mainForm').onsubmit = function(e){
     }
   }
 
-  // Presentation preference
   if(document.querySelectorAll('input[name="pref"]:checked').length === 0){
     alert('⚠ Please select at least one Presentation Preference (Oral or Poster).');
     document.querySelector('input[name="pref"]').scrollIntoView({behavior:'smooth', block:'center'});
     return;
   }
 
-  // Abstract file
   var absFile = document.getElementById('abstractFile');
   if(!absFile.files[0]){
     alert('⚠ Please upload your abstract file (.docx or .tex).');
@@ -445,11 +453,9 @@ document.getElementById('mainForm').onsubmit = function(e){
   }
   if(!validateFile(absFile, ['docx','tex'], 1)) return;
 
-  // PDF file (optional)
   var pdfFile = document.getElementById('pdfFile');
   if(pdfFile.files[0] && !validateFile(pdfFile, ['pdf'], 1)) return;
 
-  // Declaration
   var declEl = document.getElementById('declaration');
   if(!declEl.checked){
     alert('⚠ Please confirm the declaration before submitting.');
@@ -464,7 +470,6 @@ document.getElementById('mainForm').onsubmit = function(e){
   var trackCode = document.getElementById('trackSelect').value;
   var generatedID = 'ICAPST-2026-' + trackCode + '-' + Math.floor(100000 + Math.random() * 900000);
 
-  // Collect co-author data
   var coAuthors = [];
   for(var i = 1; i <= authorCount; i++){
     var nameEl = document.querySelector('[name="co' + i + 'Name"]');
@@ -488,7 +493,6 @@ document.getElementById('mainForm').onsubmit = function(e){
 
   var formData = new FormData(this);
 
-  // Read PDF if present, then read abstract file
   function readPDF(cb){
     if(pdfFile.files[0]){
       var r = new FileReader();
@@ -500,7 +504,6 @@ document.getElementById('mainForm').onsubmit = function(e){
   readPDF(function(pdfBase64){
     var reader = new FileReader();
     reader.onload = function(ev){
-      // Rename file to SubmissionID.ext
       var origExt = absFile.files[0].name.split('.').pop().toLowerCase();
       var renamedFile = generatedID + '.' + origExt;
       var renamedPdf  = pdfFile.files[0] ? generatedID + '_supporting.pdf' : '';
@@ -547,8 +550,6 @@ document.getElementById('mainForm').onsubmit = function(e){
         resetBtn(); return;
       }
 
-      // no-cors only allows text/plain — send raw JSON as body
-      // Google Apps Script reads it via e.postData.contents
       fetch(scriptURL, {
         method: 'POST',
         mode: 'no-cors',
@@ -556,8 +557,6 @@ document.getElementById('mainForm').onsubmit = function(e){
         body: JSON.stringify(payload)
       })
       .then(function(){
-        // no-cors returns opaque response — we cannot read it
-        // but if we reach here, the request was sent successfully
         document.getElementById('formSection').style.display  = 'none';
         document.getElementById('submissionReport').style.display = 'block';
         document.getElementById('repID').innerText     = generatedID;
