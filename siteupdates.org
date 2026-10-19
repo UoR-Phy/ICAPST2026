@@ -11,7 +11,7 @@
 - Removed DST Rajasthan from main page, added BRNS in Funding and Support at main page.
 
 ** 19 October
-- Technical schedule updated on registration page
+- Technical schedule updated on registration page; removed back
 
 
 * September 2026
