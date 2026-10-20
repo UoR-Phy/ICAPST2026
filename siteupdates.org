@@ -10,8 +10,12 @@
 ** 12 October (completed)
 - Removed DST Rajasthan from main page, added BRNS in Funding and Support at main page.
 
-** 19 October
+** 19 October (completed)
 - Technical schedule updated on registration page; removed back
+
+** 20 October
+- Technical schedule updated on registration page
+- Invited speakers list updated as per programme schedule
 
 
 * September 2026
