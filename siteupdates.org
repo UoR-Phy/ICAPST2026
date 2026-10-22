@@ -13,10 +13,12 @@
 ** 19 October (completed)
 - Technical schedule updated on registration page; removed back
 
-** 20 October
+** 20 October (completed)
 - Technical schedule updated on registration page
 - Invited speakers list updated as per programme schedule
 
+** 22 October (completed)
+- Abstract book uploaded and updated in marquee
 
 * September 2026
 ** 4 Sept (updated)
