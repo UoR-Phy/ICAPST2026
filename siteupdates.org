@@ -20,6 +20,9 @@
 ** 22 October (completed)
 - Abstract book uploaded and updated in marquee
 
+** 26 October (completed)
+- Updated picture view at conference page [[others.html][others.html]]
+
 * September 2026
 ** 4 Sept (updated)
 - Abstract submission closed, all links are removed. Only submission form is still there if someone have saved the link
